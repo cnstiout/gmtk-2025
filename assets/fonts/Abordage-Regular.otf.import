@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://yc2afli4q06y"
-path="res://.godot/imported/Director-bold.otf-1c62814420d6ac4ff3b45432aa26c1b6.fontdata"
+uid="uid://bpjiphbrynjo4"
+path="res://.godot/imported/Abordage-Regular.otf-45ca2e544196f18744e1d3df0d0e58fb.fontdata"
 
 [deps]
 
-source_file="res://fonts/Director-bold.otf"
-dest_files=["res://.godot/imported/Director-bold.otf-1c62814420d6ac4ff3b45432aa26c1b6.fontdata"]
+source_file="res://assets/fonts/Abordage-Regular.otf"
+dest_files=["res://.godot/imported/Abordage-Regular.otf-45ca2e544196f18744e1d3df0d0e58fb.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bpvx74ff7wr6g"
-path="res://.godot/imported/Director-Regular.otf-1cff5e7b79966da032fb70173581e5ac.fontdata"
+uid="uid://wf1p0i00n3g7"
+path="res://.godot/imported/FT88-Italic.otf-94d2f69a4dd8ef963c1ebb26a1b3a87e.fontdata"
 
 [deps]
 
-source_file="res://fonts/Director-Regular.otf"
-dest_files=["res://.godot/imported/Director-Regular.otf-1cff5e7b79966da032fb70173581e5ac.fontdata"]
+source_file="res://assets/fonts/FT88-Italic.otf"
+dest_files=["res://.godot/imported/FT88-Italic.otf-94d2f69a4dd8ef963c1ebb26a1b3a87e.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dh74jopsob1oe"
-path="res://.godot/imported/Basalte-Multicolor.otf-6c504717452cc33c7fb4cdf7ce36c823.fontdata"
+uid="uid://c7lrfq8hcsq82"
+path="res://.godot/imported/FT88-Serif.otf-33867640b85df90f467d169cf18ee40e.fontdata"
 
 [deps]
 
-source_file="res://fonts/Basalte-Multicolor.otf"
-dest_files=["res://.godot/imported/Basalte-Multicolor.otf-6c504717452cc33c7fb4cdf7ce36c823.fontdata"]
+source_file="res://assets/fonts/FT88-Serif.otf"
+dest_files=["res://.godot/imported/FT88-Serif.otf-33867640b85df90f467d169cf18ee40e.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

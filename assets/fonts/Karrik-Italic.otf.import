@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://4kdg7bwmqv1r"
-path="res://.godot/imported/terminal-grotesque.ttf-0da02d33d004d550ad43c4a49e104428.fontdata"
+uid="uid://8xkcudp5d7nn"
+path="res://.godot/imported/Karrik-Italic.otf-1fd4f13c97dba96923dac1dc22ee6084.fontdata"
 
 [deps]
 
-source_file="res://fonts/terminal-grotesque.ttf"
-dest_files=["res://.godot/imported/terminal-grotesque.ttf-0da02d33d004d550ad43c4a49e104428.fontdata"]
+source_file="res://assets/fonts/Karrik-Italic.otf"
+dest_files=["res://.godot/imported/Karrik-Italic.otf-1fd4f13c97dba96923dac1dc22ee6084.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

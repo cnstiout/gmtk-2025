@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://xxx6356f6dgw"
-path="res://.godot/imported/Basalte-Fond.otf-be1174bb80fe0b99f6497dae44ffc4b7.fontdata"
+uid="uid://b4uhugefv0o5e"
+path="res://.godot/imported/Avara-BoldItalic.otf-50f66995165a166b36d86b4cd2dfbf3d.fontdata"
 
 [deps]
 
-source_file="res://fonts/Basalte-Fond.otf"
-dest_files=["res://.godot/imported/Basalte-Fond.otf-be1174bb80fe0b99f6497dae44ffc4b7.fontdata"]
+source_file="res://assets/fonts/Avara-BoldItalic.otf"
+dest_files=["res://.godot/imported/Avara-BoldItalic.otf-50f66995165a166b36d86b4cd2dfbf3d.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bjy6hefri2u25"
-path="res://.godot/imported/Mess.otf-a9e2df49d41f3b6b927c419491c09a73.fontdata"
+uid="uid://dn5tjrv45vbyu"
+path="res://.godot/imported/Equateur-Regular.otf-e7e1f870b28291ce5e2824a16283546f.fontdata"
 
 [deps]
 
-source_file="res://fonts/Mess.otf"
-dest_files=["res://.godot/imported/Mess.otf-a9e2df49d41f3b6b927c419491c09a73.fontdata"]
+source_file="res://assets/fonts/Equateur-Regular.otf"
+dest_files=["res://.godot/imported/Equateur-Regular.otf-e7e1f870b28291ce5e2824a16283546f.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c2kjdp3dngya4"
-path="res://.godot/imported/Avara-Bold.otf-0e8a2a9f9f5bb5baf8ede5938f7cdfd2.fontdata"
+uid="uid://b36riua1ac08v"
+path="res://.godot/imported/Latitude-Regular.otf-5961233bd696fb7b08fdea4f8ac54ecd.fontdata"
 
 [deps]
 
-source_file="res://fonts/Avara-Bold.otf"
-dest_files=["res://.godot/imported/Avara-Bold.otf-0e8a2a9f9f5bb5baf8ede5938f7cdfd2.fontdata"]
+source_file="res://assets/fonts/Latitude-Regular.otf"
+dest_files=["res://.godot/imported/Latitude-Regular.otf-5961233bd696fb7b08fdea4f8ac54ecd.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]

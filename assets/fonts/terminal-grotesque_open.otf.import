@@ -2,20 +2,19 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b36riua1ac08v"
-path="res://.godot/imported/Latitude-Regular.otf-203db997de1286ae65c80e2efc12dae3.fontdata"
+uid="uid://d1lybyeqwst0u"
+path="res://.godot/imported/terminal-grotesque_open.otf-5ed5045c5f7a3f72307a26d54e543d45.fontdata"
 
 [deps]
 
-source_file="res://fonts/Latitude-Regular.otf"
-dest_files=["res://.godot/imported/Latitude-Regular.otf-203db997de1286ae65c80e2efc12dae3.fontdata"]
+source_file="res://assets/fonts/terminal-grotesque_open.otf"
+dest_files=["res://.godot/imported/terminal-grotesque_open.otf-5ed5045c5f7a3f72307a26d54e543d45.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
-disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -23,7 +22,6 @@ allow_system_fallback=true
 force_autohinter=false
 hinting=1
 subpixel_positioning=4
-keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
