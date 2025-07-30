@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://yc2afli4q06y"
-path="res://.godot/imported/Director-bold.otf-1c62814420d6ac4ff3b45432aa26c1b6.fontdata"
+uid="uid://wf1p0i00n3g7"
+path="res://.godot/imported/FT88-Italic.otf-94d2f69a4dd8ef963c1ebb26a1b3a87e.fontdata"
 
 [deps]
 
-source_file="res://fonts/Director-bold.otf"
-dest_files=["res://.godot/imported/Director-bold.otf-1c62814420d6ac4ff3b45432aa26c1b6.fontdata"]
+source_file="res://assets/fonts/FT88-Italic.otf"
+dest_files=["res://.godot/imported/FT88-Italic.otf-94d2f69a4dd8ef963c1ebb26a1b3a87e.fontdata"]
 
 [params]
 

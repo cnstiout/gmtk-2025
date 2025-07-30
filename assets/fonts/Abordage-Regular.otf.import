@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c2kjdp3dngya4"
-path="res://.godot/imported/Avara-Bold.otf-0e8a2a9f9f5bb5baf8ede5938f7cdfd2.fontdata"
+uid="uid://bpjiphbrynjo4"
+path="res://.godot/imported/Abordage-Regular.otf-45ca2e544196f18744e1d3df0d0e58fb.fontdata"
 
 [deps]
 
-source_file="res://fonts/Avara-Bold.otf"
-dest_files=["res://.godot/imported/Avara-Bold.otf-0e8a2a9f9f5bb5baf8ede5938f7cdfd2.fontdata"]
+source_file="res://assets/fonts/Abordage-Regular.otf"
+dest_files=["res://.godot/imported/Abordage-Regular.otf-45ca2e544196f18744e1d3df0d0e58fb.fontdata"]
 
 [params]
 

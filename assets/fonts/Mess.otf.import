@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://fy3wmygp4vjj"
-path="res://.godot/imported/Karrik-Regular.otf-0462d0f96d9f18be80b3db557b5853b0.fontdata"
+uid="uid://bjy6hefri2u25"
+path="res://.godot/imported/Mess.otf-e52a4c6ca725c6b13ef349130d77aaa8.fontdata"
 
 [deps]
 
-source_file="res://fonts/Karrik-Regular.otf"
-dest_files=["res://.godot/imported/Karrik-Regular.otf-0462d0f96d9f18be80b3db557b5853b0.fontdata"]
+source_file="res://assets/fonts/Mess.otf"
+dest_files=["res://.godot/imported/Mess.otf-e52a4c6ca725c6b13ef349130d77aaa8.fontdata"]
 
 [params]
 

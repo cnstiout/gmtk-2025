@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dkd8pe31j44ij"
-path="res://.godot/imported/FT88-Gothique.otf-2dbe43f2c367925cc6f675ec10c6810d.fontdata"
+uid="uid://xxx6356f6dgw"
+path="res://.godot/imported/Basalte-Fond.otf-ae0d2ecf7e1219c52ff5172f213d80e8.fontdata"
 
 [deps]
 
-source_file="res://fonts/FT88-Gothique.otf"
-dest_files=["res://.godot/imported/FT88-Gothique.otf-2dbe43f2c367925cc6f675ec10c6810d.fontdata"]
+source_file="res://assets/fonts/Basalte-Fond.otf"
+dest_files=["res://.godot/imported/Basalte-Fond.otf-ae0d2ecf7e1219c52ff5172f213d80e8.fontdata"]
 
 [params]
 

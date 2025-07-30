@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cc41kxgawal0d"
-path="res://.godot/imported/Avara-Black.otf-afd742b78af12a84fcd84cb281b4a023.fontdata"
+uid="uid://dn5tjrv45vbyu"
+path="res://.godot/imported/Equateur-Regular.otf-e7e1f870b28291ce5e2824a16283546f.fontdata"
 
 [deps]
 
-source_file="res://fonts/Avara-Black.otf"
-dest_files=["res://.godot/imported/Avara-Black.otf-afd742b78af12a84fcd84cb281b4a023.fontdata"]
+source_file="res://assets/fonts/Equateur-Regular.otf"
+dest_files=["res://.godot/imported/Equateur-Regular.otf-e7e1f870b28291ce5e2824a16283546f.fontdata"]
 
 [params]
 

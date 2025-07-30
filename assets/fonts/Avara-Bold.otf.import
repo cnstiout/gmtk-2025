@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cdsi3vg0ku1d2"
-path="res://.godot/imported/FT88-Regular.otf-b82a0e9cba6f7c284a5a3e89dc807986.fontdata"
+uid="uid://c2kjdp3dngya4"
+path="res://.godot/imported/Avara-Bold.otf-e034fa902d294fdd840cf30445fce130.fontdata"
 
 [deps]
 
-source_file="res://fonts/FT88-Regular.otf"
-dest_files=["res://.godot/imported/FT88-Regular.otf-b82a0e9cba6f7c284a5a3e89dc807986.fontdata"]
+source_file="res://assets/fonts/Avara-Bold.otf"
+dest_files=["res://.godot/imported/Avara-Bold.otf-e034fa902d294fdd840cf30445fce130.fontdata"]
 
 [params]
 

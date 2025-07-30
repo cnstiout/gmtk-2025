@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dh74jopsob1oe"
-path="res://.godot/imported/Basalte-Multicolor.otf-6c504717452cc33c7fb4cdf7ce36c823.fontdata"
+uid="uid://b4uhugefv0o5e"
+path="res://.godot/imported/Avara-BoldItalic.otf-50f66995165a166b36d86b4cd2dfbf3d.fontdata"
 
 [deps]
 
-source_file="res://fonts/Basalte-Multicolor.otf"
-dest_files=["res://.godot/imported/Basalte-Multicolor.otf-6c504717452cc33c7fb4cdf7ce36c823.fontdata"]
+source_file="res://assets/fonts/Avara-BoldItalic.otf"
+dest_files=["res://.godot/imported/Avara-BoldItalic.otf-50f66995165a166b36d86b4cd2dfbf3d.fontdata"]
 
 [params]
 

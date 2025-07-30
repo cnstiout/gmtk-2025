@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bjy6hefri2u25"
-path="res://.godot/imported/Mess.otf-a9e2df49d41f3b6b927c419491c09a73.fontdata"
+uid="uid://tslql3a6xxdj"
+path="res://.godot/imported/Director-Light.otf-6303a1f8e226ec04da2942b00a90e7b9.fontdata"
 
 [deps]
 
-source_file="res://fonts/Mess.otf"
-dest_files=["res://.godot/imported/Mess.otf-a9e2df49d41f3b6b927c419491c09a73.fontdata"]
+source_file="res://assets/fonts/Director-Light.otf"
+dest_files=["res://.godot/imported/Director-Light.otf-6303a1f8e226ec04da2942b00a90e7b9.fontdata"]
 
 [params]
 

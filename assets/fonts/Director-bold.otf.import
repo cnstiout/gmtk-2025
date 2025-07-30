@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cr35nkb7av047"
-path="res://.godot/imported/Louise-Regular.otf-b64012484f2e57be1f325b19824de9c3.fontdata"
+uid="uid://yc2afli4q06y"
+path="res://.godot/imported/Director-bold.otf-621add30da895544a5b74bad49497116.fontdata"
 
 [deps]
 
-source_file="res://fonts/Louise-Regular.otf"
-dest_files=["res://.godot/imported/Louise-Regular.otf-b64012484f2e57be1f325b19824de9c3.fontdata"]
+source_file="res://assets/fonts/Director-bold.otf"
+dest_files=["res://.godot/imported/Director-bold.otf-621add30da895544a5b74bad49497116.fontdata"]
 
 [params]
 

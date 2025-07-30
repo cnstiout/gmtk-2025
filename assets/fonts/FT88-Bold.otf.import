@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bomaam0r3m2aj"
-path="res://.godot/imported/FT88-Bold.otf-df49d51a12a565a5854801f5a39ed2a4.fontdata"
+path="res://.godot/imported/FT88-Bold.otf-20b1da27a3a98d1fc027df18eb758e33.fontdata"
 
 [deps]
 
-source_file="res://fonts/FT88-Bold.otf"
-dest_files=["res://.godot/imported/FT88-Bold.otf-df49d51a12a565a5854801f5a39ed2a4.fontdata"]
+source_file="res://assets/fonts/FT88-Bold.otf"
+dest_files=["res://.godot/imported/FT88-Bold.otf-20b1da27a3a98d1fc027df18eb758e33.fontdata"]
 
 [params]
 

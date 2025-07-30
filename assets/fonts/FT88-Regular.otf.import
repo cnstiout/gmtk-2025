@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://xxx6356f6dgw"
-path="res://.godot/imported/Basalte-Fond.otf-be1174bb80fe0b99f6497dae44ffc4b7.fontdata"
+uid="uid://cdsi3vg0ku1d2"
+path="res://.godot/imported/FT88-Regular.otf-c93a098e35f3a41ba8ad8d7349298577.fontdata"
 
 [deps]
 
-source_file="res://fonts/Basalte-Fond.otf"
-dest_files=["res://.godot/imported/Basalte-Fond.otf-be1174bb80fe0b99f6497dae44ffc4b7.fontdata"]
+source_file="res://assets/fonts/FT88-Regular.otf"
+dest_files=["res://.godot/imported/FT88-Regular.otf-c93a098e35f3a41ba8ad8d7349298577.fontdata"]
 
 [params]
 

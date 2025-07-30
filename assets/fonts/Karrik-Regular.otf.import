@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dn5tjrv45vbyu"
-path="res://.godot/imported/Equateur-Regular.otf-c068b7b4c9dfca13eac540080159fe8a.fontdata"
+uid="uid://fy3wmygp4vjj"
+path="res://.godot/imported/Karrik-Regular.otf-363052b2efc325472684b39124a684ab.fontdata"
 
 [deps]
 
-source_file="res://fonts/Equateur-Regular.otf"
-dest_files=["res://.godot/imported/Equateur-Regular.otf-c068b7b4c9dfca13eac540080159fe8a.fontdata"]
+source_file="res://assets/fonts/Karrik-Regular.otf"
+dest_files=["res://.godot/imported/Karrik-Regular.otf-363052b2efc325472684b39124a684ab.fontdata"]
 
 [params]
 

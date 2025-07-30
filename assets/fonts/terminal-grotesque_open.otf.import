@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://2mshjkux5omo"
-path="res://.godot/imported/Basalte-Volume.otf-a31c0c6f876228a15a7823a85b429b1b.fontdata"
+uid="uid://d1lybyeqwst0u"
+path="res://.godot/imported/terminal-grotesque_open.otf-5ed5045c5f7a3f72307a26d54e543d45.fontdata"
 
 [deps]
 
-source_file="res://fonts/Basalte-Volume.otf"
-dest_files=["res://.godot/imported/Basalte-Volume.otf-a31c0c6f876228a15a7823a85b429b1b.fontdata"]
+source_file="res://assets/fonts/terminal-grotesque_open.otf"
+dest_files=["res://.godot/imported/terminal-grotesque_open.otf-5ed5045c5f7a3f72307a26d54e543d45.fontdata"]
 
 [params]
 

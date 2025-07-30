@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://4kdg7bwmqv1r"
-path="res://.godot/imported/terminal-grotesque.ttf-0da02d33d004d550ad43c4a49e104428.fontdata"
+uid="uid://eq43v2mu8wdo"
+path="res://.godot/imported/FT88-School.otf-4d17553faa10e35fdf1af42863e50812.fontdata"
 
 [deps]
 
-source_file="res://fonts/terminal-grotesque.ttf"
-dest_files=["res://.godot/imported/terminal-grotesque.ttf-0da02d33d004d550ad43c4a49e104428.fontdata"]
+source_file="res://assets/fonts/FT88-School.otf"
+dest_files=["res://.godot/imported/FT88-School.otf-4d17553faa10e35fdf1af42863e50812.fontdata"]
 
 [params]
 

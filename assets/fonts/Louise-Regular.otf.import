@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b36riua1ac08v"
-path="res://.godot/imported/Latitude-Regular.otf-203db997de1286ae65c80e2efc12dae3.fontdata"
+uid="uid://cr35nkb7av047"
+path="res://.godot/imported/Louise-Regular.otf-91dcdbdbcbb3e697ffef38b4e5ba70cf.fontdata"
 
 [deps]
 
-source_file="res://fonts/Latitude-Regular.otf"
-dest_files=["res://.godot/imported/Latitude-Regular.otf-203db997de1286ae65c80e2efc12dae3.fontdata"]
+source_file="res://assets/fonts/Louise-Regular.otf"
+dest_files=["res://.godot/imported/Louise-Regular.otf-91dcdbdbcbb3e697ffef38b4e5ba70cf.fontdata"]
 
 [params]
 

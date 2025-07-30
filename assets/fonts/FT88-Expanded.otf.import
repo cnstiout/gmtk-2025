@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://eq43v2mu8wdo"
-path="res://.godot/imported/FT88-School.otf-6845cea3a72d04610d029ec14fba70ea.fontdata"
+uid="uid://c7qod0ui81b7"
+path="res://.godot/imported/FT88-Expanded.otf-993d262f38ff7557b4fdb00260b484d6.fontdata"
 
 [deps]
 
-source_file="res://fonts/FT88-School.otf"
-dest_files=["res://.godot/imported/FT88-School.otf-6845cea3a72d04610d029ec14fba70ea.fontdata"]
+source_file="res://assets/fonts/FT88-Expanded.otf"
+dest_files=["res://.godot/imported/FT88-Expanded.otf-993d262f38ff7557b4fdb00260b484d6.fontdata"]
 
 [params]
 

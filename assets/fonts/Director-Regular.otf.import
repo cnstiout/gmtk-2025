@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7lrfq8hcsq82"
-path="res://.godot/imported/FT88-Serif.otf-d1cb1e90697efd3c3c24658f33a8beb0.fontdata"
+uid="uid://bpvx74ff7wr6g"
+path="res://.godot/imported/Director-Regular.otf-42aa86117c801ae915064cba8f4ae7c4.fontdata"
 
 [deps]
 
-source_file="res://fonts/FT88-Serif.otf"
-dest_files=["res://.godot/imported/FT88-Serif.otf-d1cb1e90697efd3c3c24658f33a8beb0.fontdata"]
+source_file="res://assets/fonts/Director-Regular.otf"
+dest_files=["res://.godot/imported/Director-Regular.otf-42aa86117c801ae915064cba8f4ae7c4.fontdata"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bpvx74ff7wr6g"
-path="res://.godot/imported/Director-Regular.otf-1cff5e7b79966da032fb70173581e5ac.fontdata"
+uid="uid://2mshjkux5omo"
+path="res://.godot/imported/Basalte-Volume.otf-6023f42cab43f9af83b93f760f38483d.fontdata"
 
 [deps]
 
-source_file="res://fonts/Director-Regular.otf"
-dest_files=["res://.godot/imported/Director-Regular.otf-1cff5e7b79966da032fb70173581e5ac.fontdata"]
+source_file="res://assets/fonts/Basalte-Volume.otf"
+dest_files=["res://.godot/imported/Basalte-Volume.otf-6023f42cab43f9af83b93f760f38483d.fontdata"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d1lybyeqwst0u"
-path="res://.godot/imported/terminal-grotesque_open.otf-c5d6119876f1b1f60f53ab9509c23949.fontdata"
+uid="uid://cc41kxgawal0d"
+path="res://.godot/imported/Avara-Black.otf-65c07c0a8b0c89bcc12d526efd85ec6e.fontdata"
 
 [deps]
 
-source_file="res://fonts/terminal-grotesque_open.otf"
-dest_files=["res://.godot/imported/terminal-grotesque_open.otf-c5d6119876f1b1f60f53ab9509c23949.fontdata"]
+source_file="res://assets/fonts/Avara-Black.otf"
+dest_files=["res://.godot/imported/Avara-Black.otf-65c07c0a8b0c89bcc12d526efd85ec6e.fontdata"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://tslql3a6xxdj"
-path="res://.godot/imported/Director-Light.otf-cdfbd2190172f8ebf4574bf29a4f7dc6.fontdata"
+uid="uid://4kdg7bwmqv1r"
+path="res://.godot/imported/terminal-grotesque.ttf-1e8300fda423f7d1814d77036bbcbb63.fontdata"
 
 [deps]
 
-source_file="res://fonts/Director-Light.otf"
-dest_files=["res://.godot/imported/Director-Light.otf-cdfbd2190172f8ebf4574bf29a4f7dc6.fontdata"]
+source_file="res://assets/fonts/terminal-grotesque.ttf"
+dest_files=["res://.godot/imported/terminal-grotesque.ttf-1e8300fda423f7d1814d77036bbcbb63.fontdata"]
 
 [params]
 

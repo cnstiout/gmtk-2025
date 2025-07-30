@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://8xkcudp5d7nn"
-path="res://.godot/imported/Karrik-Italic.otf-35fb421a4eb11b5c12d4dd2488028d83.fontdata"
+uid="uid://b36riua1ac08v"
+path="res://.godot/imported/Latitude-Regular.otf-5961233bd696fb7b08fdea4f8ac54ecd.fontdata"
 
 [deps]
 
-source_file="res://fonts/Karrik-Italic.otf"
-dest_files=["res://.godot/imported/Karrik-Italic.otf-35fb421a4eb11b5c12d4dd2488028d83.fontdata"]
+source_file="res://assets/fonts/Latitude-Regular.otf"
+dest_files=["res://.godot/imported/Latitude-Regular.otf-5961233bd696fb7b08fdea4f8ac54ecd.fontdata"]
 
 [params]
 
