@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6l6uwht68t68"
-path.s3tc="res://.godot/imported/GMTK_logo.png-b95e69175ed92e7c0ec89e1849d8c318.s3tc.ctex"
+uid="uid://cao6qtdvptj7y"
+path="res://.godot/imported/brick.png-0c294d89c49991f6c08b66e375c6c0ef.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GMTK_logo.png"
-dest_files=["res://.godot/imported/GMTK_logo.png-b95e69175ed92e7c0ec89e1849d8c318.s3tc.ctex"]
+source_file="res://assets/sprites/brick.png"
+dest_files=["res://.godot/imported/brick.png-0c294d89c49991f6c08b66e375c6c0ef.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

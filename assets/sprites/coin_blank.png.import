@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6l6uwht68t68"
-path.s3tc="res://.godot/imported/GMTK_logo.png-b95e69175ed92e7c0ec89e1849d8c318.s3tc.ctex"
+uid="uid://cqww6c5yh1lmv"
+path.s3tc="res://.godot/imported/coin_blank.png-32b7d4dfacf878b4dd00af84fc954d9d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/GMTK_logo.png"
-dest_files=["res://.godot/imported/GMTK_logo.png-b95e69175ed92e7c0ec89e1849d8c318.s3tc.ctex"]
+source_file="res://assets/sprites/coin_blank.png"
+dest_files=["res://.godot/imported/coin_blank.png-32b7d4dfacf878b4dd00af84fc954d9d.s3tc.ctex"]
 
 [params]
 

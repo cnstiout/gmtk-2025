@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6l6uwht68t68"
-path.s3tc="res://.godot/imported/GMTK_logo.png-b95e69175ed92e7c0ec89e1849d8c318.s3tc.ctex"
+uid="uid://cigdwk0dbyej6"
+path.s3tc="res://.godot/imported/Object_24968_0.png-cfbb3e89f1020492d1c23e748a72745d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/GMTK_logo.png"
-dest_files=["res://.godot/imported/GMTK_logo.png-b95e69175ed92e7c0ec89e1849d8c318.s3tc.ctex"]
+source_file="res://assets/3d_models/Object_24968_0.png"
+dest_files=["res://.godot/imported/Object_24968_0.png-cfbb3e89f1020492d1c23e748a72745d.s3tc.ctex"]
 
 [params]
 
