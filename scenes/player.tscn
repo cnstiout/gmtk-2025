@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://73n5mq0sbiuu"]
+[gd_scene load_steps=18 format=3 uid="uid://73n5mq0sbiuu"]
 
 [ext_resource type="Script" uid="uid://co6kct3edbg42" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Shader" uid="uid://claxj8b2r4rwo" path="res://shaders/trail.gdshader" id="3_fjrip"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbd058256djvs" path="res://assets/textures/part02.png" id="6_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://bb077a6o6bcu6" path="res://assets/textures/part03.png" id="7_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://baaf88kcr6mb3" path="res://assets/sfx/engine_idle_v1.ogg" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://c24iiej6dkha5" path="res://assets/sfx/engine_boost_v5.ogg" id="8_smehm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
 size = Vector3(0.5, 0.2, 0.8)
@@ -166,6 +167,9 @@ texture = ExtResource("7_d2wvv")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140706, 0.173195)
 stream = ExtResource("7_fjrip")
-volume_db = -6.4
+volume_db = -15.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="BoostAudioPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_smehm")
+volume_db = -25.0
