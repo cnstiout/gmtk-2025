@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://1shqohj0xof7"]
+[gd_scene load_steps=7 format=3 uid="uid://1shqohj0xof7"]
 
 [ext_resource type="Script" uid="uid://bbqvwxnu171bf" path="res://scripts/level.gd" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://c0lga80jrq31g" path="res://scenes/levels/road.tscn" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="3_x42e6"]
 [ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="4_6761a"]
 [ext_resource type="PackedScene" uid="uid://b7ndogurbak5y" path="res://scenes/ui/gameover_screen.tscn" id="5_6761a"]
+[ext_resource type="PackedScene" uid="uid://c1ndn0i51fpky" path="res://scenes/ui/pause_screen.tscn" id="6_sk5k4"]
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("road")]
 script = ExtResource("1_6iamk")
@@ -15,32 +16,32 @@ unique_name_in_owner = true
 
 [node name="Road" parent="." instance=ExtResource("1_ksju7")]
 
-[node name="@Area3D@21760" type="Area3D" parent="Road/Boosts" index="0" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 5.46799e-07, -3.67618e-14, -2.75333e-07, -0.503536, -0.863974, -4.72421e-07, -0.863974, 0.503536, 1.00004, -35.8951, -40.6279)
+[node name="@Area3D@89719" type="Area3D" parent="Road/Boosts" index="0" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-0.634563, -0.772871, -2.98023e-08, 0.719146, -0.590452, 0.366328, -0.283124, 0.232458, 0.930486, 0.480029, -42.644, 25.6362)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@21761" type="Area3D" parent="Road/Boosts" index="1" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 4.16749e-07, -4.79835e-07, -2.91458e-07, 0.370209, 0.928948, 5.64778e-07, 0.928948, -0.370209, -1.99996, -10.2705, 37.4138)
+[node name="@Area3D@89720" type="Area3D" parent="Road/Boosts" index="1" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 4.6137e-07, 2.08161e-07, 4.75038e-07, 0.997455, 0.0713013, -1.74735e-07, 0.0713013, -0.997455, -0.99997, 2.32076, 10.1996)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@21762" type="Area3D" parent="Road/Boosts" index="2" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 5.32026e-07, 1.36866e-07, 4.797e-07, 0.967096, -0.254413, -2.67716e-07, -0.254413, -0.967096, 1.00004, 1.35686, -30.2422)
+[node name="@Area3D@89721" type="Area3D" parent="Road/Boosts" index="2" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 5.16508e-08, -3.09822e-07, -8.00101e-08, 0.91196, 0.410279, 3.03737e-07, 0.410279, -0.91196, 2.00003, -0.362681, 28.2625)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@21763" type="Area3D" parent="Road/Boosts" index="3" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-0.945945, -0.324326, 0, 0.315911, -0.921402, -0.226318, 0.0734007, -0.214084, 0.974054, 1.82707, -45.8685, -26.2622)
+[node name="@Area3D@89722" type="Area3D" parent="Road/Boosts" index="3" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 5.46799e-07, -4.17006e-15, -4.57463e-07, -0.836621, -0.547783, -2.99527e-07, -0.547783, 0.836621, 2.00004, -41.6819, -35.191)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@21764" type="Area3D" parent="Road/Boosts" index="4" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 5.42919e-07, 7.10654e-08, 4.82635e-07, 0.935286, -0.353893, -2.58602e-07, -0.353893, -0.935286, 2.00004, 0.686284, -32.3721)
+[node name="@Area3D@89723" type="Area3D" parent="Road/Boosts" index="4" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 4.87748e-07, 2.50765e-07, 4.78749e-07, 0.999397, -0.0347128, -2.67545e-07, -0.0347128, -0.999397, -0.999963, 3.02344, -15.966)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
@@ -68,5 +69,26 @@ vertical_alignment = 1
 [node name="GameoverScreen" parent="HUD" instance=ExtResource("5_6761a")]
 unique_name_in_owner = true
 visible = false
+
+[node name="PauseScreen" parent="HUD" instance=ExtResource("6_sk5k4")]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 20
+
+[node name="SpeedLabel" type="Label" parent="HUD/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"
 
 [editable path="Road"]

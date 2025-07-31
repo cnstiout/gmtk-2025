@@ -8,6 +8,7 @@ extends Node3D
 @onready var countdown_timer: Timer = %CountdownTimer
 @onready var countdown_label: Label = $HUD/CountdownLabel
 @onready var gameover_screen: Control = %GameoverScreen
+@onready var speed_label: Label = %SpeedLabel
 
 var player_track: PlayerTrack
 
@@ -15,6 +16,7 @@ func _ready() -> void:
 	Events.player_died.connect(_on_player_died)
 	player_track = player_track_scene.instantiate()
 	player_track.road = road
+	player_track.speed_label = speed_label
 	road.add_child(player_track)
 	
 	countdown_timer.timeout.connect(_on_countdown_timer_timeout)

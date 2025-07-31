@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0lga80jrq31g"]
+[gd_scene load_steps=7 format=3 uid="uid://c0lga80jrq31g"]
 
 [ext_resource type="Script" uid="uid://deycqjx2yjv1r" path="res://scripts/road.gd" id="1_1hsjn"]
+[ext_resource type="Texture2D" uid="uid://b5f4scjqf6cb" path="res://assets/3d_models/grillefix_0.png" id="2_1hsjn"]
 [ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="2_rvhr8"]
 [ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="3_rvhr8"]
 
@@ -11,6 +12,11 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 1.48949, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hsjn"]
+transparency = 1
+albedo_texture = ExtResource("2_1hsjn")
+uv1_scale = Vector3(1, 32, 1)
 
 [node name="Road" type="Path3D"]
 curve = SubResource("Curve3D_tefeu")
@@ -31,6 +37,7 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = true
+material = SubResource("StandardMaterial3D_1hsjn")
 
 [node name="Boosts" type="Node" parent="."]
 
