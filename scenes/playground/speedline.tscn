@@ -1,4 +1,29 @@
-[gd_scene format=3 uid="uid://dtwl3e6jdgns0"]
+[gd_scene load_steps=8 format=3 uid="uid://dtwl3e6jdgns0"]
+
+[ext_resource type="Shader" uid="uid://bkse1mu7mrx6k" path="res://shaders/speedlines.gdshader" id="1_l0h1l"]
+
+[sub_resource type="Curve" id="Curve_6i6ib"]
+_limits = [0.0, 1.0, 0.288591, 1.0]
+_data = [Vector2(0.288591, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_26b5o"]
+curve = SubResource("Curve_6i6ib")
+
+[sub_resource type="CurveTexture" id="CurveTexture_pd5ck"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xmbh8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7vkgf"]
+noise = SubResource("FastNoiseLite_xmbh8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppngx"]
+shader = ExtResource("1_l0h1l")
+shader_parameter/noise = SubResource("NoiseTexture2D_7vkgf")
+shader_parameter/alpha = 1.0
+shader_parameter/falloff = SubResource("CurveTexture_26b5o")
+shader_parameter/lineFalloff = SubResource("CurveTexture_pd5ck")
+shader_parameter/speed = 10.0
 
 [node name="Node3D" type="Node3D"]
 
@@ -7,6 +32,7 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ppngx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
