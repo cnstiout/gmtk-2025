@@ -9,10 +9,16 @@ extends Node3D
 @onready var countdown_label: Label = $HUD/CountdownLabel
 @onready var gameover_screen: Control = %GameoverScreen
 @onready var speed_label: Label = %SpeedLabel
+@onready var score_label: Label = %ScoreLabel
 
 var player_track: PlayerTrack
 
+var high_score: int = 0:
+	set(value):
+		high_score = value
+
 func _ready() -> void:
+	Events.radar_triggered.connect(_on_radar_triggered)
 	Events.player_died.connect(_on_player_died)
 	player_track = player_track_scene.instantiate()
 	player_track.road = road
@@ -43,3 +49,12 @@ func show_gameover() -> void:
 
 func _on_countdown_timer_timeout() -> void:
 	decrease_countdown()
+
+func _on_radar_triggered() -> void:
+	update_high_score(player_track.get_converted_speed())
+
+func update_high_score(new_score: int) -> void:
+	if new_score > high_score:
+		high_score = new_score
+		score_label.text = str(new_score)
+	

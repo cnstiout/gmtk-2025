@@ -4,5 +4,6 @@ extends Node
 signal boost_picked_up(boost_xform)
 signal wall_hit
 signal player_died
+signal radar_triggered
 
 signal switch_level(level_id)

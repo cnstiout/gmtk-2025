@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4uug6pxxto8t"]
+
+[ext_resource type="Script" uid="uid://b6d0vkxotn054" path="res://scripts/speed_radar.gd" id="1_0vd1s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_feyha"]
+size = Vector3(6, 2, 1)
+
+[node name="SpeedRadar" type="Node3D"]
+script = ExtResource("1_0vd1s")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_feyha")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32839, 0)
+size = Vector3(3.66016, 0.749756, 0.476807)

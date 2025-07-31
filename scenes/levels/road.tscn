@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0lga80jrq31g"]
+[gd_scene load_steps=8 format=3 uid="uid://c0lga80jrq31g"]
 
 [ext_resource type="Script" uid="uid://deycqjx2yjv1r" path="res://scripts/road.gd" id="1_1hsjn"]
 [ext_resource type="Texture2D" uid="uid://163hvjs8u3hr" path="res://assets/textures/smallgrille.png" id="2_1hsjn"]
 [ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="2_rvhr8"]
 [ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="3_rvhr8"]
+[ext_resource type="PackedScene" uid="uid://c4uug6pxxto8t" path="res://scenes/speed_radar.tscn" id="5_rvhr8"]
 
 [sub_resource type="Curve3D" id="Curve3D_tefeu"]
 closed = true
@@ -72,3 +73,9 @@ collision_mask = 2
 script = ExtResource("3_rvhr8")
 
 [node name="Obstacles" type="Node" parent="."]
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978453, 0.206467, 1.47339e-07, 0.206467, -0.978453, 2.87331e-05, 0.713361, 24.2775)
+progress = 2.24334
+
+[node name="SpeedRadar" parent="PathFollow3D" instance=ExtResource("5_rvhr8")]
