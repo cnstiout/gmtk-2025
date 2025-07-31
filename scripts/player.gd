@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody3D
+
 @onready var model: Node3D = $Model
+@onready var engine_audio_player_3d: AudioStreamPlayer3D = %EngineAudioPlayer3D
 
 @export var road: Road:
 	set(value):
@@ -17,6 +19,7 @@ var lane_offset: float
 var in_movement: bool = false
 
 func _ready() -> void:
+	engine_audio_player_3d.play()
 	if road:
 		lane_offset = road.lane_width
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://1shqohj0xof7"]
+[gd_scene load_steps=4 format=3 uid="uid://1shqohj0xof7"]
 
 [ext_resource type="Script" uid="uid://bbqvwxnu171bf" path="res://scripts/level.gd" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://c0lga80jrq31g" path="res://scenes/levels/road.tscn" id="1_ksju7"]
-[ext_resource type="PackedScene" uid="uid://b7ndogurbak5y" path="res://scenes/ui/gameover_screen.tscn" id="5_6761a"]
-[ext_resource type="PackedScene" uid="uid://c1ndn0i51fpky" path="res://scenes/ui/pause_screen.tscn" id="6_sk5k4"]
+[ext_resource type="PackedScene" uid="uid://c7gwio68h2rx4" path="res://scenes/ui/hud.tscn" id="3_nsrm0"]
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("road")]
 script = ExtResource("1_6iamk")
@@ -17,63 +16,7 @@ unique_name_in_owner = true
 [node name="RadarPlacement" parent="Road" index="4"]
 transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978452, 0.206467, 1.47339e-07, 0.206467, -0.978452, 2.87331e-05, 0.713362, 24.2775)
 
-[node name="HUD" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="ScoreLabel" type="Label" parent="HUD"]
-unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CountdownLabel" type="Label" parent="HUD"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GameoverScreen" parent="HUD" instance=ExtResource("5_6761a")]
-unique_name_in_owner = true
-visible = false
-
-[node name="PauseScreen" parent="HUD" instance=ExtResource("6_sk5k4")]
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 20
-
-[node name="SpeedLabel" type="Label" parent="HUD/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "0"
+[node name="HUD" parent="." instance=ExtResource("3_nsrm0")]
 
 [editable path="Road"]
+[editable path="HUD"]
