@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbflupytohqbc"]
+
+[ext_resource type="Shader" uid="uid://cfacgqmfg2lgo" path="res://shaders/mute_city.gdshader" id="1_n8bkc"]
+
+[sub_resource type="Gradient" id="Gradient_n8bkc"]
+colors = PackedColorArray(1, 0.827451, 0, 1, 0.889062, 0.776323, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uvy8r"]
+gradient = SubResource("Gradient_n8bkc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58ubr"]
+render_priority = 0
+shader = ExtResource("1_n8bkc")
+shader_parameter/gradient_main = SubResource("GradientTexture1D_uvy8r")
+shader_parameter/star_density = 0.656
+shader_parameter/star_layers = 4
+shader_parameter/star_size = 40.0
+shader_parameter/star_shine = 1.2
+shader_parameter/flicker_speed = 6.0
+shader_parameter/flicker_intensity = 0.3
+shader_parameter/transparency_star = 0.628
+shader_parameter/seed = 0.0
+shader_parameter/ocean_color = Color(0.0985826, 0.0601746, 0.193006, 1)
+
+[node name="Building" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47446, 18.4247, -0.419678)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(12.7383, 40.8183, 12.0483)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25411, 15.0462, 18.3441)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(19.9098, 34.0614, 12.0483)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6124, 18.8077, -20.8569)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(13.6287, 41.5844, 12.0483)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8052, 16.6228, -1.13586)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(13.6287, 37.2146, 12.0483)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9682, 16.6228, -17.6229)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(13.6287, 37.2146, 12.0483)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1012, 20.785, 7.20582)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(13.6287, 45.539, 26.3876)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5987, 16.766, 19.2647)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(13.6287, 37.501, 14.8426)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5547, 18.1676, -28.2355)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(13.6287, 40.3042, 14.8426)

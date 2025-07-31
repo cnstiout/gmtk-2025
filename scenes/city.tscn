@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://df74e1xij3gud"]
+
+[ext_resource type="Shader" uid="uid://cfacgqmfg2lgo" path="res://shaders/mute_city.gdshader" id="1_bih7l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58ubr"]
+render_priority = 0
+shader = ExtResource("1_bih7l")
+shader_parameter/star_density = 0.656
+shader_parameter/star_layers = 4
+shader_parameter/star_size = 40.0
+shader_parameter/star_shine = 1.2
+shader_parameter/flicker_speed = 6.0
+shader_parameter/flicker_intensity = 0.3
+shader_parameter/transparency_star = 0.1
+shader_parameter/seed = 0.0
+shader_parameter/ocean_color = Color(0.02, 0.01, 0.06, 1)
+
+[node name="City" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47446, 18.4247, -0.419678)
+material_override = SubResource("ShaderMaterial_58ubr")
+size = Vector3(12.7383, 40.8183, 12.0483)
