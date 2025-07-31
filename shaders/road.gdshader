@@ -17,13 +17,9 @@ uniform float emission_strength : hint_range(0.0, 5.0) = 1.0;
 uniform vec4 emission_color : source_color = vec4(1.0, 1.0, 0.8, 1.0);
 uniform float road_emission_factor : hint_range(0.0, 1.0) = 0.0;
 
-// offsets groupés : jusqu'à 8 lignes via deux vec4
-uniform vec4 line_offsets_a = vec4(0.0);
-uniform vec4 line_offsets_b = vec4(0.0);
-
-// décalages simples exposés
-uniform float line_offset_long : hint_range(0.0, 1.0) = 0.0;   // décalage le long de la route (uv.x)
-uniform float line_offset_cross : hint_range(-1.0, 1.0) = 0.0; // décalage transversal (uv.y)
+// décalages exposés
+uniform float line_offset_long : hint_range(0.0, 1.0) = 0.0;   // décalage le long (uv.x)
+uniform float line_offset_cross : hint_range(-1.0, 1.0) = 0.0; // décalage transverse (uv.y)
 
 float hash(vec2 p){
 	return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123);
@@ -49,21 +45,8 @@ float dash_pattern(float coord){
 	return step(0.0, dash_length - m);
 }
 
-float get_line_offset(int i) {
-	if (i == 0) return line_offsets_a.x;
-	if (i == 1) return line_offsets_a.y;
-	if (i == 2) return line_offsets_a.z;
-	if (i == 3) return line_offsets_a.w;
-	if (i == 4) return line_offsets_b.x;
-	if (i == 5) return line_offsets_b.y;
-	if (i == 6) return line_offsets_b.z;
-	if (i == 7) return line_offsets_b.w;
-	return 0.0;
-}
-
 void fragment(){
 	vec2 uv = UV;
-	// appliquer décalages exposés
 	uv.x = fract(uv.x + line_offset_long);
 	uv.y = clamp(uv.y + line_offset_cross, 0.0, 1.0);
 
@@ -71,14 +54,13 @@ void fragment(){
 	float n = noise(uv * noise_scale * vec2(1.0, 0.1));
 	vec3 base = road_color.rgb * (0.8 + 0.2 * n);
 
-	// accumulation des lignes avec spacing + offsets individuels
+	// accumulation des lignes
 	float line_layer = 0.0;
 	float half = float(line_count - 1) * 0.5;
 	for (int i = 0; i < 8; ++i){
 		if (i >= line_count) break;
 		float offset_index = float(i) - half;
 		float line_pos = 0.5 + offset_index * line_spacing;
-		line_pos += get_line_offset(i);
 
 		float center_dist = abs(uv.y - line_pos);
 		float line_core = smoothstep(line_thickness * 0.5 + 0.001, 0.0, center_dist);
@@ -88,7 +70,6 @@ void fragment(){
 		line_layer = max(line_layer, contribution);
 	}
 
-	// couleur finale
 	vec3 final_color = base;
 	final_color = mix(final_color, line_color.rgb, line_layer);
 	float edge = smoothstep(0.0, edge_fade, min(uv.y, 1.0 - uv.y));
@@ -98,7 +79,6 @@ void fragment(){
 	ROUGHNESS = 1.0;
 	METALLIC = 0.0;
 
-	// émission
 	vec3 emit_line = emission_color.rgb * line_layer;
 	vec3 emit_road = road_color.rgb * road_emission_factor * 0.2;
 	EMISSION = (emit_line + emit_road) * emission_strength;

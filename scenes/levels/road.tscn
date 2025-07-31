@@ -7,7 +7,7 @@
 [sub_resource type="Curve3D" id="Curve3D_tefeu"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 1.36988, -12.5076, 0, -1.36988, 12.5076, 2.86102e-05, 1.06493, 22.0627, 0, 14.6326, 1.01188, 0, -14.6326, -1.01188, 4.00543e-05, -25.3784, 39.1072, 0, 1.6514, 12.479, 0, -1.6514, -12.479, 4.00543e-05, -45.483, 9.54378, 0, -6.1012, 10.4242, 0, 6.1012, -10.4242, 4.00543e-05, -41.9618, -34.3594, 0, -7.5618, -1.65903, 0, 7.5618, 1.65903, 4.00543e-05, -13.6395, -42.8561, 0, -5.024, -9.87866, 0, 5.024, 9.87866, 4.00543e-05, -0.074597, -33.6141),
+"points": PackedVector3Array(0, 1.36988, -12.5076, 0, -1.36988, 12.5076, 2.86102e-05, 8.49258, 23.9137, 0, 14.6326, 1.01188, 0, -14.6326, -1.01188, -8.28557, -25.3784, 14.981, 0, 1.6514, 12.479, 0, -1.6514, -12.479, 4.00543e-05, -45.483, 9.54378, 0, -6.1012, 10.4242, 0, 6.1012, -10.4242, -21.9894, -41.9618, -21.2954, 0, -7.5618, -1.65903, 0, 7.5618, 1.65903, 4.00543e-05, -13.6395, -42.8561, 0, -5.024, -9.87866, 0, 5.024, 9.87866, 4.00543e-05, -0.074597, -33.6141),
 "tilts": PackedFloat32Array(0, 0, 1.48949, 0, 0, 0)
 }
 point_count = 6
@@ -35,31 +35,31 @@ path_joined = true
 [node name="Boosts" type="Node" parent="."]
 
 [node name="BoostPickup" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 4.56549e-07, 2.65213e-08, 4.56785e-07, 0.994348, 0.106171, 2.21007e-08, 0.106171, -0.994348, 2.00003, 1.32854, 21.4852)
+transform = Transform3D(-0.53951, -0.841979, 0, 0.841571, -0.539249, 0.0311274, -0.0262086, 0.0167935, 0.999515, -0.168356, -46.76, -4.80836)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100831" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 5.468e-07, 6.5996e-14, -1.47469e-08, -0.0269694, -0.999636, -5.46601e-07, -0.999636, 0.0269694, 2.00004, -22.9325, -43.9087)
+[node name="@Area3D@21751" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 2.58553e-07, -5.29212e-07, -2.46854e-07, 0.631801, 0.77513, 5.34769e-07, 0.77513, -0.631801, -0.999967, -5.07817, 34.41)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100832" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.99417, -0.107823, 1.86265e-09, 0.0248011, -0.228675, 0.973187, -0.104932, 0.967513, 0.230016, 0.972645, -28.4654, 38.9547)
+[node name="@Area3D@21752" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-0.982002, -0.18887, 7.45058e-09, 0.0669005, -0.347839, 0.935164, -0.176625, 0.918333, 0.354214, 1.92627, -30.6717, 38.5602)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100833" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.622218, -0.782844, 2.98023e-08, 0.731458, -0.581375, 0.356332, -0.278952, 0.221716, 0.934359, -0.156529, -42.0761, 24.956)
+[node name="@Area3D@21753" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 4.65573e-07, 2.38637e-07, 4.775e-07, 0.998611, 0.052686, -2.13777e-07, 0.052686, -0.998611, 2.00003, 2.72452, 3.71484)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100834" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.610686, -0.791873, 0, 0.791839, -0.610659, 0.0093012, -0.00736537, 0.00568011, 0.999957, 1.06304, -48.4155, -7.6236)
+[node name="@Area3D@21754" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 5.46799e-07, -1.42109e-14, 4.85397e-07, 0.887706, -0.46041, -2.51752e-07, -0.46041, -0.887706, 2.00004, -0.218385, -34.332)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
