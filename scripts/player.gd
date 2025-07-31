@@ -5,7 +5,9 @@ extends CharacterBody3D
 @export var road: Road
 
 var change_lane_speed: float = 0.1
-var bank_angle_d: float = 20.0
+var bank_angle_d: float = 30.0
+var bank_anim_time: float = 0.1
+var bank_anim_rectify_time: float = 0.2
 
 var current_lane: int = 0
 var lane_offset: float
@@ -28,8 +30,10 @@ func change_lane(lane: int) -> void:
 		return
 	var move: int = lane - current_lane
 	if road._is_valid_lane(lane):
-		#if move < 0:
-			#_bank_left()
+		if move < 0:
+			_bank(-1)
+		else:
+			_bank(1)
 		var tween = get_tree().create_tween()
 		in_movement = true
 		tween.tween_property(self, "position", Vector3(position.x + (lane_offset * move), position.y, position.z), change_lane_speed)
@@ -37,16 +41,14 @@ func change_lane(lane: int) -> void:
 		in_movement = false
 		current_lane = lane
 	
-func _bank_left() -> void:
+func _bank(direction: int) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(model,
 			"rotation:z",
-			model.rotation.z - deg_to_rad(bank_angle_d),
-			change_lane_speed / 2)
+			model.rotation.z + deg_to_rad(bank_angle_d) * direction,
+			bank_anim_time)
 		
 		tween.tween_property(model,
 			"rotation:z", 
-			model.rotation.z + deg_to_rad(bank_angle_d),
-			change_lane_speed / 2)
-	
-	
+			0,
+			bank_anim_rectify_time)
