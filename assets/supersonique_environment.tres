@@ -1,0 +1,25 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cvikk331gcb6t"]
+
+[ext_resource type="Shader" uid="uid://c5w1s8moytexn" path="res://assets/sky_01.gdshader" id="1_jn1no"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3he74"]
+shader = ExtResource("1_jn1no")
+shader_parameter/time = 0.0
+shader_parameter/sky_color = Vector4(7.58, 6.94, 4.87, 1)
+shader_parameter/horizon_color = Vector4(0.68, 0.58, 0.69, 1)
+shader_parameter/fog_start = 0.0
+shader_parameter/fog_end = 150.0
+shader_parameter/fog_strength = 0.6
+shader_parameter/enable_edge_highlight = true
+shader_parameter/enable_horizon = true
+shader_parameter/enable_grid_far = true
+shader_parameter/max_distance = 50.0
+shader_parameter/detail_scale = 0.6
+shader_parameter/quant_levels = 6.0
+
+[sub_resource type="Sky" id="Sky_plw1y"]
+sky_material = SubResource("ShaderMaterial_3he74")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_plw1y")

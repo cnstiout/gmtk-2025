@@ -3,7 +3,7 @@ shader_type spatial;
 // === Contrôles généraux ===
 uniform int line_count : hint_range(1, 8) = 5;
 uniform float line_spacing : hint_range(0.0, 1.0) = 0.024;
-uniform float line_thickness : hint_range(0.005, 0.2) = 0.015;
+uniform float line_thickness : hint_range(0.001, 0.2) = 0.015;
 
 // Couleurs par ligne
 uniform vec4 line_color_0 : source_color = vec4(1.0, 1.0, 0.0, 1.0);

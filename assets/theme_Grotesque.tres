@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ob26vbx5ey42"]
+
+[ext_resource type="FontFile" uid="uid://4kdg7bwmqv1r" path="res://assets/fonts/terminal-grotesque.ttf" id="1_88ie7"]
+
+[resource]
+default_font = ExtResource("1_88ie7")
