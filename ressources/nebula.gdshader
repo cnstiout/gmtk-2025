@@ -1,24 +1,24 @@
 shader_type spatial;
 render_mode cull_front;
 
-bool solveQuadratic( float a, float b, float c, inout float x0, inout float x1 ) 
+bool solveQuadratic( float a, float b, float c, inout float x0, inout float x1 )
 { //https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection.html
     float discr = b * b - 4.0 * a * c;
-	
+
     if( discr < 0.0 ) return false;
     else if( abs(discr) < 0.0001 ) x0 = x1 = -0.5 * b / a;
-    else 
-	{  
+    else
+	{
 		float q = (abs(b) > 0.0001) ? -0.5 * (b + sqrt(discr)) : -0.5 * (b - sqrt(discr));
         x0 = q / a;
-        x1 = c / q; 
+        x1 = c / q;
 	}
     if( x0 > x1 )
 	{
 		float _x1 = x1;
 		x1 = x0;
 		x0 = _x1;
-	}    
+	}
     return true;
 }
 
@@ -39,7 +39,7 @@ float raySphereIntersect( vec3 origin, vec3 normal, vec3 center, float radius )
 }
 
 vec3 whorley( vec2 uv, float time, vec2 distortion )
-{ // https://www.shadertoy.com/view/XsVBWG  
+{ // https://www.shadertoy.com/view/XsVBWG
     for(float i=1.0; i<10.0; i+=1.0)
 	{
         uv.x+=distortion.x*sin(i*uv.y+time);
@@ -78,14 +78,14 @@ uniform vec3 rimColor : source_color = vec3(0.7,0.5,0.3);
 uniform float animationSpeed = 0.25;
 uniform float distortionStrength = 0.3;
 
-void fragment() 
+void fragment()
 {
 	ALPHA_SCISSOR_THRESHOLD = 0.5;
 	// First get the ray direction in world space
 	vec3 rayDir = normalize(transform(INV_VIEW_MATRIX,-VIEW));
 	// t is the distance along that ray at which intersection occurs (or -1 if there was none)
 	float t = raySphereIntersect( CAMERA_POSITION_WORLD-NODE_POSITION_WORLD, rayDir, vec3(0), radius );
-	
+
 	if( t > 0.0 )
 	{ // t is greater than 0, therefore an intersection has occured along the ray
 		vec3 worldPos = CAMERA_POSITION_WORLD+(rayDir*t);
