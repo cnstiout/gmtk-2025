@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2025"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="uid://bgunqer1xur0t"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0.288518, 0.288518, 0.288518, 1)
 boot_splash/image="uid://c7lm0mivbfu7i"
@@ -21,6 +21,7 @@ boot_splash/minimum_display_time=2000
 [autoload]
 
 Events="*res://scripts/events.gd"
+SceneTransition="*res://scenes/scene_transition.tscn"
 
 [file_customization]
 

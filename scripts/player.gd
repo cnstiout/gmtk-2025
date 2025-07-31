@@ -2,8 +2,13 @@ class_name Player
 extends CharacterBody3D
 @onready var model: Node3D = $Model
 
-@export var road: Road
+@export var road: Road:
+	set(value):
+		road = value
+		lane_offset = road.lane_width
 
+@export var max_health: int = 3
+var health: int
 var change_lane_speed: float = 0.1
 var bank_angle_d: float = 30.0
 var bank_anim_time: float = 0.1
@@ -14,6 +19,7 @@ var lane_offset: float
 var in_movement: bool = false
 
 func _ready() -> void:
+	health = max_health
 	if road:
 		lane_offset = road.lane_width
 
@@ -40,7 +46,15 @@ func change_lane(lane: int) -> void:
 		await tween.finished
 		in_movement = false
 		current_lane = lane
-	
+
+func take_damage(amount: int) -> void:
+	health -=amount
+	if health <= 0:
+		die()
+
+func die() -> void:
+	print("You died")
+
 func _bank(direction: int) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(model,

@@ -1,0 +1,35 @@
+extends Node3D
+
+@export var road: Road
+@export var countdown_time: int = 3
+
+
+@onready var player_track_scene = preload("uid://blwdspsggj7au")
+@onready var countdown_timer: Timer = %CountdownTimer
+@onready var countdown_label: Label = $HUD/CountdownLabel
+
+var player_track: PlayerTrack
+
+func _ready() -> void:
+	player_track = player_track_scene.instantiate()
+	player_track.road = road
+	road.add_child(player_track)
+	
+	countdown_timer.timeout.connect(_on_countdown_timer_timeout)
+	countdown_timer.start()
+
+func start_run() -> void:
+	countdown_label.hide()
+	countdown_timer.stop()
+	player_track.start()
+
+func decrease_countdown() -> void:
+	if countdown_time > 1:
+		countdown_time -= 1
+		countdown_label.text = str(countdown_time)
+	else:
+		start_run()
+
+
+func _on_countdown_timer_timeout() -> void:
+	decrease_countdown()

@@ -1,13 +1,16 @@
 extends Node
 
-@onready var road: Road = $Road
+@onready var main_menu: Control = %MainMenu
+@onready var scene_level_1: String = "uid://1shqohj0xof7"
+
+var current_scene: Node
 
 func _ready() -> void:
-	pass
-	#for i in nb_boost:
-		#spawn_random_boost()
-		#road.curve.get_baked_points()
-		#var boost_position = road.curve.sample_baked(boost_offset * i)
-		#var new_boost = boost_pickup_scene.instantiate()
-		#new_boost.position = boost_position
-		#get_tree().root.add_child.call_deferred(new_boost)
+	Events.switch_level.connect(_on_switch_level)
+	current_scene = main_menu
+
+func _on_switch_level(level_id: int) -> void:
+	start_level(level_id)
+
+func start_level(_level_id: int) -> void:
+	SceneTransition.switch_to_scene(scene_level_1)

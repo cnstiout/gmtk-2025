@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0lga80jrq31g"]
+
+[ext_resource type="Script" uid="uid://deycqjx2yjv1r" path="res://scripts/road.gd" id="1_1hsjn"]
+[ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="2_rvhr8"]
+[ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="3_rvhr8"]
+
+[sub_resource type="Curve3D" id="Curve3D_tefeu"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 1.36988, -12.5076, 0, -1.36988, 12.5076, 2.86102e-05, 1.06493, 22.0627, 0, 14.6326, 1.01188, 0, -14.6326, -1.01188, 4.00543e-05, -25.3784, 39.1072, 0, 1.6514, 12.479, 0, -1.6514, -12.479, 4.00543e-05, -45.483, 9.54378, 0, -6.1012, 10.4242, 0, 6.1012, -10.4242, 4.00543e-05, -41.9618, -34.3594, 0, -7.5618, -1.65903, 0, 7.5618, 1.65903, 4.00543e-05, -13.6395, -42.8561, 0, -5.024, -9.87866, 0, 5.024, 9.87866, 4.00543e-05, -0.074597, -33.6141),
+"tilts": PackedFloat32Array(0, 0, 1.48949, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Road" type="Path3D"]
+curve = SubResource("Curve3D_tefeu")
+script = ExtResource("1_1hsjn")
+nb_lane = 5
+nb_boost = 5
+
+[node name="RoadCSGPolygon3D" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(-2.5, 0, 2.5, 0, 2.5, -0.1, -2.5, -0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.32
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+
+[node name="Boosts" type="Node" parent="."]
+
+[node name="BoostPickup" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 4.56549e-07, 2.65213e-08, 4.56785e-07, 0.994348, 0.106171, 2.21007e-08, 0.106171, -0.994348, 2.00003, 1.32854, 21.4852)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_rvhr8")
+
+[node name="@Area3D@100831" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 5.468e-07, 6.5996e-14, -1.47469e-08, -0.0269694, -0.999636, -5.46601e-07, -0.999636, 0.0269694, 2.00004, -22.9325, -43.9087)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_rvhr8")
+
+[node name="@Area3D@100832" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-0.99417, -0.107823, 1.86265e-09, 0.0248011, -0.228675, 0.973187, -0.104932, 0.967513, 0.230016, 0.972645, -28.4654, 38.9547)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_rvhr8")
+
+[node name="@Area3D@100833" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-0.622218, -0.782844, 2.98023e-08, 0.731458, -0.581375, 0.356332, -0.278952, 0.221716, 0.934359, -0.156529, -42.0761, 24.956)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_rvhr8")
+
+[node name="@Area3D@100834" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-0.610686, -0.791873, 0, 0.791839, -0.610659, 0.0093012, -0.00736537, 0.00568011, 0.999957, 1.06304, -48.4155, -7.6236)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_rvhr8")
+
+[node name="Obstacles" type="Node" parent="."]
