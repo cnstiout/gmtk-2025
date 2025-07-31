@@ -15,32 +15,32 @@ unique_name_in_owner = true
 
 [node name="Road" parent="." instance=ExtResource("1_ksju7")]
 
-[node name="@Area3D@122133" type="Area3D" parent="Road/Boosts" index="0" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 4.58287e-07, 1.50926e-07, 4.69803e-07, 0.996111, 0.0881073, -1.09961e-07, 0.0881073, -0.996111, -0.999971, 1.84179, 16.1957)
+[node name="@Area3D@21760" type="Area3D" parent="Road/Boosts" index="0" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 5.46799e-07, -3.67618e-14, -2.75333e-07, -0.503536, -0.863974, -4.72421e-07, -0.863974, 0.503536, 1.00004, -35.8951, -40.6279)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@122134" type="Area3D" parent="Road/Boosts" index="1" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 1.09488e-09, -4.99204e-08, -6.50845e-09, 0.988372, 0.152054, 4.95064e-08, 0.152054, -0.988372, -0.999971, 1.12902, 23.1097)
+[node name="@Area3D@21761" type="Area3D" parent="Road/Boosts" index="1" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 4.16749e-07, -4.79835e-07, -2.91458e-07, 0.370209, 0.928948, 5.64778e-07, 0.928948, -0.370209, -1.99996, -10.2705, 37.4138)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@122135" type="Area3D" parent="Road/Boosts" index="2" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-0.443103, -0.896471, -3.72529e-09, 0.895046, -0.442399, 0.0563628, -0.0505276, 0.0249745, 0.99841, -0.622357, -45.6905, -1.32884)
+[node name="@Area3D@21762" type="Area3D" parent="Road/Boosts" index="2" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 5.32026e-07, 1.36866e-07, 4.797e-07, 0.967096, -0.254413, -2.67716e-07, -0.254413, -0.967096, 1.00004, 1.35686, -30.2422)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@122136" type="Area3D" parent="Road/Boosts" index="3" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-0.995293, -0.0969071, 0, 0.088548, -0.909441, -0.406295, 0.0393729, -0.404383, 0.913742, -0.0193414, -43.2485, -32.2729)
+[node name="@Area3D@21763" type="Area3D" parent="Road/Boosts" index="3" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-0.945945, -0.324326, 0, 0.315911, -0.921402, -0.226318, 0.0734007, -0.214084, 0.974054, 1.82707, -45.8685, -26.2622)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
 
-[node name="@Area3D@122137" type="Area3D" parent="Road/Boosts" index="4" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 5.09316e-07, 2.11077e-07, 4.78355e-07, 0.991889, -0.12711, -2.74105e-07, -0.12711, -0.991889, -0.999961, 2.35602, -24.8531)
+[node name="@Area3D@21764" type="Area3D" parent="Road/Boosts" index="4" instance=ExtResource("3_x42e6")]
+transform = Transform3D(-1, 5.42919e-07, 7.10654e-08, 4.82635e-07, 0.935286, -0.353893, -2.58602e-07, -0.353893, -0.935286, 2.00004, 0.686284, -32.3721)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_6761a")
