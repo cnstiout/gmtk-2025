@@ -10,7 +10,7 @@
 [sub_resource type="Curve3D" id="Curve3D_tefeu"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 2.00149, -3.78542, 0, -2.00149, 3.78542, 4.00543e-05, -0.925396, 27.3095, 0, 14.6326, 1.01188, 0, -14.6326, -1.01188, 4.00543e-05, -25.2666, 37.4898, 0, 1.6514, 12.479, 0, -1.6514, -12.479, 4.00543e-05, -45.483, 9.54378, 0, -6.1012, 10.4242, 0, 6.1012, -10.4242, 4.00543e-05, -41.9618, -34.3594, 0, -7.5618, -1.65903, 0, 7.5618, 1.65903, 4.00543e-05, -13.6395, -42.8561, 0, -5.024, -9.87866, 0, 5.024, 9.87866, 4.00543e-05, -0.074597, -33.6141),
+"points": PackedVector3Array(0, 1.36988, -12.5076, 0, -1.36988, 12.5076, 2.86102e-05, 1.06493, 22.0627, 0, 14.6326, 1.01188, 0, -14.6326, -1.01188, 4.00543e-05, -25.3784, 39.1072, 0, 1.6514, 12.479, 0, -1.6514, -12.479, 4.00543e-05, -45.483, 9.54378, 0, -6.1012, 10.4242, 0, 6.1012, -10.4242, 4.00543e-05, -41.9618, -34.3594, 0, -7.5618, -1.65903, 0, 7.5618, 1.65903, 4.00543e-05, -13.6395, -42.8561, 0, -5.024, -9.87866, 0, 5.024, 9.87866, 4.00543e-05, -0.074597, -33.6141),
 "tilts": PackedFloat32Array(0, 0, 1.48949, 0, 0, 0)
 }
 point_count = 6
@@ -19,14 +19,13 @@ point_count = 6
 script = ExtResource("1_jyhfs")
 
 [node name="Road" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4921, -3.43323e-05, 0.0403315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20486, -3.43323e-05, 0.0403315)
 curve = SubResource("Curve3D_tefeu")
 script = ExtResource("2_tbgi4")
 nb_lane = 5
 nb_boost = 5
 
 [node name="RoadCSGPolygon3D" type="CSGPolygon3D" parent="Road"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 polygon = PackedVector2Array(-2.5, 0, 2.5, 0, 2.5, -0.1, -2.5, -0.1)
 mode = 2
 path_node = NodePath("..")
@@ -43,31 +42,31 @@ path_joined = true
 [node name="Boosts" type="Node" parent="Road"]
 
 [node name="BoostPickup" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
-transform = Transform3D(-0.609086, -0.793104, 0, 0.793066, -0.609057, 0.00982857, -0.00779508, 0.00598645, 0.999952, 22.5517, -48.4171, -7.51655)
+transform = Transform3D(-1, 4.71785e-07, 2.54715e-07, 4.78655e-07, 0.999617, 0.0276778, -2.4156e-07, 0.0276778, -0.999617, -7.20483, 3.02682, -3.67673)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_o6xl0")
 
-[node name="@Area3D@81757" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
-transform = Transform3D(-1, 0, 0, 0, 0.639098, 0.769126, 0, 0.769126, -0.639098, 23.4922, -4.62479, 31.95)
+[node name="@Area3D@33800" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 5.33474e-07, -1.99834e-07, -1.68703e-07, 0.0577319, 0.998332, 5.44121e-07, 0.998332, -0.0577319, -5.20482, -19.6563, 39.3958)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_o6xl0")
 
-[node name="@Area3D@81758" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
-transform = Transform3D(-1, 0, 0, 0, 0.646962, 0.762522, 0, 0.762522, -0.646962, 19.4922, -4.4589, 31.8106)
+[node name="@Area3D@33801" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 5.46798e-07, -3.95051e-14, -7.59194e-08, -0.138844, -0.990314, -5.41502e-07, -0.990314, 0.138844, -7.20482, -26.8625, -43.547)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_o6xl0")
 
-[node name="@Area3D@81759" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
-transform = Transform3D(-1, 0, 0, 0, 0.410904, 0.911678, 0, 0.911678, -0.410904, 22.4922, -10.0304, 35.295)
+[node name="@Area3D@33802" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 5.46798e-07, -6.51834e-14, 7.98786e-08, 0.146084, -0.989272, -5.40932e-07, -0.989272, -0.146084, -4.20482, -10.8588, -42.5149)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_o6xl0")
 
-[node name="@Area3D@81760" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
-transform = Transform3D(-1, 0, 0, 0, 0.998701, -0.0509597, 0, -0.0509597, -0.998701, 19.4922, 2.40578, -20.1862)
+[node name="@Area3D@33803" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 3.39901e-08, -2.57875e-07, -5.91913e-08, 0.935674, 0.352865, 2.53281e-07, 0.352865, -0.935674, -4.20483, 0.0660054, 27.2643)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_o6xl0")
@@ -75,7 +74,7 @@ script = ExtResource("4_o6xl0")
 [node name="Obstacles" type="Node" parent="Road"]
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Road"]
-transform = Transform3D(-0.999949, 4.08622e-08, -7.72831e-08, 0, 0.884014, 0.46741, 8.74183e-08, 0.467409, -0.884015, 4.00584e-05, -0.836993, 27.3562)
+transform = Transform3D(-0.999949, 9.51772e-09, -8.6901e-08, 0, 0.99403, 0.10887, 8.74183e-08, 0.10887, -0.994031, 2.86112e-05, 1.16434, 22.0736)
 v_offset = 0.1
 script = ExtResource("2_sugp2")
 
@@ -83,11 +82,11 @@ script = ExtResource("2_sugp2")
 road = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="Road/PathFollow3D"]
-transform = Transform3D(1.00003, 0.00629785, 0.00263455, -0.00652591, 0.995173, 0.0981753, -0.00200342, -0.0981901, 0.995189, -0.0427483, 0.522258, 0.843494)
+transform = Transform3D(1.00005, 0, 0, 0, 1.00003, 0, 0, 0, 1.00002, -0.0427483, 0.522258, 0.843494)
 fov = 100.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Road/PathFollow3D"]
 transform = Transform3D(1.00005, -3.72529e-09, -7.45058e-09, -1.86265e-09, 1.00003, 2.98023e-08, 2.23517e-08, 0, 1.00002, 0.0381951, 0.790632, -0.298967)
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="Road"]
-transform = Transform3D(-1, 4.08631e-08, -7.72847e-08, 0, 0.884033, 0.46742, 8.74228e-08, 0.467419, -0.884034, 4.00543e-05, -0.925396, 27.3095)
+transform = Transform3D(-1, 9.51791e-09, -8.69027e-08, 0, 0.994051, 0.108872, 8.74228e-08, 0.108872, -0.994051, 2.86102e-05, 1.06493, 22.0627)

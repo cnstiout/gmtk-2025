@@ -1,9 +1,12 @@
 class_name Player
 extends CharacterBody3D
+@onready var model: Node3D = $Model
 
 @export var road: Road
 
 var change_lane_speed: float = 0.1
+var bank_angle_d: float = 20.0
+
 var current_lane: int = 0
 var lane_offset: float
 var in_movement: bool = false
@@ -11,21 +14,39 @@ var in_movement: bool = false
 func _ready() -> void:
 	if road:
 		lane_offset = road.lane_width
-		print(lane_offset)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("player_left") && current_lane - 1 >= -(road.nb_lane / floor(2)) && !in_movement:
-		var tween = get_tree().create_tween()
-		in_movement = true
-		tween.tween_property(self, "position", Vector3(position.x - lane_offset, position.y, position.z), change_lane_speed)
-		await tween.finished
-		in_movement = false
-		current_lane -= 1
+	if Input.is_action_just_pressed("player_left"):
+		change_lane(current_lane - 1)
 		
-	elif Input.is_action_just_pressed("player_right") && current_lane + 1 <= road.nb_lane / floor(2) && !in_movement:
+	elif Input.is_action_just_pressed("player_right"):
+		change_lane(current_lane + 1)
+
+# Move the player to the specified lane (The middle lane being 0, the most left one being -n and the most right one n)
+func change_lane(lane: int) -> void:
+	if lane == current_lane || in_movement:
+		return
+	var move: int = lane - current_lane
+	if road._is_valid_lane(lane):
+		#if move < 0:
+			#_bank_left()
 		var tween = get_tree().create_tween()
 		in_movement = true
-		tween.tween_property(self, "position", Vector3(position.x + lane_offset, position.y, position.z), change_lane_speed)
+		tween.tween_property(self, "position", Vector3(position.x + (lane_offset * move), position.y, position.z), change_lane_speed)
 		await tween.finished
 		in_movement = false
-		current_lane += 1
+		current_lane = lane
+	
+func _bank_left() -> void:
+		var tween = get_tree().create_tween()
+		tween.tween_property(model,
+			"rotation:z",
+			model.rotation.z - deg_to_rad(bank_angle_d),
+			change_lane_speed / 2)
+		
+		tween.tween_property(model,
+			"rotation:z", 
+			model.rotation.z + deg_to_rad(bank_angle_d),
+			change_lane_speed / 2)
+	
+	

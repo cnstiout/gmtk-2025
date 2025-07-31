@@ -33,14 +33,14 @@ shader_parameter/alpha_threshold = 0.25
 shader_parameter/use_threshold = true
 shader_parameter/invert_boost_direction = false
 
-[sub_resource type="Curve" id="Curve_v6qj0"]
+[sub_resource type="Curve" id="Curve_343tk"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_6i2wf"]
 radius = 0.02
 section_length = 0.17
-curve = SubResource("Curve_v6qj0")
+curve = SubResource("Curve_343tk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6i2wf"]
 albedo_color = Color(0.333165, 0.701991, 0.996078, 1)

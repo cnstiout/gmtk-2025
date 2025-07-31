@@ -83,3 +83,11 @@ func spawn_wall(spawn_xform: Transform3D):
 func _on_boost_picked_up(xform: Transform3D):
 	await get_tree().create_timer(obst_spwn_delay).timeout
 	spawn_wall(xform)
+
+# Check if the parameter lane is a valid lane
+func _is_valid_lane(lane: int) -> bool:
+	var valid: bool = true
+	var lane_offseted = lane + (nb_lane / floor(2))
+	if lane_offseted < 0 || lane_offseted >= nb_lane:
+		valid = false
+	return valid
