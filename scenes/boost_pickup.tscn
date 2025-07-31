@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="1_lbsu8"]
 [ext_resource type="Texture2D" uid="uid://cqww6c5yh1lmv" path="res://assets/sprites/coin_blank.png" id="2_b6nll"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_fjbpf"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lbsu8"]
 radius = 0.2
+height = 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbsu8"]
 albedo_color = Color(0, 1, 0.0196078, 1)
@@ -16,7 +17,7 @@ script = ExtResource("1_lbsu8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-shape = SubResource("SphereShape3D_fjbpf")
+shape = SubResource("CapsuleShape3D_lbsu8")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, 0.2, 0)
@@ -25,9 +26,7 @@ modulate = Color(0, 1, 0, 1)
 texture = ExtResource("2_b6nll")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1.975, 0, 0, 0, 1, 0, 0.2, 0)
 material_override = SubResource("StandardMaterial3D_lbsu8")
 radius = 0.2
 radial_segments = 15
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

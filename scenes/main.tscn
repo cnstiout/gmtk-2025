@@ -1,27 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgunqer1xur0t"]
+[gd_scene load_steps=8 format=3 uid="uid://bgunqer1xur0t"]
 
 [ext_resource type="Script" uid="uid://urwdvacw1u8l" path="res://scripts/game_manager.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://73n5mq0sbiuu" path="res://scenes/player.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://dlwa1knvfk5cl" path="res://scripts/camera_follow.gd" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://deycqjx2yjv1r" path="res://scripts/road.gd" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="3_tefeu"]
+[ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="4_o6xl0"]
 
-[sub_resource type="Curve3D" id="Curve3D_o5qli"]
+[sub_resource type="Curve3D" id="Curve3D_tefeu"]
 closed = true
 _data = {
-"points": PackedVector3Array(0.11156, 0.582406, 1.60657, -0.11156, -0.582406, -1.60657, 0, -0.182, -1.131, -0.0638884, 2.06613, 1.01444, 0.0638884, -2.06613, -1.01444, 0, -2.34, -5.361, 0, 0.972, -1.865, 0, -0.972, 1.865, 0, -9.719, -4.95, 0, -1.383, -1.882, 0, 1.383, 1.882, 0, -9.985, 5.499, 0, -1.232, -0.072, 0, 1.232, 0.072, 0, -3.908, 7.63, 0, -0.66, 1.064, 0, 0.66, -1.064, 0, -0.55, 5.181, 0, -0.138, 1.388, 0, 0.138, -1.388, 0, 0.38, 2.573),
-"tilts": PackedFloat32Array(0, -0.505814, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 2.00149, -3.78542, 0, -2.00149, 3.78542, 4.00543e-05, -0.925396, 27.3095, 0, 14.6326, 1.01188, 0, -14.6326, -1.01188, 4.00543e-05, -25.2666, 37.4898, 0, 1.6514, 12.479, 0, -1.6514, -12.479, 4.00543e-05, -45.483, 9.54378, 0, -6.1012, 10.4242, 0, 6.1012, -10.4242, 4.00543e-05, -41.9618, -34.3594, 0, -7.5618, -1.65903, 0, 7.5618, 1.65903, 4.00543e-05, -13.6395, -42.8561, 0, -5.024, -9.87866, 0, 5.024, 9.87866, 4.00543e-05, -0.074597, -33.6141),
+"tilts": PackedFloat32Array(0, 0, 1.48949, 0, 0, 0)
 }
-point_count = 7
+point_count = 6
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jyhfs")
 
 [node name="Road" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00123191, -3.43323e-05, 0.0403315)
-curve = SubResource("Curve3D_o5qli")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4921, -3.43323e-05, 0.0403315)
+curve = SubResource("Curve3D_tefeu")
+script = ExtResource("2_tbgi4")
+nb_lane = 5
+nb_boost = 5
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Road"]
-polygon = PackedVector2Array(-2, -0.1, -2, 0, 2, 0, 2, -0.1)
+[node name="RoadCSGPolygon3D" type="CSGPolygon3D" parent="Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+polygon = PackedVector2Array(-2.5, 0, 2.5, 0, 2.5, -0.1, -2.5, -0.1)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -29,25 +35,59 @@ path_interval = 0.32
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = true
 
+[node name="Boosts" type="Node" parent="Road"]
+
+[node name="BoostPickup" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-0.609086, -0.793104, 0, 0.793066, -0.609057, 0.00982857, -0.00779508, 0.00598645, 0.999952, 22.5517, -48.4171, -7.51655)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_o6xl0")
+
+[node name="@Area3D@81757" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 0, 0, 0, 0.639098, 0.769126, 0, 0.769126, -0.639098, 23.4922, -4.62479, 31.95)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_o6xl0")
+
+[node name="@Area3D@81758" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 0, 0, 0, 0.646962, 0.762522, 0, 0.762522, -0.646962, 19.4922, -4.4589, 31.8106)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_o6xl0")
+
+[node name="@Area3D@81759" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 0, 0, 0, 0.410904, 0.911678, 0, 0.911678, -0.410904, 22.4922, -10.0304, 35.295)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_o6xl0")
+
+[node name="@Area3D@81760" type="Area3D" parent="Road/Boosts" instance=ExtResource("3_tefeu")]
+transform = Transform3D(-1, 0, 0, 0, 0.998701, -0.0509597, 0, -0.0509597, -0.998701, 19.4922, 2.40578, -20.1862)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_o6xl0")
+
+[node name="Obstacles" type="Node" parent="Road"]
+
 [node name="PathFollow3D" type="PathFollow3D" parent="Road"]
-transform = Transform3D(0.997546, -0.0235584, 0.0651423, -3.7251e-09, 0.94037, 0.340081, -0.0692693, -0.339263, 0.938112, -0.0023559, -0.0879607, -1.16493)
+transform = Transform3D(-0.999949, 4.08622e-08, -7.72831e-08, 0, 0.884014, 0.46741, 8.74183e-08, 0.467409, -0.884015, 4.00584e-05, -0.836993, 27.3562)
 v_offset = 0.1
 script = ExtResource("2_sugp2")
 
-[node name="Player" parent="Road/PathFollow3D" instance=ExtResource("2_0wfyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="Player" parent="Road/PathFollow3D" node_paths=PackedStringArray("road") instance=ExtResource("2_0wfyh")]
+road = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="Road/PathFollow3D"]
-transform = Transform3D(1.00003, 0.00629787, 0.00263457, -0.00652592, 0.995173, 0.0981753, -0.00200343, -0.0981901, 0.99519, -0.0182807, 0.62217, 0.504946)
+transform = Transform3D(1.00003, 0.00629785, 0.00263455, -0.00652591, 0.995173, 0.0981753, -0.00200342, -0.0981901, 0.995189, -0.0427483, 0.522258, 0.843494)
 fov = 100.0
 
-[node name="PathFollow3D2" type="PathFollow3D" parent="Road"]
-transform = Transform3D(0.913384, -0.406977, -0.00996268, 0.123897, 0.254586, 0.95908, -0.387787, -0.877243, 0.282958, 0.0217905, -3.49788, -5.801)
-progress = 6.22766
+[node name="OmniLight3D" type="OmniLight3D" parent="Road/PathFollow3D"]
+transform = Transform3D(1.00005, -3.72529e-09, -7.45058e-09, -1.86265e-09, 1.00003, 2.98023e-08, 2.23517e-08, 0, 1.00002, 0.0381951, 0.790632, -0.298967)
 
-[node name="BoostPickup" parent="Road/PathFollow3D2" instance=ExtResource("3_sugp2")]
+[node name="PathFollow3D2" type="PathFollow3D" parent="Road"]
+transform = Transform3D(-1, 4.08631e-08, -7.72847e-08, 0, 0.884033, 0.46742, 8.74228e-08, 0.467419, -0.884034, 4.00543e-05, -0.925396, 27.3095)
