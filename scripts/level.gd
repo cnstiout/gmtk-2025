@@ -7,22 +7,20 @@ extends Node3D
 @onready var player_track_scene = preload("uid://blwdspsggj7au")
 @onready var countdown_timer: Timer = %CountdownTimer
 @onready var countdown_label: Label = $HUD/CountdownLabel
-@onready var gameover_screen: Control = %GameoverScreen
-@onready var speed_label: Label = %SpeedLabel
-@onready var score_label: Label = %ScoreLabel
+@onready var hud: HUD = %HUD
 
 var player_track: PlayerTrack
 
-var high_score: int = 0:
+var highscore: int = 0:
 	set(value):
-		high_score = value
+		highscore = value
 
 func _ready() -> void:
 	Events.radar_triggered.connect(_on_radar_triggered)
 	Events.player_died.connect(_on_player_died)
 	player_track = player_track_scene.instantiate()
 	player_track.road = road
-	player_track.speed_label = speed_label
+	player_track.speed_label = hud.speed_label
 	road.add_child(player_track)
 	
 	countdown_timer.timeout.connect(_on_countdown_timer_timeout)
@@ -45,17 +43,17 @@ func _on_player_died() -> void:
 	show_gameover()
 
 func show_gameover() -> void:
-	gameover_screen.show()
+	hud.show_gameover()
 
 func _on_countdown_timer_timeout() -> void:
 	decrease_countdown()
 
 func _on_radar_triggered() -> void:
 	road.setup_items()
-	update_high_score(player_track.get_converted_speed())
+	update_highscore(player_track.get_converted_speed())
 
-func update_high_score(new_score: int) -> void:
-	if new_score > high_score:
-		high_score = new_score
-		score_label.text = str(new_score)
+func update_highscore(new_score: int) -> void:
+	if new_score > highscore:
+		highscore = new_score
+		hud.update_highscore(highscore)
 	

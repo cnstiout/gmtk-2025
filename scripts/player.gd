@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 @onready var model: Node3D = $Model
 @onready var engine_audio_player_3d: AudioStreamPlayer3D = %EngineAudioPlayer3D
+@onready var boost_audio_player_3d: AudioStreamPlayer3D = %BoostAudioPlayer3D
 
 @export var road: Road:
 	set(value):
@@ -19,6 +20,7 @@ var lane_offset: float
 var in_movement: bool = false
 
 func _ready() -> void:
+	Events.boost_picked_up.connect(_boost_effect)
 	engine_audio_player_3d.play()
 	if road:
 		lane_offset = road.lane_width
@@ -47,6 +49,8 @@ func change_lane(lane: int) -> void:
 		in_movement = false
 		current_lane = lane
 
+func _boost_effect(_boost_xform: Transform3D) -> void:
+	boost_audio_player_3d.play()
 
 func _bank(direction: int) -> void:
 		var tween = get_tree().create_tween()

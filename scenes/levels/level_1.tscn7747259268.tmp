@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1shqohj0xof7"]
+[gd_scene load_steps=5 format=3 uid="uid://1shqohj0xof7"]
 
 [ext_resource type="Script" uid="uid://bbqvwxnu171bf" path="res://scripts/level.gd" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://c0lga80jrq31g" path="res://scenes/levels/road.tscn" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://c7gwio68h2rx4" path="res://scenes/ui/hud.tscn" id="3_nsrm0"]
+[ext_resource type="Script" uid="uid://cj70elsdtm1gl" path="res://scripts/ui/hud.gd" id="4_x42e6"]
 
 [node name="Level1" type="Node3D" node_paths=PackedStringArray("road")]
 script = ExtResource("1_6iamk")
@@ -18,6 +19,7 @@ transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.97
 
 [node name="HUD" parent="." instance=ExtResource("3_nsrm0")]
 unique_name_in_owner = true
+script = ExtResource("4_x42e6")
 
 [editable path="Road"]
 [editable path="HUD"]
