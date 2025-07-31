@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0lga80jrq31g"]
+[gd_scene load_steps=6 format=3 uid="uid://c0lga80jrq31g"]
 
 [ext_resource type="Script" uid="uid://deycqjx2yjv1r" path="res://scripts/road.gd" id="1_1hsjn"]
 [ext_resource type="Texture2D" uid="uid://163hvjs8u3hr" path="res://assets/textures/smallgrille.png" id="2_1hsjn"]
-[ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="2_rvhr8"]
-[ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="3_rvhr8"]
 [ext_resource type="PackedScene" uid="uid://c4uug6pxxto8t" path="res://scenes/speed_radar.tscn" id="5_rvhr8"]
 
 [sub_resource type="Curve3D" id="Curve3D_tefeu"]
@@ -23,7 +21,6 @@ uv1_scale = Vector3(1, 64, 1)
 curve = SubResource("Curve3D_tefeu")
 script = ExtResource("1_1hsjn")
 nb_lane = 5
-nb_boost = 5
 
 [node name="RoadCSGPolygon3D" type="CSGPolygon3D" parent="."]
 polygon = PackedVector2Array(-2.5, 0, 2.5, 0, 2.5, -0.1, -2.5, -0.1)
@@ -42,40 +39,12 @@ material = SubResource("StandardMaterial3D_1hsjn")
 
 [node name="Boosts" type="Node" parent="."]
 
-[node name="BoostPickup" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 5.3635e-07, -1.79103e-07, -1.56099e-07, 0.042587, 0.999093, 5.43491e-07, 0.999093, -0.042587, 1.00004, -20.2636, 39.386)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_rvhr8")
-
-[node name="@Area3D@93501" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 4.6533e-07, 2.37512e-07, 4.77414e-07, 0.998557, 0.0537045, -2.12179e-07, 0.0537045, -0.998557, 3.17233e-05, 2.70656, 4.05186)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_rvhr8")
-
-[node name="@Area3D@93502" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 1.88577e-09, -6.52116e-08, -8.94026e-09, 0.986191, 0.165615, 6.46234e-08, 0.165615, -0.986191, -1.99997, 1.0792, 23.419)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_rvhr8")
-
-[node name="@Area3D@93503" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.881347, -0.47247, 0, 0.467911, -0.872844, -0.138572, 0.0654713, -0.12213, 0.990352, -1.85715, -45.1731, -21.1468)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_rvhr8")
-
-[node name="@Area3D@93504" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 5.46443e-07, -3.55807e-08, -6.23735e-08, -0.0491099, 0.998793, 5.44036e-07, 0.998793, 0.0491099, -0.99996, -24.3853, 39.3663)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_rvhr8")
+[node name="Traps" type="Node" parent="."]
 
 [node name="Obstacles" type="Node" parent="."]
 
-[node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978453, 0.206467, 1.47339e-07, 0.206467, -0.978453, 2.87331e-05, 0.713361, 24.2775)
+[node name="RadarPlacement" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978452, 0.206467, 1.47339e-07, 0.206467, -0.978452, 2.87331e-05, 0.713362, 24.2775)
 progress = 2.24334
 
-[node name="SpeedRadar" parent="PathFollow3D" instance=ExtResource("5_rvhr8")]
+[node name="SpeedRadar" parent="RadarPlacement" instance=ExtResource("5_rvhr8")]

@@ -15,7 +15,7 @@ var current_speed: float:
 		current_speed =	value
 		_change_speed_hud(current_speed)
 var speed_label: Label
-var boost_amount: float = 0.02
+var boost_amount: float = 0.01
 
 func _ready() -> void:
 	current_speed = starting_speed

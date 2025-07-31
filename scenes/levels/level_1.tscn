@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://1shqohj0xof7"]
+[gd_scene load_steps=5 format=3 uid="uid://1shqohj0xof7"]
 
 [ext_resource type="Script" uid="uid://bbqvwxnu171bf" path="res://scripts/level.gd" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://c0lga80jrq31g" path="res://scenes/levels/road.tscn" id="1_ksju7"]
-[ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="3_x42e6"]
-[ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="4_6761a"]
 [ext_resource type="PackedScene" uid="uid://b7ndogurbak5y" path="res://scenes/ui/gameover_screen.tscn" id="5_6761a"]
 [ext_resource type="PackedScene" uid="uid://c1ndn0i51fpky" path="res://scenes/ui/pause_screen.tscn" id="6_sk5k4"]
 
@@ -16,35 +14,8 @@ unique_name_in_owner = true
 
 [node name="Road" parent="." instance=ExtResource("1_ksju7")]
 
-[node name="@Area3D@110410" type="Area3D" parent="Road/Boosts" index="0" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-0.969686, -0.244355, 0, 0.106912, -0.424263, 0.899206, -0.219725, 0.871947, 0.437526, 0.920855, -31.9937, 37.842)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("4_6761a")
-
-[node name="@Area3D@110411" type="Area3D" parent="Road/Boosts" index="1" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 5.46799e-07, -7.10543e-15, 6.25584e-08, 0.114408, -0.993434, -5.43209e-07, -0.993434, -0.114408, 1.00004, -17.2645, -43.6556)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("4_6761a")
-
-[node name="@Area3D@110412" type="Area3D" parent="Road/Boosts" index="2" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-1, 4.63162e-07, 2.24585e-07, 4.76402e-07, 0.99801, 0.0630547, -1.94933e-07, 0.0630547, -0.99801, 2.00003, 2.51922, 7.25297)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("4_6761a")
-
-[node name="@Area3D@110413" type="Area3D" parent="Road/Boosts" index="3" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-0.991334, -0.131368, 3.72529e-09, 0.0349593, -0.263811, 0.963941, -0.126631, 0.955587, 0.266117, -2.0089, -28.9962, 38.4358)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("4_6761a")
-
-[node name="@Area3D@110414" type="Area3D" parent="Road/Boosts" index="4" instance=ExtResource("3_x42e6")]
-transform = Transform3D(-0.326045, -0.945354, 0, 0.927065, -0.319737, 0.195754, -0.185057, 0.0638246, 0.980653, -0.515076, -43.5599, 15.892)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("4_6761a")
+[node name="RadarPlacement" parent="Road" index="4"]
+transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978452, 0.206467, 1.47339e-07, 0.206467, -0.978452, 2.87331e-05, 0.713362, 24.2775)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3

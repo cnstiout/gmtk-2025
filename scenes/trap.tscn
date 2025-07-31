@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c64q8c8m5bhub"]
+
+[ext_resource type="Script" uid="uid://b6uw5tr3p54x6" path="res://scripts/trap.gd" id="1_62q8x"]
+[ext_resource type="Texture2D" uid="uid://cqww6c5yh1lmv" path="res://assets/sprites/coin_blank.png" id="2_aucmg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lbsu8"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbsu8"]
+albedo_color = Color(1, 0, 0.0196078, 1)
+
+[node name="Trap" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_62q8x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("CapsuleShape3D_lbsu8")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, 0.2, 0)
+visible = false
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("2_aucmg")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(2.00263, 0, 0, 0, 0.877126, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("StandardMaterial3D_lbsu8")
+radius = 0.2
+radial_segments = 15

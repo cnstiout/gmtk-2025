@@ -51,6 +51,7 @@ func _on_countdown_timer_timeout() -> void:
 	decrease_countdown()
 
 func _on_radar_triggered() -> void:
+	road.setup_items()
 	update_high_score(player_track.get_converted_speed())
 
 func update_high_score(new_score: int) -> void:
