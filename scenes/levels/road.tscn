@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0lga80jrq31g"]
 
 [ext_resource type="Script" uid="uid://deycqjx2yjv1r" path="res://scripts/road.gd" id="1_1hsjn"]
-[ext_resource type="Texture2D" uid="uid://b5f4scjqf6cb" path="res://assets/3d_models/grillefix_0.png" id="2_1hsjn"]
+[ext_resource type="Texture2D" uid="uid://163hvjs8u3hr" path="res://assets/textures/smallgrille.png" id="2_1hsjn"]
 [ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="2_rvhr8"]
 [ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="3_rvhr8"]
 
@@ -16,7 +16,7 @@ point_count = 6
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hsjn"]
 transparency = 1
 albedo_texture = ExtResource("2_1hsjn")
-uv1_scale = Vector3(1, 32, 1)
+uv1_scale = Vector3(1, 64, 1)
 
 [node name="Road" type="Path3D"]
 curve = SubResource("Curve3D_tefeu")
@@ -42,31 +42,31 @@ material = SubResource("StandardMaterial3D_1hsjn")
 [node name="Boosts" type="Node" parent="."]
 
 [node name="BoostPickup" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 5.468e-07, -1.31683e-14, 8.72009e-08, 0.159475, -0.987202, -5.39801e-07, -0.987202, -0.159475, 4.01637e-05, -15.5012, -43.4123)
+transform = Transform3D(-1, 5.3635e-07, -1.79103e-07, -1.56099e-07, 0.042587, 0.999093, 5.43491e-07, 0.999093, -0.042587, 1.00004, -20.2636, 39.386)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@21765" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 4.97734e-07, -3.46102e-07, -2.47711e-07, 0.185595, 0.982626, 5.53322e-07, 0.982626, -0.185595, 3.83514e-05, -15.1887, 38.8186)
+[node name="@Area3D@93501" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 4.6533e-07, 2.37512e-07, 4.77414e-07, 0.998557, 0.0537045, -2.12179e-07, 0.0537045, -0.998557, 3.17233e-05, 2.70656, 4.05186)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@21766" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 4.60677e-07, 1.99597e-07, 4.74298e-07, 0.997207, 0.0746915, -1.64631e-07, 0.0746915, -0.997207, -1.99997, 2.23088, 11.4276)
+[node name="@Area3D@93502" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 1.88577e-09, -6.52116e-08, -8.94026e-09, 0.986191, 0.165615, 6.46234e-08, 0.165615, -0.986191, -1.99997, 1.0792, 23.419)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@21767" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.462683, -0.886524, -3.72529e-09, 0.885345, -0.462068, 0.051552, -0.0457021, 0.0238522, 0.99867, 0.748101, -48.3975, -1.87833)
+[node name="@Area3D@93503" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-0.881347, -0.47247, 0, 0.467911, -0.872844, -0.138572, 0.0654713, -0.12213, 0.990352, -1.85715, -45.1731, -21.1468)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@21768" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.281229, -0.959641, 0, 0.955569, -0.280036, 0.0920177, -0.088304, 0.0258781, 0.995757, -0.191888, -46.16, 3.9979)
+[node name="@Area3D@93504" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 5.46443e-07, -3.55807e-08, -6.23735e-08, -0.0491099, 0.998793, 5.44036e-07, 0.998793, 0.0491099, -0.99996, -24.3853, 39.3663)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
