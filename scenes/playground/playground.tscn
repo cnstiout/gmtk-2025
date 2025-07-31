@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d03fxlpwcbxfr"]
+
+[ext_resource type="Shader" uid="uid://gas74td3ylv2" path="res://shaders/road.gdshader" id="1_sgctp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8absr"]
+render_priority = 0
+shader = ExtResource("1_sgctp")
+shader_parameter/line_count = 5
+shader_parameter/line_spacing = 0.158
+shader_parameter/line_thickness = 0.005
+shader_parameter/line_color = Color(0.764344, 0.856694, 1, 1)
+shader_parameter/road_color = Color(0.394987, 0.394987, 0.394987, 1)
+shader_parameter/noise_scale = 3.0
+shader_parameter/line_repeat = 9.174
+shader_parameter/dash_enabled = true
+shader_parameter/dash_length = 0.1
+shader_parameter/gap_length = 0.1
+shader_parameter/edge_fade = 0.306
+shader_parameter/emission_strength = 5.0
+shader_parameter/emission_color = Color(0.590161, 0.448306, 0.804544, 1)
+shader_parameter/road_emission_factor = 0.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_1ro2l"]
+
+[node name="Playground" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_8absr")
+mesh = SubResource("TorusMesh_1ro2l")

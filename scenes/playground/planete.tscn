@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmvffyhdedqoc"]
+
+[ext_resource type="Shader" uid="uid://dgc7x1aexkyc0" path="res://shaders/mute_city.gdshader" id="1_l2yh6"]
+
+[sub_resource type="Gradient" id="Gradient_uhxnb"]
+colors = PackedColorArray(0.966922, 0.311534, 0.283509, 1, 0, 0.666667, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y5psg"]
+gradient = SubResource("Gradient_uhxnb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhxnb"]
+render_priority = 0
+shader = ExtResource("1_l2yh6")
+shader_parameter/gradient_main = SubResource("GradientTexture2D_y5psg")
+shader_parameter/star_density = 0.616
+shader_parameter/star_layers = 4
+shader_parameter/star_size = 60.56
+shader_parameter/star_shine = 2.0
+shader_parameter/flicker_speed = 8.0
+shader_parameter/flicker_intensity = 0.3
+shader_parameter/transparency_star = 0.089
+shader_parameter/seed = 0.34
+shader_parameter/ocean_color = Color(0.383324, 0.290036, 0.377345, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y5psg"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_uhxnb")
+mesh = SubResource("SphereMesh_y5psg")
