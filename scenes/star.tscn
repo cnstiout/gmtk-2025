@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://b1e5q4ouit2sg"]
 
-[ext_resource type="Shader" uid="uid://lco57p0g55qy" path="res://ressources/iris.gdshader" id="1_j6vao"]
+[ext_resource type="Shader" uid="uid://lco57p0g55qy" path="res://shaders/iris.gdshader" id="1_j6vao"]
 [ext_resource type="Texture2D" uid="uid://cibun7h0xxxbt" path="res://assets/textures/star.png" id="2_ef0hr"]
-[ext_resource type="Shader" uid="uid://ddhf86vvqsdfi" path="res://ressources/nebula.gdshader" id="3_8d8bx"]
+[ext_resource type="Shader" uid="uid://ddhf86vvqsdfi" path="res://shaders/nebula.gdshader" id="3_8d8bx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8d8bx"]
 render_priority = 0
