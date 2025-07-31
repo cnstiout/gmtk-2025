@@ -55,7 +55,7 @@ func _on_radar_triggered() -> void:
 	update_high_score(player_track.get_converted_speed())
 
 func update_high_score(new_score: int) -> void:
-	if new_score > high_score:
-		high_score = new_score
-		score_label.text = str(new_score)
-	
+	#if new_score > high_score:
+		#high_score = new_score
+		#score_label.text = str(new_score)
+	pass
