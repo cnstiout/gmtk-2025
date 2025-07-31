@@ -34,32 +34,32 @@ path_joined = true
 
 [node name="Boosts" type="Node" parent="."]
 
-[node name="BoostPickup" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 4.56549e-07, 2.65213e-08, 4.56785e-07, 0.994348, 0.106171, 2.21007e-08, 0.106171, -0.994348, 2.00003, 1.32854, 21.4852)
+[node name="@Area3D@103537" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 5.99561e-08, -3.30074e-07, -8.91674e-08, 0.901006, 0.433806, 3.23408e-07, 0.433806, -0.901006, 2.00003, -0.555233, 28.6763)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100831" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-1, 5.468e-07, 6.5996e-14, -1.47469e-08, -0.0269694, -0.999636, -5.46601e-07, -0.999636, 0.0269694, 2.00004, -22.9325, -43.9087)
+[node name="@Area3D@103538" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-0.720332, -0.69363, 0, 0.620248, -0.644125, 0.447656, -0.310508, 0.322461, 0.894206, 0.581646, -41.3058, 28.4967)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100832" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.99417, -0.107823, 1.86265e-09, 0.0248011, -0.228675, 0.973187, -0.104932, 0.967513, 0.230016, 0.972645, -28.4654, 38.9547)
+[node name="@Area3D@103539" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 4.66788e-07, 2.4352e-07, 4.77863e-07, 0.998864, 0.0476576, -2.20998e-07, 0.0476576, -0.998864, 1.00003, 2.80624, 2.08866)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100833" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.622218, -0.782844, 2.98023e-08, 0.731458, -0.581375, 0.356332, -0.278952, 0.221716, 0.934359, -0.156529, -42.0761, 24.956)
+[node name="@Area3D@103540" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-1, 4.76145e-07, 2.57609e-07, 4.78873e-07, 0.999943, 0.010695, -2.52502e-07, 0.010695, -0.999943, 1.00003, 3.10707, -7.84504)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")
 
-[node name="@Area3D@100834" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
-transform = Transform3D(-0.610686, -0.791873, 0, 0.791839, -0.610659, 0.0093012, -0.00736537, 0.00568011, 0.999957, 1.06304, -48.4155, -7.6236)
+[node name="@Area3D@103541" type="Area3D" parent="Boosts" instance=ExtResource("2_rvhr8")]
+transform = Transform3D(-0.773917, -0.633287, 0, 0.632155, -0.772533, -0.0597691, 0.037851, -0.0462563, 0.998212, -0.126617, -46.6885, -15.1081)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rvhr8")

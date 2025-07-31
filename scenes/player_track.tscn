@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://blwdspsggj7au"]
 
-[ext_resource type="Script" uid="uid://dlwa1knvfk5cl" path="res://scripts/camera_follow.gd" id="1_t2bo5"]
+[ext_resource type="Script" uid="uid://dlwa1knvfk5cl" path="res://scripts/player_track.gd" id="1_t2bo5"]
 [ext_resource type="PackedScene" uid="uid://73n5mq0sbiuu" path="res://scenes/player.tscn" id="2_rcf3p"]
 
 [node name="PlayerTrack" type="PathFollow3D"]

@@ -7,10 +7,12 @@ extends Node3D
 @onready var player_track_scene = preload("uid://blwdspsggj7au")
 @onready var countdown_timer: Timer = %CountdownTimer
 @onready var countdown_label: Label = $HUD/CountdownLabel
+@onready var gameover_screen: Control = %GameoverScreen
 
 var player_track: PlayerTrack
 
 func _ready() -> void:
+	Events.player_died.connect(_on_player_died)
 	player_track = player_track_scene.instantiate()
 	player_track.road = road
 	road.add_child(player_track)
@@ -30,6 +32,12 @@ func decrease_countdown() -> void:
 	else:
 		start_run()
 
+func _on_player_died() -> void:
+	player_track.stop()
+	show_gameover()
+
+func show_gameover() -> void:
+	gameover_screen.show()
 
 func _on_countdown_timer_timeout() -> void:
 	decrease_countdown()

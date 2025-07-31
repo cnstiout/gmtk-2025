@@ -4,12 +4,15 @@ extends PathFollow3D
 var road: Road
 @onready var player: Player = %Player
 
+@export var max_health: int = 3
+var health: int
 var moving = false
 var speed: float = 0.05
 var boost_amount: float = 0.02
 
 func _ready() -> void:
 	player.road = road
+	health = max_health
 	Events.boost_picked_up.connect(_on_boost_picked_up)
 	Events.wall_hit.connect(_on_wall_hit)
 
@@ -40,4 +43,13 @@ func _on_boost_picked_up(_xform: Transform3D):
 	
 
 func _on_wall_hit():
-	boost(-1)
+	take_damage(1)
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		die()
+
+func die() -> void:
+	Events.player_died.emit()
+	print("You died")
