@@ -1,0 +1,148 @@
+[gd_scene load_steps=14 format=3 uid="uid://crqd6a017lqlk"]
+
+[ext_resource type="Shader" uid="uid://claxj8b2r4rwo" path="res://shaders/trail.gdshader" id="1_xs8u7"]
+[ext_resource type="Texture2D" uid="uid://cibun7h0xxxbt" path="res://assets/textures/star.png" id="2_me4wu"]
+[ext_resource type="Texture2D" uid="uid://dgfsottwmq2ux" path="res://assets/textures/part01.png" id="2_v0rat"]
+[ext_resource type="Texture2D" uid="uid://bbd058256djvs" path="res://assets/textures/part02.png" id="3_me4wu"]
+[ext_resource type="Texture2D" uid="uid://bb077a6o6bcu6" path="res://assets/textures/part03.png" id="5_343tk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6qj0"]
+albedo_color = Color(0.352697, 0.713726, 0.996078, 1)
+
+[sub_resource type="Gradient" id="Gradient_xs8u7"]
+offsets = PackedFloat32Array(0.270492, 0.745902)
+colors = PackedColorArray(0.83866, 0.000902355, 0.893088, 1, 0.0379706, 0.540203, 0.877962, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v0rat"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_me4wu"]
+seamless = true
+seamless_blend_skirt = 0.288
+color_ramp = SubResource("Gradient_xs8u7")
+noise = SubResource("FastNoiseLite_v0rat")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_343tk"]
+render_priority = 0
+shader = ExtResource("1_xs8u7")
+shader_parameter/main_color = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_me4wu")
+shader_parameter/emission = Color(0, 1, 1, 1)
+shader_parameter/emission_energy = 23.625
+shader_parameter/scroll_speed = 2.0
+shader_parameter/alpha_threshold = 0.25
+shader_parameter/use_threshold = true
+shader_parameter/invert_boost_direction = false
+
+[sub_resource type="Curve" id="Curve_v6qj0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_6i2wf"]
+radius = 0.02
+section_length = 0.17
+curve = SubResource("Curve_v6qj0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6i2wf"]
+albedo_color = Color(0.333165, 0.701991, 0.996078, 1)
+
+[node name="Vaisseau" type="Node3D"]
+
+[node name="reacteurG" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.999979, -2.85325e-10, -0.00652748, -0.00652748, -4.37105e-08, -0.999979, 0, 1, -4.37114e-08, 0.103, 0, -0.253)
+radius = 0.0268555
+height = 0.197906
+material = SubResource("StandardMaterial3D_v6qj0")
+
+[node name="Cabine2" type="CSGCylinder3D" parent="reacteurG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0281811, 0)
+operation = 2
+radius = 0.0209961
+height = 0.165485
+
+[node name="Flamme" type="MeshInstance3D" parent="reacteurG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499421, 2.14786e-08)
+material_override = SubResource("ShaderMaterial_343tk")
+mesh = SubResource("TubeTrailMesh_6i2wf")
+skeleton = NodePath("../Cabine2")
+
+[node name="Star" type="Sprite3D" parent="reacteurG/Flamme"]
+transform = Transform3D(0.085, 0, 0, 1.73472e-18, 0.085, 0, 0, 0, 0.085, 0, 0.376859, -1.64728e-08)
+billboard = 1
+texture = ExtResource("2_me4wu")
+
+[node name="reacteurD" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.999979, -2.85325e-10, -0.00652748, -0.00652748, -4.37105e-08, -0.999979, 0, 1, -4.37114e-08, -0.103, 0, -0.253)
+radius = 0.0268555
+height = 0.197906
+material = SubResource("StandardMaterial3D_6i2wf")
+
+[node name="Cabine2" type="CSGCylinder3D" parent="reacteurD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0281811, 0)
+operation = 2
+radius = 0.0209961
+height = 0.165485
+
+[node name="Flamme" type="MeshInstance3D" parent="reacteurD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499421, 2.14786e-08)
+material_override = SubResource("ShaderMaterial_343tk")
+mesh = SubResource("TubeTrailMesh_6i2wf")
+skeleton = NodePath("../Cabine2")
+
+[node name="Star2" type="Sprite3D" parent="reacteurD/Flamme"]
+transform = Transform3D(0.085, 0, 0, 5.20417e-18, 0.085, 0, -1.51654e-25, 0, 0.085, -0.00226631, 0.376859, 1.47771e-05)
+billboard = 1
+texture = ExtResource("2_me4wu")
+
+[node name="AileGauche" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="AileGauche"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.166821, 0, 0)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("2_v0rat")
+
+[node name="Sprite3D3" type="Sprite3D" parent="AileGauche"]
+transform = Transform3D(0.965926, -1.13133e-08, 0.258819, -0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 0.166821, -0.0570139, 0)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("2_v0rat")
+
+[node name="Sprite3D5" type="Sprite3D" parent="AileGauche"]
+transform = Transform3D(0.860689, 2.22548e-08, -0.509132, 0.509132, -3.76219e-08, 0.860689, 0, -1, -4.37114e-08, 0.152226, 0.0839489, -0.258498)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_me4wu")
+
+[node name="AileDroite" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+
+[node name="Sprite3D2" type="Sprite3D" parent="AileDroite"]
+transform = Transform3D(-1, 3.82137e-15, -8.74228e-08, 8.74228e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, -0.161185, 0, 0)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("2_v0rat")
+
+[node name="Sprite3D6" type="Sprite3D" parent="AileDroite"]
+transform = Transform3D(-0.871265, 2.14541e-08, -0.490813, 0.490813, 3.80842e-08, -0.871265, 0, -1, -4.37114e-08, -0.14448, 0.0839489, -0.258498)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_me4wu")
+
+[node name="Sprite3D4" type="Sprite3D" parent="AileDroite"]
+transform = Transform3D(-0.965926, -1.13133e-08, 0.258819, -0.258819, 4.2222e-08, -0.965926, 0, -1, -4.37114e-08, -0.161185, -0.0570139, 0)
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("2_v0rat")
+
+[node name="Cockpit" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.000942856, -0.0172922)
+shaded = true
+texture_filter = 0
+texture = ExtResource("5_343tk")
