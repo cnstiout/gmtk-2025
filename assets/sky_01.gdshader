@@ -1,144 +1,61 @@
 shader_type sky;
 
-// ==== CONTROLES =====
-uniform float time : hint_range(0, 1000) = 0.0;
-uniform vec4 sky_color = vec4(0.05, 0.07, 0.15, 1.0);
-uniform vec4 horizon_color = vec4(0.15, 0.18, 0.25, 1.0);
-uniform float fog_start : hint_range(0.0, 200.0) = 60.0;
-uniform float fog_end : hint_range(0.0, 400.0) = 150.0;
-uniform float fog_strength : hint_range(0.0, 1.0) = 0.6;
-uniform bool enable_edge_highlight = true;
-uniform bool enable_horizon = true;
-uniform bool enable_grid_far = true;
-uniform float max_distance : hint_range(50.0, 400.0) = 200.0;
-uniform float detail_scale : hint_range(0.1, 2.0) = 0.6; // step multiplier
-uniform float quant_levels : hint_range(2.0, 16.0) = 6.0; // rétro quantification
+uniform float time;
+uniform float speed = 1.0;
+uniform sampler2D city_strip_above;
+uniform sampler2D city_strip_below;
+uniform vec3 base_color = vec3(0.1, 0.6, 1.0);
+uniform vec3 neon_color = vec3(1.0, 0.3, 0.9);
+uniform float neon_strength = 1.0;
+uniform float city_opacity = 0.7;
 
-// ==== UTILITAIRES ====
-float hash(vec2 p) {
-    p = fract(p * vec2(123.34, 456.21));
-    p += dot(p, p + 78.233);
-    return fract(p.x * p.y);
+float cheap_noise(float x) {
+    return fract(sin(x * 12.9898 + 78.233) * 43758.5453);
 }
 
-float box_sdf(vec3 p, vec3 b) {
-    vec3 d = abs(p) - b;
-    return length(max(d, 0.0)) + min(max(d.x, max(d.y, d.z)), 0.0);
-}
-
-float building_height(vec2 cell) {
-    float h = hash(cell);
-    h = floor(h * 5.0 + 1.0); // 1..5
-    h += 0.15 * sin(time + hash(cell) * 6.2831); // pulsation
-    return h;
-}
-
-float city_sdf(vec3 pos) {
-    vec2 cell = floor(pos.xz);
-    float minDist = 1e5;
-    for (int dx = -1; dx <= 1; dx++) {
-        for (int dz = -1; dz <= 1; dz++) {
-            vec2 c = cell + vec2(float(dx), float(dz));
-            float h = building_height(c);
-            vec3 center = vec3(c.x + 0.5, h * 0.5, c.y + 0.5);
-            vec3 local = pos - center;
-            vec3 half = vec3(0.4, h * 0.5, 0.4);
-            float d = box_sdf(local, half);
-            minDist = min(minDist, d);
-        }
-    }
-    return minDist;
-}
-
-vec3 building_color(vec2 cell) {
-    float v = hash(cell);
-    if (v < 0.33) return vec3(0.8, 0.6, 0.4);
-    else if (v < 0.66) return vec3(0.4, 0.7, 0.8);
-    else return vec3(0.6, 0.9, 0.5);
-}
-
-// gradient / horizon mix
-vec3 compute_horizon(vec3 ray_dir, vec3 sc, vec3 hc) {
-    float down_factor = clamp((-ray_dir.y - 0.1) / 0.9, 0.0, 1.0);
-    float t = pow(down_factor, 1.5);
-    return mix(sc, hc, t);
-}
-
-// grille lointaine pour structure visuelle
-vec3 far_grid(vec3 p, float total_dist) {
-    if (!enable_grid_far) return vec3(0.0);
-    float fade = smoothstep(100.0, 150.0, total_dist);
-    vec2 gv = fract(p.xz * 0.1);
-    float line = step(0.02, min(gv.x, gv.y));
-    vec3 gcol = mix(vec3(0.02), vec3(0.12), line);
-    return gcol * fade;
-}
-
-// edge highlight approximatif
-float edge_factor(vec3 p) {
-    float eps = 0.03;
-    float gx = city_sdf(p + vec3(eps, 0.0, 0.0)) - city_sdf(p - vec3(eps, 0.0, 0.0));
-    float gz = city_sdf(p + vec3(0.0, 0.0, eps)) - city_sdf(p - vec3(0.0, 0.0, eps));
-    return length(vec2(gx, gz));
+float neon_mask_func(float u, float t) {
+    float phase = fract(u * 10.0 + t * 0.5);
+    return smoothstep(0.45, 0.55, sin(phase * 2.0 * 3.14159265));
 }
 
 void sky() {
-    vec3 sc = sky_color.rgb;
-    vec3 hc = horizon_color.rgb;
+    vec3 view_dir = normalize(EYEDIR);
+    float vertical = clamp(view_dir.y * 0.5 + 0.5, 0.0, 1.0);
 
-    vec3 ray_dir = normalize(EYEDIR);
-    vec3 ray_origin = vec3(0.0, 10.0, 0.0);
-    if (ray_dir.y > -0.1) {
-        ray_dir.y = -abs(ray_dir.y);
-    }
+    float azimuth = atan(view_dir.z, view_dir.x);
+    float u = fract((azimuth / (2.0 * 3.14159265)) + 0.5 + time * speed * 0.05 * (1.0 - vertical));
 
-    float total_dist = 0.0;
-    vec3 col = sc;
-    bool hit = false;
-    vec3 hit_pos = vec3(0.0);
+    float fade_above = pow(smoothstep(0.2, 0.9, view_dir.y), 1.2);
+    float fade_below = pow(smoothstep(0.2, 0.9, -view_dir.y), 1.2);
 
-    // Raymarching
-    for (int i = 0; i < 140; i++) {
-        vec3 p = ray_origin + ray_dir * total_dist;
+    vec3 silhouette_above = texture(city_strip_above, vec2(u, 0.5)).rgb;
+    vec3 silhouette_below = texture(city_strip_below, vec2(u, 0.5)).rgb;
 
-        if (p.y < 0.0) {
-            float d = city_sdf(p);
-            if (d < 0.008) {
-                vec2 cell = floor(p.xz);
-                col = building_color(cell);
-                hit = true;
-                hit_pos = p;
-                break;
-            }
-        }
+    float scanline = step(0.5, fract(view_dir.y * 300.0));
+    float shimmer = sin(time * 8.0 + view_dir.y * 60.0) * 0.04;
+    float flicker_above = mix(0.9, 1.1, cheap_noise(view_dir.y * 25.0 + time * 1.2));
+    float flicker_below = mix(0.85, 1.0, cheap_noise(view_dir.y * 20.0 + time * 1.5));
 
-        float distField = city_sdf(p);
-        float step = max(0.005, distField * detail_scale);
-        total_dist += step;
-        if (total_dist > max_distance) break;
-    }
+    float neon_mask = neon_mask_func(u, time);
+    vec3 neon_above = neon_color * neon_strength * neon_mask * silhouette_above;
+    vec3 neon_below = neon_color * neon_strength * neon_mask * silhouette_below * 0.6;
 
-    if (!hit && enable_horizon) {
-        col = compute_horizon(ray_dir, sc, hc);
-    }
+    vec3 city_above = base_color * silhouette_above * flicker_above;
+    city_above += neon_above;
+    city_above *= fade_above;
 
-    col = mix(col, far_grid(ray_origin + ray_dir * total_dist, total_dist), 1.0);
+    vec3 city_below = base_color * silhouette_below * flicker_below * 0.6;
+    city_below += neon_below;
+    city_below *= fade_below;
 
-    if (enable_edge_highlight && hit) {
-        float ef = edge_factor(hit_pos);
-        float edge = smoothstep(0.1, 0.35, ef);
-        col += edge * 0.15;
-    }
+    vec3 retro_noise = vec3(scanline * 0.03 + shimmer);
 
-    if (hit) {
-        float height_factor = clamp(hit_pos.y / 5.0, 0.0, 1.0);
-        col *= 0.7 + 0.3 * height_factor;
-    }
+    vec3 sky_base = mix(vec3(0.02, 0.02, 0.08), vec3(0.12, 0.3, 0.6), pow(vertical, 1.5));
 
-    float fog = clamp((total_dist - fog_start) / max(1.0, fog_end - fog_start), 0.0, 1.0);
-    col = mix(col, sc, fog * fog_strength);
+    vec3 combined = sky_base + (city_above + city_below) * city_opacity + retro_noise;
 
-    col = floor(col * quant_levels) / quant_levels;
+    combined = floor(combined * 6.0) / 6.0;
+    combined = combined / (combined + vec3(1.0));
 
-    COLOR = col;
+    COLOR = combined;
 }
