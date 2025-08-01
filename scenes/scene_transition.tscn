@@ -40,6 +40,7 @@ _data = {
 
 [node name="SceneTransition" type="CanvasLayer"]
 process_mode = 3
+layer = 5
 script = ExtResource("1_rujfs")
 
 [node name="ColorRect" type="ColorRect" parent="."]

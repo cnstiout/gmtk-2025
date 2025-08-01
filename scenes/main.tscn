@@ -18,13 +18,16 @@ volume_db = -15.0
 autoplay = true
 bus = &"Music"
 
-[node name="MainMenu" parent="." instance=ExtResource("2_sugp2")]
+[node name="Menus" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="MainMenu" parent="Menus" instance=ExtResource("2_sugp2")]
 unique_name_in_owner = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_tbgi4")]
+[node name="PauseMenu" parent="Menus" instance=ExtResource("4_tbgi4")]
 unique_name_in_owner = true
 
-[node name="GameoverScreen" parent="." instance=ExtResource("5_tefeu")]
+[node name="GameoverScreen" parent="Menus" instance=ExtResource("5_tefeu")]
 unique_name_in_owner = true
 visible = false
 
