@@ -1,13 +1,18 @@
 extends Node
 
 @warning_ignore_start("unused_signal")
-signal boost_picked_up(boost_xform)
-signal wall_hit
-signal player_died
-signal radar_triggered
-signal trap_triggered(trap_xform)
 
-
+# Menu events
 signal request_main_menu
 signal restart_current_level
-signal switch_level(level_path)
+signal switch_level(level_path: String)
+
+# Run events
+signal player_speed_changed(speed: int)
+signal player_died
+signal radar_triggered
+signal new_run_score(score: int)
+signal new_highscore_reached(highscore: int)
+signal trap_triggered(trap_xform: Transform3D)
+signal boost_picked_up(boost_xform: Transform3D)
+signal wall_hit

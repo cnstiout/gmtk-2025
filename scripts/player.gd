@@ -5,6 +5,10 @@ extends CharacterBody3D
 
 @onready var engine_audio_player_3d: AudioStreamPlayer3D = %EngineAudioPlayer3D
 @onready var engine_audio_player: AudioStreamPlayer = $EngineAudioPlayer
+@onready var engine_start_sfx: AudioStreamPlayer = $EngineStartSFX
+@onready var hurt_audio_player: AudioStreamPlayer = $HurtAudioPlayer
+@onready var explosion_sfx: AudioStreamPlayer = $ExplosionSFX
+@onready var bank_sfx: AudioStreamPlayer = $BankSFX
 
 @onready var boost_audio_player_3d: AudioStreamPlayer3D = %BoostAudioPlayer3D
 @onready var boost_audio_player: AudioStreamPlayer = $BoostAudioPlayer
@@ -23,19 +27,27 @@ var current_lane: int = 0
 var lane_offset: float
 var in_movement: bool = false
 
+var can_move = true
+
 func _ready() -> void:
 	Events.boost_picked_up.connect(_boost_effect)
-	#engine_audio_player_3d.play()
-	engine_audio_player.play()
+	
 	if road:
 		lane_offset = road.lane_width
+	start_engine_audio()
+
+func start_engine_audio() -> void:
+	engine_start_sfx.play()
+	await engine_start_sfx.finished
+	engine_audio_player.play()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("player_left"):
-		change_lane(current_lane - 1)
-		
-	elif Input.is_action_just_pressed("player_right"):
-		change_lane(current_lane + 1)
+	if can_move:
+		if Input.is_action_just_pressed("player_left"):
+			change_lane(current_lane - 1)
+			
+		elif Input.is_action_just_pressed("player_right"):
+			change_lane(current_lane + 1)
 
 # Move the player to the specified lane (The middle lane being 0, the most left one being -n and the most right one n)
 func change_lane(lane: int) -> void:
@@ -63,13 +75,20 @@ func _boost_effect(_boost_xform: Transform3D) -> void:
 	#boost_audio_player_3d.play()
 
 func _bank(direction: int) -> void:
-		var tween = get_tree().create_tween()
-		tween.tween_property(model,
-			"rotation:z",
-			model.rotation.z + deg_to_rad(bank_angle_d) * direction,
-			bank_anim_time)
-		
-		tween.tween_property(model,
-			"rotation:z", 
-			0,
-			bank_anim_rectify_time)
+	bank_sfx.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property(model,
+		"rotation:z",
+		model.rotation.z + deg_to_rad(bank_angle_d) * direction,
+		bank_anim_time)
+	
+	tween.tween_property(model,
+		"rotation:z", 
+		0,
+		bank_anim_rectify_time)
+
+func hurt_fx() -> void:
+	hurt_audio_player.play()
+
+func die_fx() -> void:
+	explosion_sfx.play()

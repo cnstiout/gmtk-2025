@@ -13,10 +13,14 @@ var current_scene: Node
 var is_pause_menu_acc: bool = false
 var game_paused = false
 
+var highscore:int = 0
+
 func _ready() -> void:
 	Events.restart_current_level.connect(restart_current_level)
-	Events.player_died.connect(_on_player_died)
 	Events.request_main_menu.connect(back_to_main_menu)
+	
+	Events.new_run_score.connect(change_highscore)
+	Events.player_died.connect(_on_player_died)
 	
 	pause_menu.request_resume.connect(resume_game)
 	main_menu.start_level.connect(_on_switch_level)
@@ -28,6 +32,11 @@ func _input(event: InputEvent) -> void:
 			resume_game()
 		else:
 			pause_game()
+
+func change_highscore(new_score: int) -> void:
+	if new_score > highscore:
+		highscore = new_score
+		gameover_screen.change_highscore(highscore)
 
 func resume_game() -> void:
 	get_tree().paused = false

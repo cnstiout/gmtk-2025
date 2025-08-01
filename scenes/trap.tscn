@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c64q8c8m5bhub"]
+[gd_scene load_steps=6 format=3 uid="uid://c64q8c8m5bhub"]
 
 [ext_resource type="Script" uid="uid://b6uw5tr3p54x6" path="res://scripts/trap.gd" id="1_62q8x"]
 [ext_resource type="Texture2D" uid="uid://cqww6c5yh1lmv" path="res://assets/sprites/coin_blank.png" id="2_aucmg"]
+[ext_resource type="AudioStream" uid="uid://1ynwre64ar5g" path="res://assets/sfx/trap_trigger_v0.ogg" id="3_aucmg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lbsu8"]
 radius = 0.2
@@ -30,3 +31,8 @@ transform = Transform3D(2.00263, 0, 0, 0, 0.877126, 0, 0, 0, 1, 0, 0.2, 0)
 material_override = SubResource("StandardMaterial3D_lbsu8")
 radius = 0.2
 radial_segments = 15
+
+[node name="TrapSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aucmg")
+volume_db = -11.06
+max_polyphony = 3

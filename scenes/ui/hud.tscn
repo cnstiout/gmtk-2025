@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7gwio68h2rx4"]
+[gd_scene load_steps=8 format=3 uid="uid://c7gwio68h2rx4"]
 
 [ext_resource type="Script" uid="uid://cj70elsdtm1gl" path="res://scripts/ui/hud.gd" id="1_bo48s"]
 [ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="2_136eg"]
 [ext_resource type="Shader" path="res://shaders/hud.gdshader" id="5_gss2c"]
 [ext_resource type="Texture2D" uid="uid://r72ilounyw8m" path="res://assets/textures/hud.png" id="5_oj5la"]
 [ext_resource type="Texture2D" uid="uid://btwrs7u4leh5d" path="res://assets/textures/hud copy.png" id="6_gss2c"]
+[ext_resource type="AudioStream" uid="uid://m4soh6itw1ti" path="res://assets/sfx/radar_v0.ogg" id="6_oj5la"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h022r"]
 shader = ExtResource("5_gss2c")
@@ -80,3 +81,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_oj5la")
+
+[node name="RadarNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_oj5la")
+volume_db = -20.0
+bus = &"SFX"

@@ -13,8 +13,7 @@ var moving = false
 var current_speed: float:
 	set(value):
 		current_speed =	value
-		_change_speed_hud(current_speed)
-var speed_label: Label
+
 var boost_amount: float = 0.01
 
 func _ready() -> void:
@@ -37,6 +36,7 @@ func _process(delta: float) -> void:
 
 # Make the player track start moving
 func start() -> void:
+	player.can_move = true
 	moving = true
 
 # Make the player track stop moving
@@ -55,18 +55,10 @@ func reset_player() -> void:
 func boost(amount:int = 1):
 	if amount != 0:
 		current_speed += boost_amount * amount
-		if amount > 0:
-			print("Boost!!!")
-		else:
-			print("Speed down...")
+		Events.player_speed_changed.emit(get_converted_speed())
 	
 func _on_boost_picked_up(_xform: Transform3D):
 	boost(1)
-	
-
-func _change_speed_hud(value: float) -> void:
-	if speed_label:
-		speed_label.text = str(get_converted_speed())
 
 func _on_wall_hit():
 	take_damage(1)
@@ -75,10 +67,13 @@ func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
 		die()
+	else:
+		player.hurt_fx()
 
 func die() -> void:
+	player.die_fx()
+	player.can_move = false
 	Events.player_died.emit()
-	print("You died")
 
 func convert_speed(speed) -> int:
 	return floor(speed * 1000)

@@ -147,7 +147,7 @@ func spawn_wall(spawn_xform: Transform3D):
 	get_node("Obstacles").add_child(new_obstacle)
 	new_obstacle.global_transform = spawn_xform
 
-func _on_boost_picked_up(xform: Transform3D):
+func _on_boost_picked_up(_xform: Transform3D):
 	pass
 
 # Check if the parameter lane is a valid lane
