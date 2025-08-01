@@ -55,10 +55,10 @@ material_override = SubResource("ShaderMaterial_6761a")
 material = null
 
 [node name="ItemSpawnerPath" parent="Road" index="1"]
-transform = Transform3D(-1, 9.51796e-09, -8.69031e-08, 0, 0.994056, 0.108873, 8.74228e-08, 0.108873, -0.994056, 2.86102e-05, 1.06493, 22.0627)
+transform = Transform3D(-0.999782, -0.00265932, 0.0206768, -3.49246e-10, 0.991831, 0.127563, -0.0208471, 0.127535, -0.991615, 2.86102e-05, 1.06493, 22.0627)
 
 [node name="RadarPlacement" parent="Road" index="5"]
-transform = Transform3D(-0.999999, 9.51793e-09, -8.69028e-08, 0, 0.994052, 0.108872, 8.74227e-08, 0.108872, -0.994052, 2.86102e-05, 1.06493, 22.0627)
+transform = Transform3D(-0.999781, -0.00265931, 0.0206768, -3.49245e-10, 0.991827, 0.127562, -0.0208471, 0.127534, -0.991611, 2.86102e-05, 1.06493, 22.0627)
 
 [node name="HUD" parent="." instance=ExtResource("3_nsrm0")]
 unique_name_in_owner = true

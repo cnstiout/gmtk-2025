@@ -71,6 +71,7 @@ func take_damage(amount: int) -> void:
 		player.hurt_fx()
 
 func die() -> void:
+	stop()
 	player.die_fx()
 	player.can_move = false
 	Events.player_died.emit()

@@ -12,6 +12,7 @@ var current_countdown_time:int = countdown_start_time
 
 var player_track: PlayerTrack
 
+var run_laps: int = 0
 var run_score: int = 0:
 	set(value):
 		run_score = value
@@ -42,6 +43,7 @@ func start_run() -> void:
 func restart() -> void:
 	road.reset()
 	run_score = 0
+	run_laps = 0
 	player_track.reset_player()
 	hud.reset(player_track.get_converted_speed())
 	
@@ -64,11 +66,12 @@ func update_run_score(new_score: int) -> void:
 	Events.new_run_score.emit(run_score)
 
 func _on_player_died() -> void:
-	player_track.stop()
+	pass
 
 func _on_countdown_timer_timeout() -> void:
 	decrease_countdown()
 
 func _on_radar_triggered() -> void:
 	road.setup_items()
+	run_laps += 1
 	update_run_score(player_track.get_converted_speed())
