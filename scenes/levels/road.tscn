@@ -38,10 +38,13 @@ path_joined = true
 material = SubResource("StandardMaterial3D_1hsjn")
 
 [node name="Boosts" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Traps" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Obstacles" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="RadarPlacement" type="PathFollow3D" parent="."]
 transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978452, 0.206467, 1.47339e-07, 0.206467, -0.978452, 2.87331e-05, 0.713362, 24.2775)

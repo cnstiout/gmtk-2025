@@ -1,10 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgunqer1xur0t"]
+[gd_scene load_steps=7 format=3 uid="uid://bgunqer1xur0t"]
 
 [ext_resource type="Script" uid="uid://urwdvacw1u8l" path="res://scripts/game_manager.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://clt13pddeirxi" path="res://scenes/ui/main_menu.tscn" id="2_sugp2"]
+[ext_resource type="AudioStream" uid="uid://e7qmlo7k5pwr" path="res://assets/musics/music_2_v1.ogg" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bu3rgmwsw5ea" path="res://scenes/scene_transition.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c1ndn0i51fpky" path="res://scenes/ui/pause_menu.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://b7ndogurbak5y" path="res://scenes/ui/gameover_screen.tscn" id="5_tefeu"]
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_jyhfs")
 
+[node name="MusicAudioPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_tefeu")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
 [node name="MainMenu" parent="." instance=ExtResource("2_sugp2")]
+unique_name_in_owner = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_tbgi4")]
+unique_name_in_owner = true
+
+[node name="GameoverScreen" parent="." instance=ExtResource("5_tefeu")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CurrentLevel" type="Node" parent="."]
+
+[node name="SceneTransition" parent="." instance=ExtResource("4_jyhfs")]
 unique_name_in_owner = true

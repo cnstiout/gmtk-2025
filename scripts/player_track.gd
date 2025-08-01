@@ -25,6 +25,7 @@ func _ready() -> void:
 	Events.wall_hit.connect(_on_wall_hit)
 
 func _input(event: InputEvent) -> void:
+	# Cheats
 	if event.is_action_pressed("player_up"):
 		boost(1)
 	if event.is_action_pressed("player_down"):
@@ -41,7 +42,14 @@ func start() -> void:
 # Make the player track stop moving
 func stop() -> void:
 	moving = false
-	
+
+# Put the player back at the start
+func reset_player() -> void:
+	player.reset()
+	stop()
+	current_speed = starting_speed
+	health = max_health
+	progress_ratio = 0
 
 # Change your speed, negative number slow you down
 func boost(amount:int = 1):

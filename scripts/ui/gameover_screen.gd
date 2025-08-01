@@ -10,7 +10,10 @@ func _ready() -> void:
 	quit_button.pressed.connect(_on_button_quit_pressed)
 
 func _on_button_replay_pressed() -> void:
-	get_tree().reload_current_scene()
+	Events.restart_current_level.emit()
 
 func _on_button_quit_pressed() -> void:
-	SceneTransition.switch_to_scene(main_menu_path)
+	Events.request_main_menu.emit()
+
+func reset() -> void:
+	self.hide()

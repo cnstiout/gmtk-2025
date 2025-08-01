@@ -7,9 +7,9 @@ extends Path3D
 @onready var obstacle_scene = preload("uid://xqn5l3daobv1")
 
 @onready var road_polygon: CSGPolygon3D = $RoadCSGPolygon3D
-@onready var boosts: Node = $Boosts
-@onready var traps: Node = $Traps
-@onready var obstacles: Node = $Obstacles
+@onready var boosts: Node = %Boosts
+@onready var traps: Node = %Traps
+@onready var obstacles: Node = %Obstacles
 
 @export_range(3, 13, 2) var nb_lane: int = 3:
 	set(value):
@@ -38,6 +38,13 @@ func _ready() -> void:
 	
 	setup_items()
 
+func reset() -> void:
+	remove_obstacles()
+	setup_items()
+
+func remove_obstacles() -> void:
+	for i in obstacles.get_children():
+		i.queue_free()
 
 # Generate the road polygon that is swept along the path
 func generate_track() -> void:
@@ -77,6 +84,9 @@ func spawn_item(type: Constants.ItemType) -> void:
 			new_item = trap_item_scene.instantiate()
 			traps.add_child(new_item)
 	
+	if !new_item.is_inside_tree():
+		print("weird")
+		await new_item.tree_entered
 	new_item.global_transform = global_transform * new_transform
 
 func clear_all_items() -> void:

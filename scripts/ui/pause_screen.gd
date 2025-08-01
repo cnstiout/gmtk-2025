@@ -9,6 +9,7 @@ extends Control
 @onready var restart_button: Button = %RestartButton
 @onready var main_menu_button: Button = %MainMenuButton
 
+signal request_resume
 
 func _ready() -> void:
 	resume_button.pressed.connect(_on_resume_button_pressed)
@@ -17,36 +18,25 @@ func _ready() -> void:
 	
 	animation_player.play("RESET")
 
-func _process(_delta: float) -> void:
-	testEsc()
-
 func resume() -> void:
-	get_tree().paused = false
 	animation_player.play_backwards("blur")
 	await animation_player.animation_finished
 	panel_container.hide()
 
 func pause() -> void:
-	get_tree().paused = true
 	panel_container.show()
 	animation_player.play("blur")
 
-func testEsc() -> void:
-	if Input.is_action_just_pressed("esc"):
-		if get_tree().paused:
-			resume()
-		else:
-			pause()
-
+func reset() -> void:
+	self.hide()
+	animation_player.play("RESET")
 
 func _on_resume_button_pressed() -> void:
-	resume()
-
+	request_resume.emit()
 
 func _on_restart_button_pressed() -> void:
-	resume()
-	get_tree().call_deferred("reload_current_scene")
+	Events.restart_current_level.emit()
 
 
 func _on_main_menu_button_pressed() -> void:
-	SceneTransition.switch_to_scene(main_menu_path)
+	Events.request_main_menu.emit()

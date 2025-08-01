@@ -7,4 +7,7 @@ signal player_died
 signal radar_triggered
 signal trap_triggered(trap_xform)
 
-signal switch_level(level_id)
+
+signal request_main_menu
+signal restart_current_level
+signal switch_level(level_path)
