@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7gwio68h2rx4"]
+[gd_scene load_steps=9 format=3 uid="uid://c7gwio68h2rx4"]
 
 [ext_resource type="Script" uid="uid://cj70elsdtm1gl" path="res://scripts/ui/hud.gd" id="1_bo48s"]
+[ext_resource type="PackedScene" uid="uid://b7ndogurbak5y" path="res://scenes/ui/gameover_screen.tscn" id="1_hqnrr"]
+[ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="2_136eg"]
+[ext_resource type="PackedScene" uid="uid://c1ndn0i51fpky" path="res://scenes/ui/pause_screen.tscn" id="2_bo48s"]
+[ext_resource type="Shader" uid="uid://c00yjcym8tk4d" path="res://shaders/hud.gdshader" id="5_gss2c"]
+[ext_resource type="Texture2D" uid="uid://r72ilounyw8m" path="res://assets/textures/hud.png" id="5_oj5la"]
+[ext_resource type="Texture2D" uid="uid://btwrs7u4leh5d" path="res://assets/textures/hud copy.png" id="6_gss2c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h022r"]
+shader = ExtResource("5_gss2c")
+shader_parameter/original_tex = ExtResource("5_oj5la")
+shader_parameter/glow_tex = ExtResource("6_gss2c")
+shader_parameter/glow_intensity = 1.0
+shader_parameter/glow_fade = 0.776
+shader_parameter/tint = Vector4(1, 0.9, 0.6, 1)
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
@@ -13,12 +27,13 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
 offset_right = 20.0
-offset_bottom = 23.0
+offset_bottom = 69.0
 grow_horizontal = 2
+theme = ExtResource("2_136eg")
 theme_override_font_sizes/font_size = 30
 text = "0"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="CountdownLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -32,6 +47,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_136eg")
 theme_override_font_sizes/font_size = 60
 text = "3"
 horizontal_alignment = 1
@@ -43,8 +59,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -134.0
+offset_top = -82.0
+offset_right = -19.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_right = 60
@@ -53,5 +70,15 @@ theme_override_constants/margin_bottom = 20
 [node name="SpeedLabel" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("2_136eg")
 theme_override_font_sizes/font_size = 60
 text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_h022r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_oj5la")
