@@ -1,18 +1,12 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cvikk331gcb6t"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://cvikk331gcb6t"]
 
-[ext_resource type="Shader" uid="uid://c5w1s8moytexn" path="res://assets/sky_01.gdshader" id="1_jn1no"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn1no"]
-shader = ExtResource("1_jn1no")
-shader_parameter/time = 0.0
-shader_parameter/speed = 1.0
-shader_parameter/base_color = Vector3(0.1, 0.6, 1)
-shader_parameter/neon_color = Vector3(1, 0.3, 0.9)
-shader_parameter/neon_strength = 1.0
-shader_parameter/city_opacity = 0.7
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0kxq"]
+sky_top_color = Color(0.270977, 0.167585, 0.748707, 1)
+ground_bottom_color = Color(0.270588, 0.168627, 0.74902, 1)
+ground_curve = 0.15
 
 [sub_resource type="Sky" id="Sky_plw1y"]
-sky_material = SubResource("ShaderMaterial_jn1no")
+sky_material = SubResource("ProceduralSkyMaterial_j0kxq")
 
 [resource]
 background_mode = 2
