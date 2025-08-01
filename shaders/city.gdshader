@@ -1,171 +1,159 @@
-shader_type sky;
+shader_type spatial;
+render_mode unshaded;
 
-// ==== PARAMÈTRES =====
-uniform float time : hint_range(0, 1000) = 0.0;
-uniform vec4 sky_color  = vec4(0.05, 0.07, 0.15, 1.0);
-uniform vec4 horizon_color  = vec4(0.15, 0.18, 0.25, 1.0);
-uniform float fog_start : hint_range(0.0, 200.0) = 80.0;
-uniform float fog_end : hint_range(0.0, 400.0) = 160.0;
-uniform float fog_strength : hint_range(0.0, 1.0) = 0.5;
+// === UV / mouvement ===
+uniform float uv_speed : hint_range(0.0, 5.0) = 1.0;
+uniform float uv_breath_amp : hint_range(0.0, 0.5) = 0.1;
+uniform float uv_breath_speed : hint_range(0.1, 2.0) = 0.5;
+uniform float uv_offset_x : hint_range(-5.0, 5.0) = 0.0;
+uniform float uv_offset_y : hint_range(-5.0, 5.0) = 0.0;
+uniform float uv_scale_x : hint_range(0.1, 100.0) = 1.0;
+uniform float uv_scale_y : hint_range(0.1, 100.0) = 1.0;
 
-uniform float max_distance : hint_range(50.0, 400.0) = 180.0;
-uniform float detail_scale : hint_range(0.2, 1.5) = 0.7;
-uniform float quant_levels : hint_range(2.0, 16.0) = 6.0; // rétro quantification
-uniform float pixel_steps : hint_range(8.0, 64.0) = 16.0; // niveau de pixelisation directionnelle
-uniform bool low_quality = false;
-uniform bool enable_edge_highlight = true;
-uniform bool enable_horizon = true;
-uniform bool enable_far_grid = true;
+// === Couches de ville ===
+uniform float layer_speed_0 : hint_range(0.0, 4.0) = 1.0;
+uniform float layer_speed_1 : hint_range(0.0, 4.0) = 0.8;
+uniform float layer_speed_2 : hint_range(0.0, 4.0) = 0.6;
+uniform float layer_depth_0 : hint_range(0.0, 1.0) = 1.0;
+uniform float layer_depth_1 : hint_range(0.0, 1.0) = 0.6;
+uniform float layer_depth_2 : hint_range(0.0, 1.0) = 0.4;
+uniform float layer_offset_0 = 0.0;
+uniform float layer_offset_1 = 1.7;
+uniform float layer_offset_2 = 3.4;
 
-// ==== UTILITAIRES ====
-float hash(vec2 p) {
-    p = fract(p * vec2(123.34, 456.21));
-    p += dot(p, p + 78.233);
-    return fract(p.x * p.y);
+// === Fenêtres ===
+uniform float window_density : hint_range(0.0, 1.0) = 0.5;
+uniform float window_width : hint_range(0.01, 0.5) = 0.1;
+uniform float window_height : hint_range(0.01, 0.5) = 0.2;
+uniform float window_spacing : hint_range(5.0, 30.0) = 10.0;
+uniform float window_blink_threshold : hint_range(0.0, 1.0) = 0.6;
+uniform float window_brightness_variance : hint_range(0.0, 1.0) = 0.2;
+uniform float window_noise_scale : hint_range(0.1, 100.0) = 1.0;
+uniform vec3 window_color : source_color = vec3(1.0, 0.3, 0.9);
+uniform float window_corner_softness : hint_range(0.0, 0.5) = 0.1;
+
+// === Petites étoiles ===
+uniform float star_density : hint_range(0.0, 1.0) = 0.15;
+uniform float star_size : hint_range(0.5, 5.0) = 2.0;
+uniform float star_flicker_speed : hint_range(0.1, 10.0) = 3.0;
+
+// === Apparence générale ===
+uniform vec4 base_sky : source_color = vec4(0.02, 0.02, 0.08, 1.0);
+uniform vec4 city_color : source_color = vec4(0.15, 0.6, 1.0, 1.0);
+uniform float glow_intensity : hint_range(0.0, 1.0) = 0.3;
+uniform float scanline_strength : hint_range(0.0, 0.2) = 0.08;
+uniform float palette_cycle_speed : hint_range(0.0, 2.0) = 1.2;
+
+// === Helpers noise / hash ===
+float hash2(vec2 p) {
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+}
+float noise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    float a = hash2(i);
+    float b = hash2(i + vec2(1.0, 0.0));
+    float c = hash2(i + vec2(0.0, 1.0));
+    float d = hash2(i + vec2(1.0, 1.0));
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
 }
 
-float box_sdf(vec3 p, vec3 b) {
-    vec3 d = abs(p) - b;
-    return length(max(d, 0.0)) + min(max(d.x, max(d.y, d.z)), 0.0);
+// === Skyline procédurale ===
+float skyline(float x, float layer_offset) {
+    float cell = floor(x * 30.0 + layer_offset);
+    float rnd = fract(sin(cell * 1.3 + layer_offset * 7.1) * 43758.5453);
+    float height = mix(0.1, 0.6, smoothstep(0.0, 1.0, rnd));
+    float local = fract(x * 30.0 + layer_offset);
+    float width = mix(0.3, 0.9, smoothstep(0.0, 1.0, fract(sin(cell + 3.2) * 43758.5453)));
+    float inside = step(local, width);
+    return inside * height;
 }
 
-float building_height(vec2 cell) {
-    float h = hash(cell);
-    h = floor(h * 5.0 + 1.0); // 1..5
-    h += 0.1 * sin(time + hash(cell) * 6.2831);
-    return h;
+// === Fenêtre adoucie ===
+float soft_box(vec2 uv, vec2 size, float softness) {
+    vec2 half = size * 0.5;
+    vec2 d = abs(uv) - half;
+    vec2 smoothe = max(d, vec2(0.0));
+    float outside = length(smoothe);
+    float inside = min(max(d.x, d.y), 0.0);
+    float dist = outside + inside;
+    return 1.0 - smoothstep(0.0, softness, dist);
 }
 
-float city_sdf(vec3 pos) {
-    vec2 cell = floor(pos.xz);
-    float minDist = 1e5;
-    for (int dx = -1; dx <= 1; dx++) {
-        for (int dz = -1; dz <= 1; dz++) {
-            vec2 c = cell + vec2(float(dx), float(dz));
-            float h = building_height(c);
-            vec3 center = vec3(c.x + 0.5, h * 0.5, c.y + 0.5);
-            vec3 local = pos - center;
-            vec3 half = vec3(0.4, h * 0.5, 0.4);
-            float d = box_sdf(local, half);
-            minDist = min(minDist, d);
-        }
-    }
-    return minDist;
-}
+void fragment() {
+    float t = TIME;
 
-vec3 building_color(vec2 cell) {
-    float v = hash(cell);
-    if (v < 0.33) return vec3(0.8, 0.6, 0.4);
-    else if (v < 0.66) return vec3(0.4, 0.7, 0.8);
-    else return vec3(0.6, 0.9, 0.5);
-}
+    // UV : scale + breathing + offset + déplacement global
+    float breath_x = 1.0 + uv_breath_amp * sin(t * uv_breath_speed + 1.1);
+    float breath_y = 1.0 + uv_breath_amp * cos(t * uv_breath_speed + 2.3);
+    vec2 uv = UV;
+    uv = uv * vec2(uv_scale_x * breath_x, uv_scale_y * breath_y);
+    uv += vec2(uv_offset_x, uv_offset_y);
+    uv += vec2(t * uv_speed * 0.1, 0.0);
+    uv = fract(uv);
 
-vec3 compute_horizon(vec3 ray_dir, vec3 sc, vec3 hc) {
-    float down = clamp((-ray_dir.y - 0.1) / 0.9, 0.0, 1.0);
-    float t = pow(down, 1.4);
-    return mix(sc, hc, t);
-}
+    // fond
+    vec3 color = base_sky.rgb;
 
-vec3 far_grid(vec3 p, float total_dist) {
-    if (!enable_far_grid) return vec3(0.0);
-    float fade = smoothstep(100.0, 150.0, total_dist);
-    vec2 gv = fract(p.xz * 0.1);
-    float line = step(0.03, min(gv.x, gv.y));
-    vec3 gcol = mix(vec3(0.02), vec3(0.1), line);
-    return gcol * fade;
-}
+    // ville (3 couches)
+    float city_accum = 0.0;
+    float y0 = skyline(uv.x + t * layer_speed_0 + layer_offset_0, layer_offset_0);
+    city_accum += smoothstep(0.0, 1.0, y0) * layer_depth_0;
+    float y1 = skyline(uv.x + t * layer_speed_1 + layer_offset_1, layer_offset_1);
+    city_accum += smoothstep(0.0, 1.0, y1) * layer_depth_1;
+    float y2 = skyline(uv.x + t * layer_speed_2 + layer_offset_2, layer_offset_2);
+    city_accum += smoothstep(0.0, 1.0, y2) * layer_depth_2;
+    vec3 city = city_color.rgb * city_accum;
 
-float edge_factor(vec3 p) {
-    float eps = 0.04;
-    float gx = city_sdf(p + vec3(eps, 0.0, 0.0)) - city_sdf(p - vec3(eps, 0.0, 0.0));
-    float gz = city_sdf(p + vec3(0.0, 0.0, eps)) - city_sdf(p - vec3(0.0, 0.0, eps));
-    return length(vec2(gx, gz));
-}
-
-void sky() {
-    vec3 sc = sky_color.rgb;
-    vec3 hc = horizon_color.rgb;
-
-    // Pixelisation directionnelle : quantifier EYEDIR en sphère discrète
-    vec3 raw_dir = normalize(EYEDIR);
-    vec3 ray_dir = raw_dir;
-    if (pixel_steps > 1.0) {
-        // simple quantification en longitude/latitude approximée via normalisation après floor
-        vec2 sph = vec2(atan(raw_dir.x, -raw_dir.y), acos(clamp(raw_dir.z, -1.0, 1.0)));
-        sph = floor(sph * pixel_steps) / pixel_steps;
-        float sin_phi = sin(sph.y);
-        ray_dir = normalize(vec3(sin_phi * sin(sph.x), -cos(sph.y), sin_phi * cos(sph.x)));
-    }
-
-    if (low_quality) {
-        // simplification directionnelle supplémentaire
-        ray_dir = normalize(mix(ray_dir, vec3(0.0, -1.0, 0.0), 0.25));
-    }
-
-    // early exit : si on regarde trop haut et horizon seul suffit
-    if (!low_quality && ray_dir.y > -0.15 && enable_horizon) {
-        COLOR = compute_horizon(ray_dir, sc, hc);
-    }
-
-    vec3 ray_origin = vec3(0.0, 10.0, 0.0);
-    if (ray_dir.y > -0.1) ray_dir.y = -abs(ray_dir.y);
-
-    float total_dist = 0.0;
-    vec3 col = sc;
-    bool hit = false;
-    vec3 hit_pos = vec3(0.0);
-
-    int max_iter = low_quality ? 70 : 120;
-    float threshold = low_quality ? 0.012 : 0.008;
-
-    for (int i = 0; i < max_iter; i++) {
-        vec3 p = ray_origin + ray_dir * total_dist;
-        float distField = city_sdf(p);
-
-        if (total_dist > 120.0) {
-            if (!hit) {
-                col = mix(sc, vec3(0.2, 0.25, 0.3), clamp((-ray_dir.y), 0.0, 1.0));
-            }
-            break;
-        }
-
-        float step = max(0.008, distField * detail_scale);
-        if (total_dist > 80.0) step *= 1.3;
-        total_dist += step;
-        if (total_dist > max_distance) break;
-
-        if (p.y < 0.0 && distField < threshold) {
-            col = building_color(floor(p.xz));
-            hit = true;
-            hit_pos = p;
-            break;
+    // fenêtres avec flicker noise + jitter
+    vec3 window_layer = vec3(0.0);
+    vec2 grid = vec2(floor(uv.x * window_spacing + t * layer_speed_0 * 0.5),
+                     floor(uv.y * 10.0));
+    // jitter corrigé : convertir le float en vec2
+    vec2 jitter = vec2(hash2(grid) - 0.5) * 0.2;
+    vec2 cell_uv = fract(vec2(uv.x * window_spacing + t * layer_speed_0 * 0.5,
+                              uv.y * 10.0) + jitter) - 0.5;
+    float cell_rand = hash2(grid);
+    if (cell_rand < window_density) {
+        vec2 noise_coord = grid * window_noise_scale + vec2(t * 0.15, t * 0.27);
+        float flicker_noise_raw = noise(noise_coord);
+        float flicker_noise = smoothstep(window_blink_threshold, 1.0, flicker_noise_raw);
+        if (flicker_noise_raw > window_blink_threshold) {
+            float brightness_variation = mix(1.0 - window_brightness_variance, 1.0 + window_brightness_variance,
+                                             hash2(grid * 1.37));
+            float window_mask = soft_box(cell_uv / vec2(window_width, window_height), vec2(1.0), window_corner_softness);
+            window_layer += window_color * flicker_noise * brightness_variation * window_mask * step(city_accum, 1.0);
         }
     }
 
-    if (!hit && enable_horizon) {
-        col = compute_horizon(ray_dir, sc, hc);
+    // glow
+    float glow = smoothstep(0.02, 0.0, abs(uv.y - 0.5)) * city_accum * glow_intensity;
+
+    // petites étoiles
+    vec3 star_layer = vec3(0.0);
+    vec2 star_uv = UV * 30.0;
+    float n = noise(star_uv + t * star_flicker_speed * 0.1);
+    if (n < star_density) {
+        vec2 local = fract(UV * star_size) - 0.5;
+        float dist = length(local);
+        float atten = smoothstep(0.5, 0.0, dist);
+        float flick = smoothstep(0.0, 1.0, noise(vec2(n * 10.0, t * 0.5)));
+        star_layer = vec3(1.0) * flick * atten * 0.5;
     }
 
-    if (!low_quality) {
-        col = mix(col, far_grid(ray_origin + ray_dir * total_dist, total_dist), 1.0);
-    }
+    // scanlines rétro
+    float scanline = sin(uv.y * 300.0) * scanline_strength * (1.0 - uv.y * 0.5);
 
-    if (enable_edge_highlight && hit && !low_quality) {
-        float ef = edge_factor(hit_pos);
-        float edge = smoothstep(0.1, 0.35, ef);
-        col += edge * 0.12;
-    }
+    // composition
+    color += city + window_layer + vec3(glow) + star_layer + vec3(scanline);
 
-    if (hit) {
-        float height_factor = clamp(hit_pos.y / 5.0, 0.0, 1.0);
-        col *= 0.7 + 0.3 * height_factor;
-    }
+    // posterisation
+    color = floor(color * 6.0) / 6.0;
 
-    float fog = clamp((total_dist - fog_start) / max(1.0, fog_end - fog_start), 0.0, 1.0);
-    col = mix(col, sc, fog * fog_strength);
+    // palette cycling subtil
+    color *= 0.95 + 0.05 * sin(t * palette_cycle_speed + uv.x * 3.0);
 
-    // quantification rétro
-    col = floor(col * quant_levels) / quant_levels;
-
-    COLOR = col;
+    ALBEDO = color;
+    EMISSION = color;
 }
