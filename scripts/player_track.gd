@@ -7,7 +7,6 @@ var road: Road
 @export var max_health: int = 3
 var health: int
 
-
 @export var starting_speed: float = 10
 var moving = false
 var current_speed: float:

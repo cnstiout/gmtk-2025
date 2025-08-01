@@ -49,20 +49,16 @@ road = NodePath("Road")
 unique_name_in_owner = true
 
 [node name="Road" parent="." instance=ExtResource("1_ksju7")]
-item_vertical_road_offset = null
-radar_offset = null
-min_nb_traps = null
-min_nb_boost = null
-no_item_placement_radar = null
-item_placement_interval = null
-item_placement_offset = null
 
 [node name="RoadCSGPolygon3D" parent="Road" index="0"]
 material_override = SubResource("ShaderMaterial_6761a")
 material = null
 
-[node name="RadarPlacement" parent="Road" index="4"]
-transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978452, 0.206467, 1.47339e-07, 0.206467, -0.978452, 2.87331e-05, 0.713362, 24.2775)
+[node name="ItemSpawnerPath" parent="Road" index="1"]
+transform = Transform3D(-1, 9.51796e-09, -8.69031e-08, 0, 0.994056, 0.108873, 8.74228e-08, 0.108873, -0.994056, 2.86102e-05, 1.06493, 22.0627)
+
+[node name="RadarPlacement" parent="Road" index="5"]
+transform = Transform3D(-0.999999, 9.51793e-09, -8.69028e-08, 0, 0.994052, 0.108872, 8.74227e-08, 0.108872, -0.994052, 2.86102e-05, 1.06493, 22.0627)
 
 [node name="HUD" parent="." instance=ExtResource("3_nsrm0")]
 unique_name_in_owner = true
@@ -71,7 +67,7 @@ unique_name_in_owner = true
 environment = ExtResource("6_sk5k4")
 
 [node name="City_3000" parent="." instance=ExtResource("7_oc4kc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -261.597, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -52.9127, 0)
 
 [editable path="Road"]
 [editable path="HUD"]

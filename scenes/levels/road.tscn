@@ -7,10 +7,10 @@
 [sub_resource type="Curve3D" id="Curve3D_tefeu"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 1.36988, -12.5076, 0, -1.36988, 12.5076, 2.86102e-05, 1.06493, 22.0627, 0, 14.6326, 1.01188, 0, -14.6326, -1.01188, 4.00543e-05, -25.3784, 39.1072, 0, 1.6514, 12.479, 0, -1.6514, -12.479, 4.00543e-05, -45.483, 9.54378, 0, -6.1012, 10.4242, 0, 6.1012, -10.4242, 4.00543e-05, -41.9618, -34.3594, 0, -7.5618, -1.65903, 0, 7.5618, 1.65903, 4.00543e-05, -13.6395, -42.8561, 0, -5.024, -9.87866, 0, 5.024, 9.87866, 4.00543e-05, -0.074597, -33.6141),
-"tilts": PackedFloat32Array(0, 0, 1.48949, 0, 0, 0)
+"points": PackedVector3Array(0, 1.36988, -12.5076, 0, -1.36988, 12.5076, 2.86102e-05, 1.06493, 22.0627, -27.3057, 5.8147, -7.4285, 27.3057, -5.8147, 7.4285, 51.4042, -47.2544, 147.233, -7.03596, -6.86657, 40.6373, 7.03596, 6.86657, -40.6373, 120.503, -46.4662, 66.1414, 4.21136, 4.67228, 30.0771, -4.21136, -4.67228, -30.0771, 124.572, -14.9472, -44.6953, 23.8286, -5.87637, -3.16306, -23.8286, 5.87637, 3.16306, 44.0617, -14.8631, -72.1786, 7.86794, -1.01357, -12.5737, -7.86794, 1.01357, 12.5737, 9.56009, -19.0382, -54.8408, -1.25499, -4.20777, -8.63646, 1.25499, 4.20777, 8.63646, -0.628143, -0.2167, -27.0933),
+"tilts": PackedFloat32Array(0, 0, 0, 1.48949, 0, -0.865939, 0)
 }
-point_count = 6
+point_count = 7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hsjn"]
 transparency = 1
@@ -21,13 +21,6 @@ uv1_scale = Vector3(1, 64, 1)
 curve = SubResource("Curve3D_tefeu")
 script = ExtResource("1_1hsjn")
 nb_lane = 5
-item_vertical_road_offset = null
-radar_offset = null
-min_nb_traps = null
-min_nb_boost = null
-no_item_placement_radar = null
-item_placement_interval = null
-item_placement_offset = null
 
 [node name="RoadCSGPolygon3D" type="CSGPolygon3D" parent="."]
 polygon = PackedVector2Array(-2.5, 0, 2.5, 0, 2.5, -0.1, -2.5, -0.1)
@@ -58,6 +51,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="RadarPlacement" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.999999, 9.51794e-09, -8.6903e-08, 0, 0.994054, 0.108873, 8.74227e-08, 0.108873, -0.994054, 2.86102e-05, 1.06493, 22.0627)
+transform = Transform3D(-0.999999, 9.51793e-09, -8.69028e-08, 0, 0.994052, 0.108872, 8.74227e-08, 0.108872, -0.994052, 2.86102e-05, 1.06493, 22.0627)
 
 [node name="SpeedRadar" parent="RadarPlacement" instance=ExtResource("5_rvhr8")]
