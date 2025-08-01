@@ -24,6 +24,8 @@ func _ready() -> void:
 	player_track.road = road
 	road.add_child(player_track)
 	
+	hud.reset(player_track.get_converted_speed())
+	
 	countdown_timer.timeout.connect(_on_countdown_timer_timeout)
 
 # Start the countdown timer

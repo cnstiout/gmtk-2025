@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var hurt_audio_player: AudioStreamPlayer = $HurtAudioPlayer
 @onready var explosion_sfx: AudioStreamPlayer = $ExplosionSFX
 @onready var bank_sfx: AudioStreamPlayer = $BankSFX
+@onready var trap_sfx: AudioStreamPlayer = $TrapSFX
 
 @onready var boost_audio_player_3d: AudioStreamPlayer3D = %BoostAudioPlayer3D
 @onready var boost_audio_player: AudioStreamPlayer = $BoostAudioPlayer
@@ -30,6 +31,7 @@ var in_movement: bool = false
 var can_move = true
 
 func _ready() -> void:
+	Events.trap_triggered.connect(trap_fx)
 	Events.boost_picked_up.connect(_boost_effect)
 	
 	if road:
@@ -92,3 +94,6 @@ func hurt_fx() -> void:
 
 func die_fx() -> void:
 	explosion_sfx.play()
+
+func trap_fx(_trap_xform: Transform3D) -> void:
+	trap_sfx.play()

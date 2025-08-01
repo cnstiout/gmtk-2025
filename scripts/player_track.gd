@@ -8,13 +8,13 @@ var road: Road
 var health: int
 
 
-@export var starting_speed: float = 0.05
+@export var starting_speed: float = 10
 var moving = false
 var current_speed: float:
 	set(value):
 		current_speed =	value
 
-var boost_amount: float = 0.01
+var boost_amount: float = 2
 
 func _ready() -> void:
 	current_speed = starting_speed
@@ -32,7 +32,8 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if moving:
-		progress_ratio += current_speed * delta
+		progress += current_speed * delta
+		#progress_ratio += current_speed * delta
 
 # Make the player track start moving
 func start() -> void:
@@ -76,7 +77,7 @@ func die() -> void:
 	Events.player_died.emit()
 
 func convert_speed(speed) -> int:
-	return floor(speed * 1000)
+	return floor(speed * 10)
 
 func get_converted_speed() -> int:
 	return convert_speed(current_speed)
