@@ -49,6 +49,13 @@ road = NodePath("Road")
 unique_name_in_owner = true
 
 [node name="Road" parent="." instance=ExtResource("1_ksju7")]
+item_vertical_road_offset = null
+radar_offset = null
+min_nb_traps = null
+min_nb_boost = null
+no_item_placement_radar = null
+item_placement_interval = null
+item_placement_offset = null
 
 [node name="RoadCSGPolygon3D" parent="Road" index="0"]
 material_override = SubResource("ShaderMaterial_6761a")

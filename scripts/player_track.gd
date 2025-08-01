@@ -14,7 +14,7 @@ var current_speed: float:
 	set(value):
 		current_speed =	value
 
-var boost_amount: float = 2
+var boost_amount: float = 1
 
 func _ready() -> void:
 	current_speed = starting_speed

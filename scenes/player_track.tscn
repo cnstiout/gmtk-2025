@@ -12,7 +12,7 @@ script = ExtResource("1_t2bo5")
 unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1.00005, 0, 0, 0, 1.00003, 0, 0, 0, 1.00002, -0.0427483, 0.522258, 0.843494)
+transform = Transform3D(1.00005, 0, 0, 0, 0.99333, 0.115564, 0, -0.115565, 0.99332, -0.0427483, 0.957433, 1.25243)
 fov = 100.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

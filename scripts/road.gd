@@ -10,6 +10,8 @@ extends Path3D
 @onready var boosts: Node = %Boosts
 @onready var traps: Node = %Traps
 @onready var obstacles: Node = %Obstacles
+@onready var radar_placement: PathFollow3D = $RadarPlacement
+@onready var item_spawner_path: PathFollow3D = %ItemSpawnerPath
 
 @export_range(3, 13, 2) var nb_lane: int = 3:
 	set(value):
@@ -18,24 +20,33 @@ extends Path3D
 
 @export var lane_width: float = 1
 @export var road_thickness: float = 0.1
+@export var item_vertical_road_offset: float = 0.2
 @export var boosts_road_offset: float = 0.2
-@export var item_road_offset: float = 0.2
+var road_length: float
+
+@export var radar_offset: float = 3.0
+
+@export var min_nb_traps: int = 5
+@export var min_nb_boost: int = 5
+@export var no_item_placement_radar: float = 5.0
+@export var item_placement_interval: float = 15.0
+@export var item_placement_offset: float = 3.0
+var nb_spawn_location: int
 
 var obst_spwn_delay: float = 1.0
-
-@export var nb_traps: int = 3
-@export var nb_boost: int = 3:
-	set(value):
-		nb_boost = value
-		#clear_boosts()
-		#spawn_random_boosts(nb_boost)
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+		
 	Events.boost_picked_up.connect(_on_boost_picked_up)
 	Events.trap_triggered.connect(_on_trap_triggered)
-	
+
+	road_length = curve.get_baked_length()
+	nb_spawn_location = floor((road_length - (radar_offset * 2)) / item_placement_interval)
+
+	radar_placement.progress = radar_offset
+
 	setup_items()
 
 func reset() -> void:
@@ -54,25 +65,37 @@ func generate_track() -> void:
 		track_polygon.append(Vector2((lane_width * nb_lane) / 2, 0.0))
 		track_polygon.append(Vector2((lane_width * nb_lane) / 2, -road_thickness))
 		track_polygon.append(Vector2(-(lane_width * nb_lane) / 2, -road_thickness))
-		print(track_polygon)
 		road_polygon.polygon = track_polygon
 
 func setup_items() -> void:
 	clear_all_items()
-	for i in nb_boost:
-		spawn_item(Constants.ItemType.BOOST)
 	
-	for i in nb_traps:
-		spawn_item(Constants.ItemType.TRAP)
+	item_spawner_path.progress = 0 + radar_offset
+	
+	var item_list: Array[Constants.ItemType] = _get_item_list_array()
+	for i in item_list:
+		if i != Constants.ItemType.EMPTY:
+			spawn_item(i)
+	
+	#for i in min_nb_traps:
+		#spawn_item(Constants.ItemType.BOOST)
+	#
+	#for i in min_nb_traps:
+		#spawn_item(Constants.ItemType.TRAP)
 
 func spawn_item(type: Constants.ItemType) -> void:
 	if !is_node_ready():
 		await ready
 	
+	
 	var rand_lane: int = randi_range(0, nb_lane - 1) - (nb_lane / floor(2))
-	var track_position: float = randf() * curve.get_baked_length()
-	var new_transform = curve.sample_baked_with_rotation(track_position, false, true)
-	new_transform = new_transform.translated(new_transform.basis.y * item_road_offset)
+	#var track_position: float = randf() * curve.get_baked_length()
+	
+	item_spawner_path.progress += item_placement_interval
+	item_spawner_path.progress += randf_range(-item_placement_offset, item_placement_offset)
+	var new_transform = item_spawner_path.transform
+	#var new_transform = curve.sample_baked_with_rotation(track_position, false, true)
+	new_transform = new_transform.translated(new_transform.basis.y * item_vertical_road_offset)
 	new_transform = new_transform.translated(new_transform.basis.x * (rand_lane * lane_width))
 	
 	var new_item: Node3D
@@ -85,7 +108,6 @@ func spawn_item(type: Constants.ItemType) -> void:
 			traps.add_child(new_item)
 	
 	if !new_item.is_inside_tree():
-		print("weird")
 		await new_item.tree_entered
 	new_item.global_transform = global_transform * new_transform
 
@@ -126,6 +148,21 @@ func spawn_random_boosts(p_nb_boost: int) -> void:
 		#await child_entered_tree
 		boosts.add_child(new_boost)
 		new_boost.owner = get_tree().edited_scene_root
+
+func _get_item_list_array() -> Array[Constants.ItemType]:
+	var item_array: Array[Constants.ItemType]
+	
+	for i in min_nb_boost:
+		item_array.append(Constants.ItemType.BOOST)
+	for i in min_nb_traps:
+		item_array.append(Constants.ItemType.TRAP)
+	for i in ((nb_spawn_location - min_nb_boost) - min_nb_traps):
+		item_array.append(randi_range(0, Constants.ItemType.size() - 1))
+	
+	randomize()
+	item_array.shuffle()
+	
+	return item_array
 
 func clear_boosts() -> void:
 	if !is_node_ready():

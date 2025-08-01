@@ -21,6 +21,13 @@ uv1_scale = Vector3(1, 64, 1)
 curve = SubResource("Curve3D_tefeu")
 script = ExtResource("1_1hsjn")
 nb_lane = 5
+item_vertical_road_offset = null
+radar_offset = null
+min_nb_traps = null
+min_nb_boost = null
+no_item_placement_radar = null
+item_placement_interval = null
+item_placement_offset = null
 
 [node name="RoadCSGPolygon3D" type="CSGPolygon3D" parent="."]
 polygon = PackedVector2Array(-2.5, 0, 2.5, 0, 2.5, -0.1, -2.5, -0.1)
@@ -37,6 +44,10 @@ path_u_distance = 1.0
 path_joined = true
 material = SubResource("StandardMaterial3D_1hsjn")
 
+[node name="ItemSpawnerPath" type="PathFollow3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 9.51796e-09, -8.69031e-08, 0, 0.994056, 0.108873, 8.74228e-08, 0.108873, -0.994056, 2.86102e-05, 1.06493, 22.0627)
+
 [node name="Boosts" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -47,7 +58,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="RadarPlacement" type="PathFollow3D" parent="."]
-transform = Transform3D(-0.999999, 1.34633e-08, -1.47742e-07, -1.73307e-08, 0.978452, 0.206467, 1.47339e-07, 0.206467, -0.978452, 2.87331e-05, 0.713362, 24.2775)
-progress = 2.24334
+transform = Transform3D(-0.999999, 9.51794e-09, -8.6903e-08, 0, 0.994054, 0.108873, 8.74227e-08, 0.108873, -0.994054, 2.86102e-05, 1.06493, 22.0627)
 
 [node name="SpeedRadar" parent="RadarPlacement" instance=ExtResource("5_rvhr8")]
