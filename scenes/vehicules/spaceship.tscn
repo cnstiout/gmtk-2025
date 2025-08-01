@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://crqd6a017lqlk"]
 
-[ext_resource type="Shader" uid="uid://claxj8b2r4rwo" path="res://shaders/trail.gdshader" id="1_xs8u7"]
-[ext_resource type="Texture2D" uid="uid://cibun7h0xxxbt" path="res://assets/textures/star.png" id="2_me4wu"]
-[ext_resource type="Texture2D" uid="uid://dgfsottwmq2ux" path="res://assets/textures/part01.png" id="2_v0rat"]
-[ext_resource type="Texture2D" uid="uid://bbd058256djvs" path="res://assets/textures/part02.png" id="3_me4wu"]
-[ext_resource type="Texture2D" uid="uid://bb077a6o6bcu6" path="res://assets/textures/part03.png" id="5_343tk"]
+[ext_resource type="Shader" uid="uid://claxj8b2r4rwo" path="res://shaders/trail.gdshader" id="1_3mkum"]
+[ext_resource type="Texture2D" uid="uid://cibun7h0xxxbt" path="res://assets/textures/star.png" id="2_twmls"]
+[ext_resource type="Texture2D" uid="uid://dgfsottwmq2ux" path="res://assets/textures/part01.png" id="3_cpct7"]
+[ext_resource type="Texture2D" uid="uid://bbd058256djvs" path="res://assets/textures/part02.png" id="4_3ygxy"]
+[ext_resource type="Texture2D" uid="uid://bb077a6o6bcu6" path="res://assets/textures/part03.png" id="5_gmdjw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6qj0"]
 albedo_color = Color(0.352697, 0.713726, 0.996078, 1)
@@ -23,7 +23,7 @@ noise = SubResource("FastNoiseLite_v0rat")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_343tk"]
 render_priority = 0
-shader = ExtResource("1_xs8u7")
+shader = ExtResource("1_3mkum")
 shader_parameter/main_color = Color(1, 1, 1, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_me4wu")
 shader_parameter/emission = Color(0, 1, 1, 1)
@@ -68,7 +68,7 @@ skeleton = NodePath("../Cabine2")
 [node name="Star" type="Sprite3D" parent="reacteurG/Flamme"]
 transform = Transform3D(0.085, 0, 0, 1.73472e-18, 0.085, 0, 0, 0, 0.085, 0, 0.376859, -1.64728e-08)
 billboard = 1
-texture = ExtResource("2_me4wu")
+texture = ExtResource("2_twmls")
 
 [node name="reacteurD" type="CSGCylinder3D" parent="."]
 transform = Transform3D(0.999979, -2.85325e-10, -0.00652748, -0.00652748, -4.37105e-08, -0.999979, 0, 1, -4.37114e-08, -0.103, 0, -0.253)
@@ -91,7 +91,7 @@ skeleton = NodePath("../Cabine2")
 [node name="Star2" type="Sprite3D" parent="reacteurD/Flamme"]
 transform = Transform3D(0.085, 0, 0, 5.20417e-18, 0.085, 0, -1.51654e-25, 0, 0.085, -0.00226631, 0.376859, 1.47771e-05)
 billboard = 1
-texture = ExtResource("2_me4wu")
+texture = ExtResource("2_twmls")
 
 [node name="AileGauche" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
@@ -101,21 +101,21 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1668
 shaded = true
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("2_v0rat")
+texture = ExtResource("3_cpct7")
 
 [node name="Sprite3D3" type="Sprite3D" parent="AileGauche"]
 transform = Transform3D(0.965926, -1.13133e-08, 0.258819, -0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 0.166821, -0.0570139, 0)
 shaded = true
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("2_v0rat")
+texture = ExtResource("3_cpct7")
 
 [node name="Sprite3D5" type="Sprite3D" parent="AileGauche"]
 transform = Transform3D(0.860689, 2.22548e-08, -0.509132, 0.509132, -3.76219e-08, 0.860689, 0, -1, -4.37114e-08, 0.152226, 0.0839489, -0.258498)
 shaded = true
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("3_me4wu")
+texture = ExtResource("4_3ygxy")
 
 [node name="AileDroite" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
@@ -125,24 +125,24 @@ transform = Transform3D(-1, 3.82137e-15, -8.74228e-08, 8.74228e-08, 4.37114e-08,
 shaded = true
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("2_v0rat")
+texture = ExtResource("3_cpct7")
 
 [node name="Sprite3D6" type="Sprite3D" parent="AileDroite"]
 transform = Transform3D(-0.871265, 2.14541e-08, -0.490813, 0.490813, 3.80842e-08, -0.871265, 0, -1, -4.37114e-08, -0.14448, 0.0839489, -0.258498)
 shaded = true
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("3_me4wu")
+texture = ExtResource("4_3ygxy")
 
 [node name="Sprite3D4" type="Sprite3D" parent="AileDroite"]
 transform = Transform3D(-0.965926, -1.13133e-08, 0.258819, -0.258819, 4.2222e-08, -0.965926, 0, -1, -4.37114e-08, -0.161185, -0.0570139, 0)
 shaded = true
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("2_v0rat")
+texture = ExtResource("3_cpct7")
 
 [node name="Cockpit" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.000942856, -0.0172922)
 shaded = true
 texture_filter = 0
-texture = ExtResource("5_343tk")
+texture = ExtResource("5_gmdjw")

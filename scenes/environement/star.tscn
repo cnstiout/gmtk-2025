@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://b1e5q4ouit2sg"]
 
-[ext_resource type="Shader" uid="uid://lco57p0g55qy" path="res://shaders/iris.gdshader" id="1_j6vao"]
-[ext_resource type="Texture2D" uid="uid://cibun7h0xxxbt" path="res://assets/textures/star.png" id="2_ef0hr"]
-[ext_resource type="Shader" uid="uid://ddhf86vvqsdfi" path="res://shaders/nebula.gdshader" id="3_8d8bx"]
+[ext_resource type="Shader" uid="uid://lco57p0g55qy" path="res://shaders/iris.gdshader" id="1_n48as"]
+[ext_resource type="Texture2D" uid="uid://cibun7h0xxxbt" path="res://assets/textures/star.png" id="2_mnrt2"]
+[ext_resource type="Shader" uid="uid://ddhf86vvqsdfi" path="res://shaders/nebula.gdshader" id="3_4sugl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8d8bx"]
 render_priority = 0
-shader = ExtResource("1_j6vao")
+shader = ExtResource("1_n48as")
 shader_parameter/level = 1.0
 shader_parameter/emission_intensity = 1.0
 shader_parameter/fresnel_color = Color(0.786952, 0.775554, 0.78426, 1)
@@ -24,7 +24,7 @@ material = SubResource("ShaderMaterial_8d8bx")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxbdi"]
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("2_ef0hr")
+albedo_texture = ExtResource("2_mnrt2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_pexwv"]
 material = SubResource("StandardMaterial3D_sxbdi")
@@ -37,7 +37,7 @@ buffer = PackedFloat32Array(0.397904, -0.572532, -0.718248, -0.302683, 0.726662,
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lrp4"]
 render_priority = 0
-shader = ExtResource("3_8d8bx")
+shader = ExtResource("3_4sugl")
 shader_parameter/radius = 256.0
 shader_parameter/rimRetraction = 4.0
 shader_parameter/rimBrightness = 1.0

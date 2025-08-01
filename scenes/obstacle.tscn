@@ -1,9 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://xqn5l3daobv1"]
+[gd_scene load_steps=6 format=3 uid="uid://xqn5l3daobv1"]
 
-[ext_resource type="Script" uid="uid://bhm8nd1xk22fo" path="res://scripts/obstacle.gd" id="1_7ukg5"]
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_7ukg5"]
+[ext_resource type="Shader" uid="uid://b2rvunmq3grso" path="res://shaders/environement/shdr_Ruban.gdshader" id="2_drdry"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xr6u"]
 size = Vector3(0.5, 0.6, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjuko"]
+render_priority = 0
+shader = ExtResource("2_drdry")
+shader_parameter/base_color = Vector3(1.55, 0.12, 0.075)
+shader_parameter/ribbon_width = 1.0
+shader_parameter/scroll_speed = 5.0
+shader_parameter/edge_softness = 0.55
+shader_parameter/fresnel_power = 3.7
+shader_parameter/emission_strength = 10.0
+shader_parameter/pulse_speed = 5.0
+shader_parameter/scanline_intensity = 0.29
+shader_parameter/scanline_density = 31.0
+shader_parameter/noise_amount = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sh7k1"]
+size = Vector2(3.315, 2.875)
 
 [node name="Obstacle" type="Area3D"]
 collision_layer = 0
@@ -16,4 +34,10 @@ shape = SubResource("BoxShape3D_3xr6u")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+visible = false
 size = Vector3(0.5, 0.6, 0.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.70487e-08, -4.37114e-08, 0.23059, 0.390029, -8.74228e-08, -1.00794e-08, 3.40974e-08, 1, 1.00794e-08, 0, 0, 0.172655)
+material_override = SubResource("ShaderMaterial_cjuko")
+mesh = SubResource("PlaneMesh_sh7k1")

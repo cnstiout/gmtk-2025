@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4uug6pxxto8t"]
 
-[ext_resource type="Script" uid="uid://b6d0vkxotn054" path="res://scripts/speed_radar.gd" id="1_0vd1s"]
+[ext_resource type="Script" path="res://scripts/speed_radar.gd" id="1_0vd1s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_feyha"]
 size = Vector3(6, 2, 1)

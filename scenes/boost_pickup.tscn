@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://h2pheoljb6ha"]
 
-[ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="1_lbsu8"]
+[ext_resource type="Script" path="res://scripts/boost_pickup.gd" id="1_lbsu8"]
 [ext_resource type="Texture2D" uid="uid://cqww6c5yh1lmv" path="res://assets/sprites/coin_blank.png" id="2_b6nll"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lbsu8"]
