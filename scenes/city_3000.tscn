@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://doxdsiq13avgj"]
+[gd_scene load_steps=10 format=4 uid="uid://doxdsiq13avgj"]
 
 [ext_resource type="Shader" uid="uid://brbq0y1u03npo" path="res://shaders/city.gdshader" id="1_vprqf"]
 [ext_resource type="Material" uid="uid://cxnqwv117nx1o" path="res://shaders/batiment.tres" id="2_lki0r"]
 [ext_resource type="Shader" uid="uid://c7bsjip8cnmes" path="res://shaders/trail_vehicules.gdshader" id="3_vkgvn"]
+[ext_resource type="Texture2D" uid="uid://jy5xt4rqv2ed" path="res://assets/textures/hud_life.png" id="4_7qyfq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lki0r"]
 render_priority = 0
@@ -82,42 +83,59 @@ mesh = SubResource("PlaneMesh_vkgvn")
 material_override = ExtResource("2_lki0r")
 mesh = SubResource("ArrayMesh_vprqf")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Routes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2005, 190.303, 309.506)
-mesh = SubResource("PlaneMesh_60wqe")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 53.9387, 190.303, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Routes"]
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 567.311, 329.131, 233.317)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 30.7382, 0, -309.506)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 598.049, 329.131, -76.1894)
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 544.11, 138.828, -76.189)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -150.935, 891.246, 56.4977)
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 574.849, 138.828, -385.695)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 7.64274e-15, -8.74228e-08, 0, -1, -181.673, 891.246, -253.009)
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -174.135, 700.943, -253.008)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, 52.5221, 449.891, 361.909)
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 7.64274e-15, -8.74228e-08, 0, -1, -204.874, 700.943, -562.515)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 246.459, 438.056, 361.909)
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(-4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, 29.3216, 259.588, 52.403)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, 52.5221, 438.056, -570.156)
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 223.258, 247.753, 52.403)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 377.558, 449.891, -570.156)
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, 29.3216, 247.753, -879.662)
 mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Routes"]
+transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 354.358, 259.588, -879.662)
+mesh = SubResource("PlaneMesh_60wqe")
+skeleton = NodePath("../..")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(122.745, 0, 0, 0, 122.745, 0, 0, 0, 122.745, -24.9439, 79.5747, -26.0487)
+texture_filter = 0
+texture = ExtResource("4_7qyfq")
