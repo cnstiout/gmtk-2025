@@ -22,7 +22,7 @@ uniform float layer_offset_1 = 1.7;
 uniform float layer_offset_2 = 3.4;
 
 // === Fenêtres ===
-uniform float window_density : hint_range(0.0, 1.0) = 0.5;
+uniform float window_density : hint_range(0.0, 10.0) = 0.5;
 uniform float window_width : hint_range(0.01, 0.5) = 0.1;
 uniform float window_height : hint_range(0.01, 0.5) = 0.2;
 uniform float window_spacing : hint_range(5.0, 30.0) = 10.0;
@@ -33,7 +33,7 @@ uniform vec3 window_color : source_color = vec3(1.0, 0.3, 0.9);
 uniform float window_corner_softness : hint_range(0.0, 0.5) = 0.1;
 
 // === Petites étoiles ===
-uniform float star_density : hint_range(0.0, 1.0) = 0.15;
+uniform float star_density : hint_range(0.0, 10.0) = 0.15;
 uniform float star_size : hint_range(0.5, 5.0) = 2.0;
 uniform float star_flicker_speed : hint_range(0.1, 10.0) = 3.0;
 
