@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://1shqohj0xof7"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_6iamk"]
+[ext_resource type="Script" uid="uid://bbqvwxnu171bf" path="res://scripts/level.gd" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://c0lga80jrq31g" path="res://scenes/levels/road.tscn" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://c7gwio68h2rx4" path="res://scenes/ui/hud.tscn" id="3_nsrm0"]
-[ext_resource type="Shader" path="res://shaders/road_setup.gdshader" id="3_x42e6"]
+[ext_resource type="Shader" uid="uid://co18cljqr5i2d" path="res://shaders/road_setup.gdshader" id="3_x42e6"]
 [ext_resource type="Texture2D" uid="uid://cvrnjaxao5idw" path="res://assets/textures/smallgrille copy.png" id="4_oc4kc"]
 [ext_resource type="Environment" uid="uid://cvikk331gcb6t" path="res://assets/supersonique_environment.tres" id="6_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://doxdsiq13avgj" path="res://scenes/environement/city_3000.tscn" id="7_oc4kc"]

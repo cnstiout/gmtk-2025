@@ -74,4 +74,4 @@ func _on_countdown_timer_timeout() -> void:
 func _on_radar_triggered() -> void:
 	road.setup_items()
 	run_laps += 1
-	update_run_score(player_track.get_converted_speed())
+	update_run_score(player_track.get_converted_speed() + run_score)

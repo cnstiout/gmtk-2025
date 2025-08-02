@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://73n5mq0sbiuu"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://co6kct3edbg42" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Shader" uid="uid://claxj8b2r4rwo" path="res://shaders/trail.gdshader" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://cibun7h0xxxbt" path="res://assets/textures/star.png" id="4_smehm"]
 [ext_resource type="Texture2D" uid="uid://dgfsottwmq2ux" path="res://assets/textures/part01.png" id="5_ur7pv"]
