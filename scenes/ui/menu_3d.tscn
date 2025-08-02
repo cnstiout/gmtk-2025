@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwoa6btjd0aio"]
+
+[ext_resource type="PackedScene" uid="uid://doxdsiq13avgj" path="res://scenes/environement/city_3000.tscn" id="1_jtvhd"]
+[ext_resource type="Script" uid="uid://by2os3ywgfq4o" path="res://scripts/environement/camera_pivot.gd" id="2_tm3nm"]
+
+[node name="Menu3D" type="Node3D"]
+
+[node name="City_3000" parent="." instance=ExtResource("1_jtvhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -85.777, 0)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+script = ExtResource("2_tm3nm")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 120.743)

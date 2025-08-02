@@ -53,7 +53,7 @@ void fragment() {
         float lateral_noise = (noise1(uv.y * 4.5 + fi * 2.2 + time * 0.6) - 0.5) * noise_strength;
 
         // Centre droit : pas de wrapping sur X
-        float ribbon_center = 0.5 + base_offset + sin(uv.y * 3.14 + phase + time * 0.9) * 0.3 
+        float ribbon_center = 0.5 + base_offset + sin(uv.y * 3.14 + phase + time * 0.9) * 0.3
                               + lateral_noise + dir_offset * 0.12;
         ribbon_center = clamp(ribbon_center, 0.0, 1.0);
 
