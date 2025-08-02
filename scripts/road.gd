@@ -35,16 +35,17 @@ var nb_spawn_location: int
 
 var obst_spwn_delay: float = 1.0
 
+var spawned_items: Array[Node3D]
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 		
 	Events.boost_picked_up.connect(_on_boost_picked_up)
 	Events.trap_triggered.connect(_on_trap_triggered)
-
+	
 	road_length = curve.get_baked_length()
 	nb_spawn_location = floor((road_length - (radar_offset * 2)) / item_placement_interval)
-
 	radar_placement.progress = radar_offset
 
 	setup_items()
@@ -70,12 +71,11 @@ func generate_track() -> void:
 func setup_items() -> void:
 	clear_all_items()
 	
-	item_spawner_path.progress = 0 + radar_offset
+	item_spawner_path.progress = 0 + radar_offset + no_item_placement_radar
 	
 	var item_list: Array[Constants.ItemType] = _get_item_list_array()
 	for i in item_list:
-		if i != Constants.ItemType.EMPTY:
-			spawn_item(i)
+		spawn_item(i)
 	
 	#for i in min_nb_traps:
 		#spawn_item(Constants.ItemType.BOOST)
@@ -87,42 +87,54 @@ func spawn_item(type: Constants.ItemType) -> void:
 	if !is_node_ready():
 		await ready
 	
-	
-	var rand_lane: int = randi_range(0, nb_lane - 1) - (nb_lane / floor(2))
-	#var track_position: float = randf() * curve.get_baked_length()
-	
 	item_spawner_path.progress += item_placement_interval
-	item_spawner_path.progress += randf_range(-item_placement_offset, item_placement_offset)
-	var new_transform = item_spawner_path.transform
-	#var new_transform = curve.sample_baked_with_rotation(track_position, false, true)
-	new_transform = new_transform.translated(new_transform.basis.y * item_vertical_road_offset)
-	new_transform = new_transform.translated(new_transform.basis.x * (rand_lane * lane_width))
 	
-	var new_item: Node3D
-	match type:
-		Constants.ItemType.BOOST:
-			new_item = boost_pickup_scene.instantiate()
-			boosts.add_child(new_item)
-		Constants.ItemType.TRAP:
-			new_item = trap_item_scene.instantiate()
-			traps.add_child(new_item)
-	
-	if !new_item.is_inside_tree():
-		await new_item.tree_entered
-	new_item.global_transform = global_transform * new_transform
+	if type != Constants.ItemType.EMPTY:
+		
+		var rand_lane: int = randi_range(0, nb_lane - 1) - (nb_lane / floor(2))
+		#var track_position: float = randf() * curve.get_baked_length()
+		
+		
+		# Used to remove the offset used on the progress to add variation
+		var spawn_location: float = item_spawner_path.progress
+		item_spawner_path.progress += randf_range(-item_placement_offset, item_placement_offset)
+		var new_transform = item_spawner_path.transform
+		item_spawner_path.progress = spawn_location
+		#var new_transform = curve.sample_baked_with_rotation(track_position, false, true)
+		new_transform = new_transform.translated(new_transform.basis.y * item_vertical_road_offset)
+		new_transform = new_transform.translated(new_transform.basis.x * (rand_lane * lane_width))
+		
+		
+		var new_item: Node3D
+		match type:
+			Constants.ItemType.BOOST:
+				new_item = boost_pickup_scene.instantiate()
+				boosts.add_child(new_item)
+			Constants.ItemType.TRAP:
+				new_item = trap_item_scene.instantiate()
+				traps.add_child(new_item)
+		
+		if !new_item.is_inside_tree():
+			await new_item.tree_entered
+		new_item.global_transform = global_transform * new_transform
+		spawned_items.append(new_item)
 
 func clear_all_items() -> void:
 	if !is_node_ready():
 		await ready
-		
+	
+	# Remove all boosts
 	boosts = get_node("Boosts")
 	var boost_list: Array[Node] = boosts.get_children()
 	for i in boost_list:
+		spawned_items.erase(i)
 		i.queue_free()
 	
-		traps = get_node("Traps")
+	# Remove all traps
+	traps = get_node("Traps")
 	var trap_list: Array[Node] = traps.get_children()
 	for i in trap_list:
+		spawned_items.erase(i)
 		i.queue_free()
 
 func spawn_random_boosts(p_nb_boost: int) -> void:

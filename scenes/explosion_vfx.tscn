@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc14dho326ltp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqc8k"]
+albedo_color = Color(0.785371, 0.314466, 3.85046e-07, 1)
+emission_enabled = true
+emission = Color(0.805544, 0.407562, 0.0528128, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0yjw8"]
+material = SubResource("StandardMaterial3D_bqc8k")
+top_radius = 0.05
+bottom_radius = 0.0
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_rsxgi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.262673, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p3ff"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_qxe05"]
+material = SubResource("StandardMaterial3D_8p3ff")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Curve" id="Curve_7i6j4"]
+_data = [Vector2(0, 0.011236), 0.0, 0.0, 0, 0, Vector2(0.156682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_gbewu"]
+offsets = PackedFloat32Array(0, 0.497382, 1)
+colors = PackedColorArray(0.960784, 0.94902, 0, 1, 0.980392, 0.545098, 0.0705882, 1, 1, 0.137255, 0.054902, 1)
+
+[node name="ExplosionVFX" type="Node3D"]
+visible = false
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("CylinderMesh_0yjw8")
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 8.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_rsxgi")
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_qxe05")
+emission_shape = 1
+emission_sphere_radius = 0.05
+direction = Vector3(0, -1, 0)
+spread = 90.0
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_7i6j4")
+color = Color(1, 0.733333, 0, 1)
+color_ramp = SubResource("Gradient_gbewu")

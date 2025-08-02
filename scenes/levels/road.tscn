@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0lga80jrq31g"]
 
 [ext_resource type="Script" uid="uid://deycqjx2yjv1r" path="res://scripts/road.gd" id="1_1hsjn"]
-[ext_resource type="Texture2D" uid="uid://163hvjs8u3hr" path="res://assets/textures/smallgrille.png" id="2_1hsjn"]
+[ext_resource type="Shader" uid="uid://co18cljqr5i2d" path="res://shaders/road_setup.gdshader" id="2_x7po8"]
 [ext_resource type="PackedScene" uid="uid://c4uug6pxxto8t" path="res://scenes/speed_radar.tscn" id="5_rvhr8"]
 
 [sub_resource type="Curve3D" id="Curve3D_tefeu"]
@@ -12,10 +12,36 @@ _data = {
 }
 point_count = 7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hsjn"]
-transparency = 1
-albedo_texture = ExtResource("2_1hsjn")
-uv1_scale = Vector3(1, 64, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1hsjn"]
+render_priority = 0
+shader = ExtResource("2_x7po8")
+shader_parameter/line_count = 5
+shader_parameter/line_spacing = 0.024
+shader_parameter/line_thickness = 0.015
+shader_parameter/line_color_0 = Color(1, 1, 0, 1)
+shader_parameter/line_color_1 = Color(1, 1, 0, 1)
+shader_parameter/line_color_2 = Color(1, 1, 0, 1)
+shader_parameter/line_color_3 = Color(1, 1, 0, 1)
+shader_parameter/line_color_4 = Color(1, 1, 0, 1)
+shader_parameter/line_color_5 = Color(1, 1, 0, 1)
+shader_parameter/line_color_6 = Color(1, 1, 0, 1)
+shader_parameter/line_color_7 = Color(1, 1, 0, 1)
+shader_parameter/road_tint = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/base_alpha = 1.0
+shader_parameter/road_uv_scale = Vector2(1, 48)
+shader_parameter/mesh_scale = Vector2(1, 1)
+shader_parameter/noise_scale = 3.0
+shader_parameter/line_repeat = 10.0
+shader_parameter/dash_enabled = true
+shader_parameter/dash_length = 0.01
+shader_parameter/gap_length = 0.5
+shader_parameter/edge_fade = 0.5
+shader_parameter/emission_strength = 5.0
+shader_parameter/road_emission_factor = 0.0
+shader_parameter/blend_line_emission = true
+shader_parameter/line_offset_long = 0.0
+shader_parameter/line_offset_cross = 0.438
+shader_parameter/use_nearest_sampling = true
 
 [node name="Road" type="Path3D"]
 curve = SubResource("Curve3D_tefeu")
@@ -35,7 +61,7 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = true
-material = SubResource("StandardMaterial3D_1hsjn")
+material = SubResource("ShaderMaterial_1hsjn")
 
 [node name="ItemSpawnerPath" type="PathFollow3D" parent="."]
 unique_name_in_owner = true

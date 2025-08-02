@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://73n5mq0sbiuu"]
+[gd_scene load_steps=26 format=3 uid="uid://73n5mq0sbiuu"]
 
 [ext_resource type="Script" uid="uid://co6kct3edbg42" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Shader" uid="uid://claxj8b2r4rwo" path="res://shaders/trail.gdshader" id="3_fjrip"]
@@ -14,7 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://cqd7cdtdb15jl" path="res://assets/sfx/engine_explosion_v0.ogg" id="11_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://m66npnxyn2w0" path="res://assets/sfx/lane_swap_v3.ogg" id="12_jej6c"]
 [ext_resource type="AudioStream" uid="uid://1ynwre64ar5g" path="res://assets/sfx/trap_trigger_v0.ogg" id="13_jej6c"]
-[ext_resource type="AudioStream" uid="uid://coe0v684umnjb" path="res://assets/sfx/engine_boost_v8.ogg" id="15_oprun"]
+[ext_resource type="AudioStream" uid="uid://brtufkm1awdsv" path="res://assets/sfx/engine_boost_v9.ogg" id="16_a8ls1"]
+[ext_resource type="AudioStream" uid="uid://6hpkmlwr1kjr" path="res://assets/sfx/engine_boost_v10.ogg" id="16_qfm1y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
 size = Vector3(0.5, 0.2, 0.8)
@@ -194,7 +195,7 @@ volume_db = -12.0
 bus = &"SFX"
 
 [node name="BoostAudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_oprun")
+stream = ExtResource("16_a8ls1")
 volume_db = -18.0
 max_polyphony = 3
 bus = &"SFX"
@@ -222,5 +223,5 @@ max_polyphony = 3
 bus = &"SFX"
 
 [node name="SonicBoomSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_oprun")
-volume_db = -10.0
+stream = ExtResource("16_qfm1y")
+volume_db = -5.0
