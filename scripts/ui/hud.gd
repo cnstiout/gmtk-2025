@@ -5,9 +5,11 @@ extends CanvasLayer
 @onready var speed_label: Label = %SpeedLabel
 @onready var radar_noise: AudioStreamPlayer = $RadarNoise
 @onready var speed_lines: ColorRect = %SpeedLines
+@onready var life_animation: AnimationPlayer = $Health/MarginContainer2/HBoxContainer/TextureLife/LifeAnimation
 
 @onready var lives: BoxContainer = %Lives
 
+@export var nb_life_alert: int = 1
 var max_health: int 
 
 @export var score_anim_speed: float = 0.5
@@ -34,6 +36,7 @@ func reset(starting_speed: int) -> void:
 	change_speed(starting_speed)
 	set_health(max_health)
 	set_speed_lines(speed_lines_max)
+	life_animation.play("RESET")
 
 func change_speed(speed: int) -> void:
 	speed_label.text = str(speed)
@@ -71,10 +74,18 @@ func change_health(amount: int) -> void:
 			remove_life()
 
 func add_life() -> void:
-	for life: TextureRect in lives.get_children():
-		if life.visible == false:
-			life.visible = true
+	var lives_array: Array[Node] = lives.get_children()
+	var nb_lives = lives_array.size()
+	for i: int in nb_lives:
+		if lives_array[i].visible == false:
+			lives_array[i].visible = true
+			if i > nb_life_alert - 1:
+				life_animation.play("RESET")
 			return
+	#for life: TextureRect in lives.get_children():
+		#if life.visible == false:
+			#life.visible = true
+			#return
 
 func remove_life() -> void:
 	var lives_array: Array[Node] = lives.get_children()
@@ -82,6 +93,8 @@ func remove_life() -> void:
 	for i: int in nb_lives:
 		if lives_array[i].visible == false && i > 0:
 			lives_array[i - 1].visible = false
+			if i == nb_life_alert + 1:
+				life_animation.play("low_health")
 			return
 	lives_array[nb_lives - 1].visible = false
 
