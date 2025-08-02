@@ -7,7 +7,7 @@ extends Control
 
 @onready var resume_button: Button = %ResumeButton
 @onready var restart_button: Button = %RestartButton
-@onready var main_menu_button: Button = %MainMenuButton
+@onready var main_menu_button: TextureButton = %MainMenuButton
 
 signal request_resume
 

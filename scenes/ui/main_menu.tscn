@@ -54,6 +54,7 @@ theme_override_constants/margin_top = -20
 [node name="PlayButton" parent="VBoxContainer/MarginContainer" instance=ExtResource("5_x2yvf")]
 unique_name_in_owner = true
 layout_mode = 2
+is_first_focus = true
 
 [node name="PlayButton3" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true

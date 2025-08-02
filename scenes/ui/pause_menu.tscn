@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1ndn0i51fpky"]
+[gd_scene load_steps=10 format=3 uid="uid://c1ndn0i51fpky"]
 
 [ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="1_f6eus"]
 [ext_resource type="Script" uid="uid://cecnn2vaw3trg" path="res://scripts/ui/pause_screen.gd" id="1_milqs"]
 [ext_resource type="Shader" uid="uid://dej82kaexbjn1" path="res://shaders/pause_menu_blur.gdshader" id="2_fvuwu"]
+[ext_resource type="PackedScene" uid="uid://dhvhk8g7cs7bi" path="res://scenes/ui/texture_button.tscn" id="4_0bnpd"]
+[ext_resource type="Texture2D" uid="uid://chky8ogm7nphx" path="res://assets/textures/ui_quit.png" id="5_4inpj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xceqw"]
 shader = ExtResource("2_fvuwu")
@@ -159,8 +161,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Retry"
 
-[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MainMenuButton" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_0bnpd")]
 unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("5_4inpj")
+
+[node name="MainMenuButton2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32

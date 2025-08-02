@@ -106,6 +106,7 @@ func _change_current_level_node(level: Node3D) -> void:
 
 func _show_main_menu() -> void:
 	main_menu.show()
+	main_menu.reset()
 	menu_3d.show_menu()
 
 func _hide_main_menu() -> void:
