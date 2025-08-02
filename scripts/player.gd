@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var explosion_sfx: AudioStreamPlayer = $ExplosionSFX
 @onready var bank_sfx: AudioStreamPlayer = $BankSFX
 @onready var trap_sfx: AudioStreamPlayer = $TrapSFX
+@onready var sonic_boom_sfx: AudioStreamPlayer = $SonicBoomSFX
 
 @onready var boost_audio_player_3d: AudioStreamPlayer3D = %BoostAudioPlayer3D
 @onready var boost_audio_player: AudioStreamPlayer = $BoostAudioPlayer
@@ -36,11 +37,13 @@ func _ready() -> void:
 	
 	if road:
 		lane_offset = road.lane_width
-	start_engine_audio()
 
-func start_engine_audio() -> void:
+func start_engine_rev() -> void:
 	engine_start_sfx.play()
-	await engine_start_sfx.finished
+
+func remove_brakes() -> void:
+	engine_start_sfx.stop()
+	sonic_boom_sfx.play()
 	engine_audio_player.play()
 
 func _process(_delta: float) -> void:

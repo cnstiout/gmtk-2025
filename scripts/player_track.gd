@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 # Make the player track start moving
 func start() -> void:
 	player.can_move = true
+	player.remove_brakes()
 	moving = true
 	player_camera.add_trauma(0.8)
 

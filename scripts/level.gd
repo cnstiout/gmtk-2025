@@ -25,6 +25,7 @@ func _ready() -> void:
 	player_track.road = road
 	road.add_child(player_track)
 	
+	hud.max_health = player_track.max_health
 	hud.reset(player_track.get_converted_speed())
 	
 	countdown_timer.timeout.connect(_on_countdown_timer_timeout)
@@ -32,6 +33,7 @@ func _ready() -> void:
 # Start the countdown timer
 func start_countdown() -> void:
 	countdown_timer.start()
+	player_track.player.start_engine_rev()
 
 # Start the run
 func start_run() -> void:
@@ -51,7 +53,7 @@ func restart() -> void:
 	current_countdown_time = countdown_start_time
 	countdown_label.text = str(current_countdown_time)
 	countdown_label.show()
-	countdown_timer.start()
+	start_countdown()
 
 # Decrease the countdown
 func decrease_countdown() -> void:
