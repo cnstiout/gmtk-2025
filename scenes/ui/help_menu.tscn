@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck0uldogk6wvm"]
+
+[ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="1_be4ro"]
+[ext_resource type="Texture2D" uid="uid://cvsrqrtirm4cm" path="res://assets/textures/boost_screenshot.PNG" id="2_fl71u"]
+[ext_resource type="Texture2D" uid="uid://l2gooh2r4uao" path="res://assets/textures/trap_screenshot.PNG" id="3_wklkr"]
+[ext_resource type="Texture2D" uid="uid://s60xpuko77f0" path="res://assets/textures/obstacle_screenshot.PNG" id="4_clrsq"]
+
+[node name="HelpMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_be4ro")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Boost" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/Boost"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Boost"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Boost"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_fl71u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="HBoxContainer/Boost"]
+layout_mode = 2
+text = "Makes you go faster"
+horizontal_alignment = 1
+
+[node name="Trap" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/Trap"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Trap"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Trap"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("3_wklkr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="HBoxContainer/Trap"]
+layout_mode = 2
+text = "Spawns an obstacle in
+ it's place on the next lap"
+horizontal_alignment = 1
+
+[node name="Obstacle" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/Obstacle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Obstacle"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Obstacle"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_clrsq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Desciption" type="Label" parent="HBoxContainer/Obstacle"]
+layout_mode = 2
+text = "Make you lose a life"
+horizontal_alignment = 1

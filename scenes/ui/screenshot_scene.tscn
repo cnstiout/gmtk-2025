@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx06s8bqhvda4"]
+
+[ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="1_a555g"]
+[ext_resource type="PackedScene" uid="uid://c64q8c8m5bhub" path="res://scenes/trap.tscn" id="2_lp4no"]
+[ext_resource type="PackedScene" uid="uid://xqn5l3daobv1" path="res://scenes/obstacle.tscn" id="3_j7cyi"]
+
+[sub_resource type="Environment" id="Environment_a555g"]
+background_mode = 1
+background_color = Color(0.0235457, 1.91079e-05, 0.115995, 1)
+
+[node name="ScreenshotScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.363975, -0.445611)
+environment = SubResource("Environment_a555g")
+
+[node name="BoostPickup" parent="." instance=ExtResource("1_a555g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32336)
+visible = false
+
+[node name="Trap" parent="." instance=ExtResource("2_lp4no")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32336)
+visible = false
+
+[node name="Obstacle" parent="." instance=ExtResource("3_j7cyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32336)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.882702, 0.469934, 0, -0.469934, 0.882702, 0, 0.876547, 0.310833)
