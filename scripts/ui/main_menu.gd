@@ -20,8 +20,8 @@ func _on_button_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_play_button_hovered() -> void:
-	pass
+	play_button.animate_hover()
 
 func _on_play_button_hover_exit() -> void:
-	pass
+	play_button.animate_hover_exit()
 	

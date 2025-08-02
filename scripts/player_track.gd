@@ -24,11 +24,12 @@ func _ready() -> void:
 	Events.wall_hit.connect(_on_wall_hit)
 
 func _input(event: InputEvent) -> void:
+	pass
 	# Cheats
-	if event.is_action_pressed("player_up"):
-		boost(1)
-	if event.is_action_pressed("player_down"):
-		boost(-1)
+	#if event.is_action_pressed("player_up"):
+		#boost(1)
+	#if event.is_action_pressed("player_down"):
+		#boost(-1)
 
 func _process(delta: float) -> void:
 	if moving:

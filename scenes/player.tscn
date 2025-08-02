@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dlalqroknepn3" path="res://assets/sfx/engine_start_v2.ogg" id="9_jej6c"]
 [ext_resource type="AudioStream" uid="uid://dy51kdubxi5x0" path="res://assets/sfx/engine_boost_pickup_v1.ogg" id="11_a8ls1"]
 [ext_resource type="AudioStream" uid="uid://cqd7cdtdb15jl" path="res://assets/sfx/engine_explosion_v0.ogg" id="11_d2wvv"]
-[ext_resource type="AudioStream" uid="uid://bl3n1mwawoexl" path="res://assets/sfx/engine_crash_v4.ogg" id="12_a8ls1"]
+[ext_resource type="AudioStream" uid="uid://u53b4l4a7o5x" path="res://assets/sfx/engine_crash_v6.ogg" id="12_a8ls1"]
 [ext_resource type="AudioStream" uid="uid://m66npnxyn2w0" path="res://assets/sfx/lane_swap_v3.ogg" id="12_jej6c"]
 [ext_resource type="AudioStream" uid="uid://c420mdls8nn6t" path="res://assets/sfx/trap_trigger_v4.ogg" id="15_a8ls1"]
 [ext_resource type="AudioStream" uid="uid://6hpkmlwr1kjr" path="res://assets/sfx/engine_boost_v10.ogg" id="16_qfm1y"]
