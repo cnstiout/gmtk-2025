@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://clt13pddeirxi"]
+[gd_scene load_steps=7 format=3 uid="uid://clt13pddeirxi"]
 
 [ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="1_fe2o3"]
 [ext_resource type="Script" uid="uid://cifmuirre7ns6" path="res://scripts/ui/main_menu.gd" id="1_sl1te"]
 [ext_resource type="Texture2D" uid="uid://d2qsffajeuk8t" path="res://assets/textures/speed-bandit_fond.png" id="4_x2yvf"]
 [ext_resource type="Texture2D" uid="uid://b2ddo4djswkxw" path="res://assets/textures/speed-bandit_titre.png" id="5_uhagc"]
 [ext_resource type="PackedScene" uid="uid://dhvhk8g7cs7bi" path="res://scenes/ui/texture_button.tscn" id="5_x2yvf"]
+[ext_resource type="Texture2D" uid="uid://chky8ogm7nphx" path="res://assets/textures/ui_quit.png" id="6_uhagc"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -51,23 +52,30 @@ texture = ExtResource("5_uhagc")
 layout_mode = 2
 theme_override_constants/margin_top = -20
 
-[node name="PlayButton" parent="VBoxContainer/MarginContainer" instance=ExtResource("5_x2yvf")]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PlayButton" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("5_x2yvf")]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_right = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../QuitButton")
 is_first_focus = true
 
-[node name="PlayButton3" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("5_x2yvf")]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-flat = true
-
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Quit"
+focus_neighbor_left = NodePath("../PlayButton")
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../PlayButton")
+texture_normal = ExtResource("6_uhagc")

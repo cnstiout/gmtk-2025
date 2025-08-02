@@ -1,7 +1,7 @@
 extends Control
 
 @onready var play_button: TextureButton = %PlayButton
-@onready var quit_button: Button = %QuitButton
+@onready var quit_button: TextureButton = %QuitButton
 
 @onready var scene_level_1: String = "uid://1shqohj0xof7"
 

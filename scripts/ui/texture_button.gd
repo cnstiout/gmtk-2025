@@ -10,18 +10,19 @@ func _ready() -> void:
 	mouse_entered.connect(_on_mouse_hover)
 	mouse_exited.connect(_on_mouse_exit)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_down") || event.is_action_pressed("ui_up"):
-		if !has_focus() && is_first_focus:
-			grab_focus()
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_down") || event.is_action_pressed("ui_up"):
+		#if !has_focus() && is_first_focus:
+			#grab_focus()
 
 func _on_mouse_hover() -> void:
 	if !has_focus():
 		grab_focus()
 
 func _on_mouse_exit() -> void:
-	if has_focus():
-		release_focus()
+	pass
+	#if has_focus():
+		#release_focus()
 
 func animate_hover() -> void:
 	animation_player.play("hover")
