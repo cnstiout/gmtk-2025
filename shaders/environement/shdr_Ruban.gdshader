@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, blend_add, cull_back;
+render_mode blend_add, cull_back;
 
 
 uniform sampler2D ribbon_texture ;
