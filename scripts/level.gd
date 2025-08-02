@@ -17,6 +17,8 @@ var run_score: int = 0:
 	set(value):
 		run_score = value
 
+@export var score_multiplier_curve: Curve
+
 func _ready() -> void:
 	Events.radar_triggered.connect(_on_radar_triggered)
 	Events.player_died.connect(_on_player_died)
@@ -80,8 +82,13 @@ func _on_countdown_timer_timeout() -> void:
 func _on_radar_triggered() -> void:
 	if run_laps > 0:
 		road.setup_items()
-		update_run_score(player_track.get_converted_speed() + run_score)
+		var player_speed = _get_score_multipied(player_track.get_converted_speed())
+		print(_get_score_multipied(player_speed))
+		update_run_score(player_speed + run_score)
 	run_laps += 1
 
 func _on_boost_picked_up(boost_xform: Transform3D) -> void:
 	hud.speed_line_animate()
+
+func _get_score_multipied(score: int) -> int:
+	return floor(score * score_multiplier_curve.sample(score))
