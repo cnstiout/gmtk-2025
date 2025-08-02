@@ -1,11 +1,9 @@
-# camera_orbit_around_pivot.gd
 extends Camera3D
-# À attacher sur la Camera3D
 
 @export_group("Orbit Around Pivot")
 @export var pivot_path: NodePath                 # chemin vers le Node3D pivot
 @export var orbit_radius: float = 5.0            # distance au pivot
-@export var orbit_speed_deg: float = 30.0         # °/s autour du pivot (azimut)
+@export var orbit_speed_deg: float = 10.0         # °/s autour du pivot (azimut)
 @export var orbit_height: float = 0.0             # offset vertical relatif au pivot (y)
 
 @export_group("Self Spin (Roll)")

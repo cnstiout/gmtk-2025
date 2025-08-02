@@ -25,6 +25,7 @@ func _ready() -> void:
 	player_track = player_track_scene.instantiate()
 	player_track.road = road
 	road.add_child(player_track)
+	player_track.set_camera_main()
 	
 	hud.max_health = player_track.max_health
 	#hud.reset(player_track.get_converted_speed())

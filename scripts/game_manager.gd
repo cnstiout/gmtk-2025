@@ -3,6 +3,7 @@ extends Node
 @onready var main_menu: Control = %MainMenu
 @onready var pause_menu: Control = %PauseMenu
 @onready var gameover_screen: Control = %GameoverScreen
+@onready var menu_3d: Node3D = %Menu3D
 
 @onready var scene_level_1: String = "uid://1shqohj0xof7"
 @onready var current_level: Node = $CurrentLevel
@@ -56,7 +57,7 @@ func start_level(level_path: String) -> void:
 	scene_transition.fade_to_black(false)
 	await scene_transition.transition_finished
 	
-	main_menu.hide()
+	_hide_main_menu()
 	var new_level: PackedScene = load(level_path)
 	var new_level_node: Level = new_level.instantiate()
 	new_level_node.name = "Level"
@@ -90,7 +91,7 @@ func back_to_main_menu() -> void:
 	gameover_screen.reset()
 	pause_menu.reset()
 	get_tree().paused = false
-	main_menu.show()
+	_show_main_menu()
 	
 	scene_transition.fade_to_black(true)
 	await scene_transition.transition_finished
@@ -102,3 +103,11 @@ func _clear_level() -> void:
 func _change_current_level_node(level: Node3D) -> void:
 	_clear_level()
 	current_level.add_child(level)
+
+func _show_main_menu() -> void:
+	main_menu.show()
+	menu_3d.show_menu()
+
+func _hide_main_menu() -> void:
+	main_menu.hide()
+	menu_3d.hide_menu()

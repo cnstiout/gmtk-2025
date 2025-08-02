@@ -91,3 +91,6 @@ func convert_speed(speed) -> int:
 
 func get_converted_speed() -> int:
 	return convert_speed(current_speed)
+
+func set_camera_main() -> void:
+	player_camera.current = true

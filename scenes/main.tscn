@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgunqer1xur0t"]
+[gd_scene load_steps=8 format=3 uid="uid://bgunqer1xur0t"]
 
 [ext_resource type="Script" uid="uid://urwdvacw1u8l" path="res://scripts/game_manager.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://clt13pddeirxi" path="res://scenes/ui/main_menu.tscn" id="2_sugp2"]
 [ext_resource type="AudioStream" uid="uid://chsasvg4c1nxw" path="res://assets/musics/music_2_v4.ogg" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dwoa6btjd0aio" path="res://scenes/ui/menu_3d.tscn" id="3_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bu3rgmwsw5ea" path="res://scenes/scene_transition.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c1ndn0i51fpky" path="res://scenes/ui/pause_menu.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://b7ndogurbak5y" path="res://scenes/ui/gameover_screen.tscn" id="5_tefeu"]
@@ -20,6 +21,9 @@ bus = &"Music"
 
 [node name="Menus" type="CanvasLayer" parent="."]
 layer = 3
+
+[node name="Menu3D" parent="Menus" instance=ExtResource("3_o6xl0")]
+unique_name_in_owner = true
 
 [node name="MainMenu" parent="Menus" instance=ExtResource("2_sugp2")]
 unique_name_in_owner = true
