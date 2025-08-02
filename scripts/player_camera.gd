@@ -17,11 +17,15 @@ var noise_speed: float = 50
 var trauma_reduction_rate: float = 1.0
 var trauma: float = 0
 
+var default_fov: float
 var current_fov: float
 @export var fov_anim_speed: float = 0.2
+@export var boost_anim_fov_amount: float = 3.0
+@export var boost_anim_time: float = 0.2
 
 func _ready() -> void:
 	default_rotation = rotation_degrees
+	default_fov = fov
 	current_fov = fov
 
 func _process(delta: float) -> void:
@@ -31,6 +35,9 @@ func _process(delta: float) -> void:
 		rotation_degrees.x =  default_rotation.x + max_x * get_shake_intensity() * get_noise_from_seed(0)
 		rotation_degrees.y =  default_rotation.y + max_y * get_shake_intensity() * get_noise_from_seed(1)
 		rotation_degrees.z =  default_rotation.z + max_z * get_shake_intensity() * get_noise_from_seed(2)
+
+func reset() -> void:
+	fov = default_fov
 
 func add_trauma(trauma_amount: float) -> void:
 	trauma = clamp(trauma + trauma_amount, 0.0, 1.0)
@@ -48,4 +55,16 @@ func change_fov(target_fov: float) -> void:
 
 func change_fov_animate(target_fov: float) -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_method(change_fov, current_fov, target_fov, fov_anim_speed).set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_method(change_fov, current_fov, target_fov, fov_anim_speed).set_trans(Tween.TRANS_QUINT)
+
+func animate_boost_fov() -> void:
+	pass
+	#var tween: Tween = get_tree().create_tween()
+	#var starting_fov = current_fov
+	#tween.tween_property(self, "fov", current_fov + boost_anim_fov_amount, fov_anim_speed).set_trans(Tween.TRANS_EXPO)
+	#tween.set_ease(Tween.EASE_OUT)
+	#tween.tween_property(self, "fov", starting_fov, 3.0).from_current()
+
+func change_effect_speed(speed: int) -> void :
+	pass
