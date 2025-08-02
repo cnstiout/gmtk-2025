@@ -8,6 +8,7 @@ signal restart_current_level
 signal switch_level(level_path: String)
 
 # Run events
+signal player_health_changed(amount: int)
 signal player_speed_changed(speed: int)
 signal player_died
 signal radar_triggered

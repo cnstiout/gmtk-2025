@@ -65,6 +65,7 @@ func _on_wall_hit():
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	Events.player_health_changed.emit(-amount)
 	if health <= 0:
 		die()
 	else:
