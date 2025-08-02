@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://xqn5l3daobv1"]
+[gd_scene load_steps=9 format=4 uid="uid://xqn5l3daobv1"]
 
 [ext_resource type="Script" uid="uid://bhm8nd1xk22fo" path="res://scripts/obstacle.gd" id="1_7ukg5"]
 [ext_resource type="Shader" uid="uid://b2rvunmq3grso" path="res://shaders/environement/shdr_Ruban.gdshader" id="2_drdry"]
 [ext_resource type="Texture2D" uid="uid://cvrnjaxao5idw" path="res://assets/textures/smallgrille copy.png" id="3_cjuko"]
+[ext_resource type="Texture2D" uid="uid://dxkkepkr3iweg" path="res://assets/textures/spr_panneau.png" id="4_sh7k1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xr6u"]
 size = Vector3(0.5, 0.6, 0.2)
@@ -58,3 +59,9 @@ mesh = SubResource("PlaneMesh_sh7k1")
 [node name="CSGBakedMeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.345191, 0, 0, 0, 1, 0, 0.101507, 0)
 mesh = SubResource("ArrayMesh_cjuko")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(2.095, 0, 0, 0, 2.095, 0, 0, 0, 2.095, 0, 0.509407, 0.0500987)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_sh7k1")
