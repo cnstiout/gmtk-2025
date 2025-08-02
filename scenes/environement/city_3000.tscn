@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://doxdsiq13avgj"]
+[gd_scene load_steps=31 format=4 uid="uid://doxdsiq13avgj"]
 
 [ext_resource type="Shader" path="res://shaders/city.gdshader" id="1_vprqf"]
 [ext_resource type="Material" uid="uid://cxnqwv117nx1o" path="res://shaders/batiment.tres" id="2_lki0r"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://s1y78ikjyqym" path="res://assets/textures/city_light/spr_neon_06.png" id="9_15dq1"]
 [ext_resource type="Texture2D" uid="uid://bes07e3v4vohr" path="res://assets/textures/city_light/spr_neon_15.png" id="9_cjoi8"]
 [ext_resource type="Texture2D" uid="uid://bo5m2lcaxa0me" path="res://assets/textures/city_light/spr_neon_08.png" id="10_ol1c4"]
+[ext_resource type="Texture2D" uid="uid://c0f8l718inw6t" path="res://assets/textures/city_light/spr_neon_18.png" id="10_rw8jk"]
 [ext_resource type="Texture2D" uid="uid://ir503b41jhqr" path="res://assets/textures/city_light/spr_neon_14.png" id="11_fjoch"]
 [ext_resource type="Texture2D" uid="uid://do830j4san4of" path="res://assets/textures/city_light/spr_neon_11.png" id="12_wr1eo"]
 [ext_resource type="Texture2D" uid="uid://rdbxhtuf2oh0" path="res://assets/textures/city_light/spr_neon_20.png" id="13_dsndf"]
@@ -240,6 +241,12 @@ transform = Transform3D(122.745, 1.07307e-05, -1.07307e-05, 1.07307e-05, -122.74
 modulate = Color(0.588642, 0.443546, 0.158157, 1)
 texture_filter = 0
 texture = ExtResource("9_cjoi8")
+
+[node name="Sprite3D42" type="Sprite3D" parent="Holograms"]
+transform = Transform3D(5.36535e-06, -4.69054e-13, 122.745, 1.07307e-05, -122.745, -9.38108e-13, 122.745, 1.07307e-05, -5.36535e-06, -291.217, 427.452, -105.837)
+modulate = Color(0, 0.485637, 0.805932, 1)
+texture_filter = 0
+texture = ExtResource("10_rw8jk")
 
 [node name="Sprite3D28" type="Sprite3D" parent="Holograms"]
 transform = Transform3D(122.745, 1.07307e-05, -1.07307e-05, 1.07307e-05, -122.745, -9.38108e-13, -1.07307e-05, 0, -122.745, -138.048, 29.8529, 264.154)
