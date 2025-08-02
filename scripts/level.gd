@@ -20,6 +20,7 @@ var run_score: int = 0:
 func _ready() -> void:
 	Events.radar_triggered.connect(_on_radar_triggered)
 	Events.player_died.connect(_on_player_died)
+	Events.boost_picked_up.connect(_on_boost_picked_up)
 	
 	player_track = player_track_scene.instantiate()
 	player_track.road = road
@@ -80,3 +81,6 @@ func _on_radar_triggered() -> void:
 		road.setup_items()
 		update_run_score(player_track.get_converted_speed() + run_score)
 	run_laps += 1
+
+func _on_boost_picked_up(boost_xform: Transform3D) -> void:
+	hud.speed_line_animate()

@@ -59,12 +59,11 @@ func change_fov_animate(target_fov: float) -> void:
 	tween.tween_method(change_fov, current_fov, target_fov, fov_anim_speed).set_trans(Tween.TRANS_QUINT)
 
 func animate_boost_fov() -> void:
-	pass
-	#var tween: Tween = get_tree().create_tween()
-	#var starting_fov = current_fov
-	#tween.tween_property(self, "fov", current_fov + boost_anim_fov_amount, fov_anim_speed).set_trans(Tween.TRANS_EXPO)
-	#tween.set_ease(Tween.EASE_OUT)
-	#tween.tween_property(self, "fov", starting_fov, 3.0).from_current()
+	var tween: Tween = get_tree().create_tween()
+	var starting_fov = current_fov
+	tween.tween_property(self, "fov", current_fov + boost_anim_fov_amount, fov_anim_speed).set_trans(Tween.TRANS_EXPO)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "fov", starting_fov, fov_anim_speed).from_current()
 
 func change_effect_speed(speed: int) -> void :
 	pass

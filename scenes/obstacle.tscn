@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://xqn5l3daobv1"]
 
-[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_7ukg5"]
+[ext_resource type="Script" uid="uid://bhm8nd1xk22fo" path="res://scripts/obstacle.gd" id="1_7ukg5"]
 [ext_resource type="Shader" uid="uid://b2rvunmq3grso" path="res://shaders/environement/shdr_Ruban.gdshader" id="2_drdry"]
 [ext_resource type="Texture2D" uid="uid://cvrnjaxao5idw" path="res://assets/textures/smallgrille copy.png" id="3_cjuko"]
 

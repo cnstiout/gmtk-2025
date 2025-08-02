@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://c64q8c8m5bhub"]
 
-[ext_resource type="Script" path="res://scripts/trap.gd" id="1_62q8x"]
+[ext_resource type="Script" uid="uid://b6uw5tr3p54x6" path="res://scripts/trap.gd" id="1_62q8x"]
 [ext_resource type="Texture2D" uid="uid://cqww6c5yh1lmv" path="res://assets/sprites/coin_blank.png" id="2_aucmg"]
 [ext_resource type="Texture2D" uid="uid://dxkkepkr3iweg" path="res://assets/textures/spr_panneau.png" id="3_aucmg"]
 

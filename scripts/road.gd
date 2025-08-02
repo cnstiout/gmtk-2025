@@ -1,4 +1,3 @@
-@tool
 class_name Road
 extends Path3D
 

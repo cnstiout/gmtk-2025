@@ -29,7 +29,7 @@ var current_lane: int = 0
 var lane_offset: float
 var in_movement: bool = false
 
-var can_move = true
+var can_move = false
 
 func _ready() -> void:
 	Events.trap_triggered.connect(trap_fx)

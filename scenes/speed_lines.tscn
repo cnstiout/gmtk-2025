@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cchjsba1kpq4h"]
 
-[ext_resource type="Shader" uid="uid://tsbv8ylmtmtt" path="res://shaders/speedlines.gdshader" id="1_on201"]
+[ext_resource type="Shader" path="res://shaders/speedlines.gdshader" id="1_on201"]
 
 [sub_resource type="Curve" id="Curve_on201"]
-_data = [Vector2(0.452555, 0), 0.0, 0.0181101, 0, 0, Vector2(0.970803, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.804233, 0), 0.0, 0.0181101, 0, 0, Vector2(0.970803, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_jjf15"]
