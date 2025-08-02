@@ -17,8 +17,12 @@ var noise_speed: float = 50
 var trauma_reduction_rate: float = 1.0
 var trauma: float = 0
 
+var current_fov: float
+@export var fov_anim_speed: float = 0.2
+
 func _ready() -> void:
 	default_rotation = rotation_degrees
+	current_fov = fov
 
 func _process(delta: float) -> void:
 	shake_time += delta
@@ -34,6 +38,14 @@ func add_trauma(trauma_amount: float) -> void:
 func get_shake_intensity() -> float:
 	return trauma * trauma
 
-func get_noise_from_seed(seed: int) -> float:
-	noise_gen.seed = seed
+func get_noise_from_seed(p_seed: int) -> float:
+	noise_gen.seed = p_seed
 	return noise_gen.get_noise_1d(shake_time * noise_speed)
+
+func change_fov(target_fov: float) -> void:
+	fov = target_fov
+	current_fov = fov
+
+func change_fov_animate(target_fov: float) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_method(change_fov, current_fov, target_fov, fov_anim_speed).set_trans(Tween.TRANS_EXPO)

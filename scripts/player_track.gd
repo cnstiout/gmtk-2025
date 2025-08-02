@@ -41,6 +41,7 @@ func start() -> void:
 	Events.player_speed_changed.emit(get_converted_speed())
 	player.remove_brakes()
 	moving = true
+	player_camera.change_fov_animate(90)
 	player_camera.add_trauma(0.8)
 
 # Make the player track stop moving
