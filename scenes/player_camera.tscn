@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://j5vm45krw6nk"]
+
+[ext_resource type="Script" uid="uid://df8ylrlk3xghc" path="res://scripts/player_camera.gd" id="1_7pa0d"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7pa0d"]
+frequency = 0.05
+fractal_octaves = 4
+
+[node name="PlayerCamera" type="Camera3D"]
+transform = Transform3D(1.00005, 0, 0, 0, 0.99333, 0.115564, 0, -0.115565, 0.99332, 0, 0, 0)
+fov = 80.0
+script = ExtResource("1_7pa0d")
+noise_gen = SubResource("FastNoiseLite_7pa0d")

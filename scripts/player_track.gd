@@ -3,6 +3,7 @@ extends PathFollow3D
 
 var road: Road
 @onready var player: Player = %Player
+@onready var player_camera: Camera3D = %PlayerCamera
 
 @export var max_health: int = 3
 var health: int
@@ -38,6 +39,7 @@ func _process(delta: float) -> void:
 func start() -> void:
 	player.can_move = true
 	moving = true
+	player_camera.add_trauma(0.8)
 
 # Make the player track stop moving
 func stop() -> void:
