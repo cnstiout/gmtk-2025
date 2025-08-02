@@ -71,8 +71,10 @@ func take_damage(amount: int) -> void:
 	Events.player_health_changed.emit(-amount)
 	if health <= 0:
 		die()
+		player_camera.add_trauma(0.9)
 	else:
 		player.hurt_fx()
+		player_camera.add_trauma(0.5)
 
 func die() -> void:
 	stop()
