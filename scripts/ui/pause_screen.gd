@@ -5,8 +5,8 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var panel_container: PanelContainer = $PanelContainer
 
-@onready var resume_button: Button = %ResumeButton
-@onready var restart_button: Button = %RestartButton
+@onready var resume_button: TextureButton = %ResumeButton
+@onready var restart_button: TextureButton = %RestartButton
 @onready var main_menu_button: TextureButton = %MainMenuButton
 
 signal request_resume
@@ -26,6 +26,7 @@ func resume() -> void:
 func pause() -> void:
 	panel_container.show()
 	animation_player.play("blur")
+	resume_button.grab_focus()
 
 func reset() -> void:
 	self.hide()

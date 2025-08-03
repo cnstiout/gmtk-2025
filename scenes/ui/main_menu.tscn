@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://clt13pddeirxi"]
+[gd_scene load_steps=8 format=3 uid="uid://clt13pddeirxi"]
 
 [ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="1_fe2o3"]
 [ext_resource type="Script" uid="uid://cifmuirre7ns6" path="res://scripts/ui/main_menu.gd" id="1_sl1te"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2ddo4djswkxw" path="res://assets/textures/speed-bandit_titre.png" id="5_uhagc"]
 [ext_resource type="PackedScene" uid="uid://dhvhk8g7cs7bi" path="res://scenes/ui/texture_button.tscn" id="5_x2yvf"]
 [ext_resource type="Texture2D" uid="uid://chky8ogm7nphx" path="res://assets/textures/ui_quit.png" id="6_uhagc"]
+[ext_resource type="PackedScene" uid="uid://cssp2dgdrbwg7" path="res://scenes/ui/music_menu.tscn" id="7_btxxm"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +17,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_fe2o3")
 script = ExtResource("1_sl1te")
+
+[node name="MusicMenu" parent="." instance=ExtResource("7_btxxm")]
+layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
