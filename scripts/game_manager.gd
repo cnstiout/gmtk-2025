@@ -9,12 +9,19 @@ extends Node
 @onready var current_level: Node = $CurrentLevel
 @onready var scene_transition: CanvasLayer = %SceneTransition
 
+
+@onready var new_level: PackedScene = preload("uid://1shqohj0xof7")
+
+
+
 var current_scene: Node
 
 var is_pause_menu_acc: bool = false
 var game_paused = false
 
 var highscore:int = 0
+
+var starting_level: bool = false
 
 func _ready() -> void:
 	Events.restart_current_level.connect(restart_current_level)
@@ -51,23 +58,29 @@ func pause_game() -> void:
 	
 
 func _on_switch_level(level_path: String) -> void:
-	start_level(level_path)
+	if !starting_level:
+		start_level(level_path)
 
-func start_level(level_path: String) -> void:
-	scene_transition.fade_to_black(false)
+func start_level(_level_path: String) -> void:
+	starting_level = true
+	scene_transition.fade_to_black(false, true)
 	await scene_transition.transition_finished
 	
 	_hide_main_menu()
-	var new_level: PackedScene = load(level_path)
 	var new_level_node: Level = new_level.instantiate()
 	new_level_node.name = "Level"
 	_change_current_level_node(new_level_node)
+	if !new_level_node.is_node_ready():
+		await new_level_node.ready
 	
-	scene_transition.fade_to_black(true)
+	await scene_transition.continue_pressed
+	
+	scene_transition.fade_to_black(true, true)
 	await scene_transition.transition_finished
 	
 	new_level_node.start_countdown()
 	is_pause_menu_acc = true
+	starting_level = false
 
 func _on_player_died() -> void:
 	show_game_over()
@@ -84,7 +97,7 @@ func show_game_over() -> void:
 func back_to_main_menu() -> void:
 	is_pause_menu_acc = false
 	
-	scene_transition.fade_to_black(false)
+	scene_transition.fade_to_black(false, false)
 	await scene_transition.transition_finished
 	
 	_clear_level()
@@ -93,7 +106,7 @@ func back_to_main_menu() -> void:
 	get_tree().paused = false
 	_show_main_menu()
 	
-	scene_transition.fade_to_black(true)
+	scene_transition.fade_to_black(true, false)
 	await scene_transition.transition_finished
 
 func _clear_level() -> void:

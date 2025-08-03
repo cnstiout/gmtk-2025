@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck0uldogk6wvm"]
+[gd_scene load_steps=8 format=3 uid="uid://ck0uldogk6wvm"]
 
 [ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="1_be4ro"]
+[ext_resource type="Script" uid="uid://cwckkuflck41" path="res://scripts/ui/help_menu.gd" id="2_clrsq"]
 [ext_resource type="Texture2D" uid="uid://cvsrqrtirm4cm" path="res://assets/textures/boost_screenshot.PNG" id="2_fl71u"]
 [ext_resource type="Texture2D" uid="uid://l2gooh2r4uao" path="res://assets/textures/trap_screenshot.PNG" id="3_wklkr"]
 [ext_resource type="Texture2D" uid="uid://s60xpuko77f0" path="res://assets/textures/obstacle_screenshot.PNG" id="4_clrsq"]
+[ext_resource type="PackedScene" uid="uid://dhvhk8g7cs7bi" path="res://scenes/ui/texture_button.tscn" id="6_v6p70"]
+[ext_resource type="Texture2D" uid="uid://cdem2fgo6gw6v" path="res://assets/textures/ui_continue.png" id="7_vwplh"]
 
 [node name="HelpMenu" type="Control"]
 layout_mode = 3
@@ -13,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_be4ro")
+script = ExtResource("2_clrsq")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -22,26 +26,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -113.5
+offset_bottom = 113.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 30
 
-[node name="Boost" type="VBoxContainer" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Controls :"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="ControlsDescription" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+text = "Press Left/Right arrows to change lane
+Press Esc to pause"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Boost" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TitleLabel" type="Label" parent="HBoxContainer/Boost"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer/Boost"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Boost"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Boost"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Boost"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -49,45 +80,45 @@ texture = ExtResource("2_fl71u")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Description" type="Label" parent="HBoxContainer/Boost"]
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/Boost"]
 layout_mode = 2
-text = "Makes you go faster"
+text = "Speeds up your ship"
 horizontal_alignment = 1
 
-[node name="Trap" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Trap" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TitleLabel" type="Label" parent="HBoxContainer/Trap"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer/Trap"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Trap"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Trap"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Trap"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 texture = ExtResource("3_wklkr")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Description" type="Label" parent="HBoxContainer/Trap"]
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer/Trap"]
 layout_mode = 2
 text = "Spawns an obstacle in
- it's place on the next lap"
+ its place on the next lap"
 horizontal_alignment = 1
 
-[node name="Obstacle" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Obstacle" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TitleLabel" type="Label" parent="HBoxContainer/Obstacle"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer/Obstacle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Obstacle"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Obstacle"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Obstacle"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -95,7 +126,12 @@ texture = ExtResource("4_clrsq")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Desciption" type="Label" parent="HBoxContainer/Obstacle"]
+[node name="Desciption" type="Label" parent="VBoxContainer/HBoxContainer/Obstacle"]
 layout_mode = 2
-text = "Make you lose a life"
+text = "Damages your ship"
 horizontal_alignment = 1
+
+[node name="ContinueButton" parent="VBoxContainer" instance=ExtResource("6_v6p70")]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("7_vwplh")

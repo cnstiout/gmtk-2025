@@ -198,6 +198,7 @@ bus = &"SFX"
 
 [node name="BankSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_jej6c")
+max_polyphony = 10
 bus = &"SFX"
 
 [node name="TrapSFX" type="AudioStreamPlayer" parent="."]
