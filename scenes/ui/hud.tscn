@@ -25,6 +25,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_4jqwt"]
 resource_name = "low_health"
@@ -42,6 +54,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.999992, 0.229553, 0.174199, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.231373, 0.172549, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mj13f"]
 _data = {
@@ -54,7 +78,7 @@ process_mode = 3
 script = ExtResource("1_bo48s")
 speed_lines_min = 0.3
 
-[node name="Score" type="Control" parent="."]
+[node name="hud" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +86,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Score"]
+[node name="Score" type="Control" parent="hud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="hud/Score"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -73,7 +105,7 @@ offset_bottom = 44.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 15
 
-[node name="ScoreLabel" type="Label" parent="Score/MarginContainer"]
+[node name="ScoreLabel" type="Label" parent="hud/Score/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 44)
 layout_mode = 2
@@ -83,21 +115,22 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="TextureScore" type="TextureRect" parent="Score/MarginContainer"]
+[node name="TextureScore" type="TextureRect" parent="hud/Score/MarginContainer"]
 custom_minimum_size = Vector2(152, 0)
 layout_mode = 2
 texture = ExtResource("6_4jqwt")
 
-[node name="CountdownLabel" type="Label" parent="."]
+[node name="CountdownLabel" type="Label" parent="hud"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -32.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_136eg")
@@ -106,15 +139,15 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Speed" type="Control" parent="."]
-layout_mode = 3
+[node name="Speed" type="Control" parent="hud"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Speed"]
+[node name="MarginContainer" type="MarginContainer" parent="hud/Speed"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -128,24 +161,25 @@ grow_vertical = 0
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = -10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Speed/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="hud/Speed/MarginContainer"]
 layout_mode = 2
 
-[node name="SpeedLabel" type="Label" parent="Speed/MarginContainer/HBoxContainer"]
+[node name="SpeedLabel" type="Label" parent="hud/Speed/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_136eg")
 theme_override_font_sizes/font_size = 64
 text = "0"
 
-[node name="TextureSpeed" type="TextureRect" parent="Speed/MarginContainer/HBoxContainer"]
+[node name="TextureSpeed" type="TextureRect" parent="hud/Speed/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(46, 18)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_h022r")
 
-[node name="TextureOverlay" type="TextureRect" parent="."]
+[node name="TextureOverlay" type="TextureRect" parent="hud"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -153,20 +187,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_oj5la")
 
-[node name="RadarNoise" type="AudioStreamPlayer" parent="."]
+[node name="RadarNoise" type="AudioStreamPlayer" parent="hud"]
+unique_name_in_owner = true
 stream = ExtResource("6_kicr4")
 volume_db = -20.0
 bus = &"SFX"
 
-[node name="Health" type="Control" parent="."]
-layout_mode = 3
+[node name="Health" type="Control" parent="hud"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="Health"]
+[node name="MarginContainer2" type="MarginContainer" parent="hud/Health"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,53 +213,55 @@ grow_vertical = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Health/MarginContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="hud/Health/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="TextureLife" type="TextureRect" parent="Health/MarginContainer2/HBoxContainer"]
+[node name="TextureLife" type="TextureRect" parent="hud/Health/MarginContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(38, 18)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 texture = ExtResource("4_gss2c")
 
-[node name="LifeAnimation" type="AnimationPlayer" parent="Health/MarginContainer2/HBoxContainer/TextureLife"]
+[node name="LifeAnimation" type="AnimationPlayer" parent="hud/Health/MarginContainer2/HBoxContainer/TextureLife"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_mj13f")
 }
 
-[node name="Lives" type="BoxContainer" parent="Health/MarginContainer2/HBoxContainer"]
+[node name="Lives" type="BoxContainer" parent="hud/Health/MarginContainer2/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Life1" type="TextureRect" parent="Health/MarginContainer2/HBoxContainer/Lives"]
+[node name="Life1" type="TextureRect" parent="hud/Health/MarginContainer2/HBoxContainer/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("8_h022r")
 expand_mode = 1
 
-[node name="Life2" type="TextureRect" parent="Health/MarginContainer2/HBoxContainer/Lives"]
+[node name="Life2" type="TextureRect" parent="hud/Health/MarginContainer2/HBoxContainer/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("8_h022r")
 expand_mode = 1
 
-[node name="Life3" type="TextureRect" parent="Health/MarginContainer2/HBoxContainer/Lives"]
+[node name="Life3" type="TextureRect" parent="hud/Health/MarginContainer2/HBoxContainer/Lives"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("8_h022r")
 expand_mode = 1
 
-[node name="SpeedLines" parent="." instance=ExtResource("9_4jqwt")]
+[node name="SpeedLines" parent="hud" instance=ExtResource("9_4jqwt")]
 unique_name_in_owner = true
+layout_mode = 1
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
+[node name="Control" type="Control" parent="hud"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -232,7 +269,7 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="hud/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -243,18 +280,18 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 30
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="hud/Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="LapLabel" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+[node name="LapLabel" type="Label" parent="hud/Control/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_136eg")
 theme_override_font_sizes/font_size = 32
 text = "0"
 
-[node name="TextureLoop" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+[node name="TextureLoop" type="TextureRect" parent="hud/Control/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 texture = ExtResource("10_kicr4")

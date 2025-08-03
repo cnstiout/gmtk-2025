@@ -7,7 +7,7 @@ var current_countdown_time:int = countdown_start_time
 
 @onready var player_track_scene = preload("uid://blwdspsggj7au")
 @onready var countdown_timer: Timer = %CountdownTimer
-@onready var countdown_label: Label = $HUD/CountdownLabel
+@onready var countdown_label: Label = $HUD/hud/CountdownLabel
 @onready var hud: HUD = %HUD
 
 var player_track: PlayerTrack

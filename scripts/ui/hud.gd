@@ -3,9 +3,11 @@ extends CanvasLayer
 
 @onready var score_label: Label = %ScoreLabel
 @onready var speed_label: Label = %SpeedLabel
-@onready var radar_noise: AudioStreamPlayer = $RadarNoise
+@onready var radar_noise: AudioStreamPlayer = %RadarNoise
+
 @onready var speed_lines: ColorRect = %SpeedLines
-@onready var life_animation: AnimationPlayer = $Health/MarginContainer2/HBoxContainer/TextureLife/LifeAnimation
+@onready var life_animation: AnimationPlayer = %LifeAnimation
+
 @onready var lap_label: Label = %LapLabel
 
 @onready var lives: BoxContainer = %Lives
