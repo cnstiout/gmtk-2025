@@ -22,6 +22,7 @@ var game_paused = false
 var highscore:int = 0
 
 var starting_level: bool = false
+var going_back_menu: bool = false
 
 func _ready() -> void:
 	Events.restart_current_level.connect(restart_current_level)
@@ -58,7 +59,7 @@ func pause_game() -> void:
 	
 
 func _on_switch_level(level_path: String) -> void:
-	if !starting_level:
+	if !starting_level && !going_back_menu:
 		start_level(level_path)
 
 func start_level(_level_path: String) -> void:
@@ -95,6 +96,9 @@ func show_game_over() -> void:
 	gameover_screen.show()
 
 func back_to_main_menu() -> void:
+	if going_back_menu:
+		return
+	going_back_menu = true
 	is_pause_menu_acc = false
 	
 	scene_transition.fade_to_black(false, false)
@@ -108,10 +112,12 @@ func back_to_main_menu() -> void:
 	
 	scene_transition.fade_to_black(true, false)
 	await scene_transition.transition_finished
+	going_back_menu = false
 
 func _clear_level() -> void:
 	for i in current_level.get_child_count():
 		current_level.get_child(i).call_deferred("queue_free")
+		await current_level.tree_exited
 
 func _change_current_level_node(level: Node3D) -> void:
 	_clear_level()

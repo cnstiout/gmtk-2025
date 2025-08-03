@@ -44,6 +44,9 @@ func _deferred_switch_scene(scene_path):
 
 # Fade the screen to black and emit signal when the transition is finished
 func fade_to_black(reversed: bool, show_help_menu: bool) -> void:
+	if animation_player.is_playing():
+		await animation_player.animation_finished
+	
 	if !in_transition:
 		in_transition = true
 		if show_help_menu:
