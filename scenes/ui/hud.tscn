@@ -10,6 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://cxl8vrxx7c63r" path="res://assets/textures/spr_life.png" id="8_h022r"]
 [ext_resource type="PackedScene" uid="uid://cchjsba1kpq4h" path="res://scenes/speed_lines.tscn" id="9_4jqwt"]
 
+[sub_resource type="Animation" id="Animation_kicr4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_4jqwt"]
 resource_name = "low_health"
 length = 0.6
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.999992, 0.229553, 0.174199, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_kicr4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mj13f"]

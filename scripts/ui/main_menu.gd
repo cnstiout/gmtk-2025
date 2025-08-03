@@ -2,6 +2,7 @@ extends Control
 
 @onready var play_button: TextureButton = %PlayButton
 @onready var quit_button: TextureButton = %QuitButton
+@onready var music_menu: Control = %MusicMenu
 
 @onready var scene_level_1: String = "uid://1shqohj0xof7"
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 
 func reset() -> void:
 	play_button.grab_focus()
+	music_menu.update_sliders()
 	
 
 func _on_button_play_pressed() -> void:

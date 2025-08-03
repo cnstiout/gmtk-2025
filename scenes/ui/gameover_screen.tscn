@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7ndogurbak5y"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ndogurbak5y"]
 
 [ext_resource type="Script" uid="uid://citjc62h8wou5" path="res://scripts/ui/gameover_screen.gd" id="1_7ywbe"]
 [ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="1_eps36"]
+[ext_resource type="PackedScene" uid="uid://dhvhk8g7cs7bi" path="res://scenes/ui/texture_button.tscn" id="3_7eb2j"]
+[ext_resource type="Texture2D" uid="uid://7rj7ah58a0sf" path="res://assets/textures/ui_restart.png" id="4_yxj3y"]
+[ext_resource type="Texture2D" uid="uid://chky8ogm7nphx" path="res://assets/textures/ui_quit.png" id="5_khih5"]
 
 [node name="GameoverScreen" type="Control"]
 layout_mode = 3
@@ -73,14 +76,13 @@ theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 2
 
-[node name="ReplayButton" type="Button" parent="VBoxContainer"]
+[node name="ReplayButton" parent="VBoxContainer" instance=ExtResource("3_7eb2j")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(155, 45)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Retry"
+texture_normal = ExtResource("4_yxj3y")
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" parent="VBoxContainer" instance=ExtResource("3_7eb2j")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Quit"
+texture_normal = ExtResource("5_khih5")

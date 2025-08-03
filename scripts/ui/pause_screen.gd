@@ -4,6 +4,8 @@ extends Control
 @onready var main_menu_path = "uid://clt13pddeirxi"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var panel_container: PanelContainer = $PanelContainer
+@onready var music_menu: Control = %MusicMenu
+
 
 @onready var resume_button: TextureButton = %ResumeButton
 @onready var restart_button: TextureButton = %RestartButton
@@ -16,6 +18,7 @@ func _ready() -> void:
 	restart_button.pressed.connect(_on_restart_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	
+	visibility_changed.connect(_on_visibility_changed)
 	animation_player.play("RESET")
 
 func resume() -> void:
@@ -26,7 +29,12 @@ func resume() -> void:
 func pause() -> void:
 	panel_container.show()
 	animation_player.play("blur")
+	music_menu.update_sliders()
 	resume_button.grab_focus()
+
+func _on_visibility_changed() -> void:
+	if visible:
+		resume_button.grab_focus()
 
 func reset() -> void:
 	self.hide()

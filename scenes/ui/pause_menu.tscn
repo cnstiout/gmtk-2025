@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1ndn0i51fpky"]
+[gd_scene load_steps=13 format=3 uid="uid://c1ndn0i51fpky"]
 
 [ext_resource type="Theme" uid="uid://ob26vbx5ey42" path="res://assets/theme_Grotesque.tres" id="1_f6eus"]
 [ext_resource type="Script" uid="uid://cecnn2vaw3trg" path="res://scripts/ui/pause_screen.gd" id="1_milqs"]
 [ext_resource type="Shader" uid="uid://dej82kaexbjn1" path="res://shaders/pause_menu_blur.gdshader" id="2_fvuwu"]
 [ext_resource type="PackedScene" uid="uid://dhvhk8g7cs7bi" path="res://scenes/ui/texture_button.tscn" id="4_0bnpd"]
+[ext_resource type="PackedScene" uid="uid://cssp2dgdrbwg7" path="res://scenes/ui/music_menu.tscn" id="4_2rlsb"]
 [ext_resource type="Texture2D" uid="uid://chky8ogm7nphx" path="res://assets/textures/ui_quit.png" id="5_4inpj"]
 [ext_resource type="Texture2D" uid="uid://bk0ypcmigewp7" path="res://assets/textures/ui_resume.png" id="5_8fwbo"]
 [ext_resource type="Texture2D" uid="uid://7rj7ah58a0sf" path="res://assets/textures/ui_restart.png" id="6_2rlsb"]
@@ -50,6 +51,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicMenu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nxavn"]
 resource_name = "blur"
@@ -90,6 +103,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicMenu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oc7jr"]
 _data = {
@@ -116,6 +141,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MusicMenu" parent="." instance=ExtResource("4_2rlsb")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 modulate = Color(1, 1, 1, 0)
