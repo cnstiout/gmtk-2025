@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	# Appliquer regard + roll
 	_apply_look_and_roll(delta)
 
-func _update_orbit(delta: float) -> void:
+func _update_orbit(_delta: float) -> void:
 	var ang_rad = deg_to_rad(_current_angle_deg)
 	var x = cos(ang_rad) * orbit_radius
 	var z = sin(ang_rad) * orbit_radius
@@ -47,7 +47,7 @@ func _apply_look_and_roll(delta: float) -> void:
 	# Toujours regarder le pivot
 	var to_pivot = (_pivot.global_transform.origin - global_transform.origin).normalized()
 	# Base sans roll
-	var base_basis = Basis().looking_at(to_pivot, Vector3.UP)
+	var base_basis = Basis.looking_at(to_pivot, Vector3.UP)
 
 	if enable_roll:
 		# Accumuler le roll
@@ -57,6 +57,6 @@ func _apply_look_and_roll(delta: float) -> void:
 		var forward = to_pivot
 		# Calculer un "up" roulé : prend l'up global et le fait tourner autour de l'avant
 		var rolled_up = Vector3.UP.rotated(forward, roll_rad).normalized()
-		global_transform.basis = Basis().looking_at(forward, rolled_up)
+		global_transform.basis = Basis.looking_at(forward, rolled_up)
 	else:
 		global_transform.basis = base_basis

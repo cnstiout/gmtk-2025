@@ -23,8 +23,7 @@ func _ready() -> void:
 	Events.boost_picked_up.connect(_on_boost_picked_up)
 	Events.wall_hit.connect(_on_wall_hit)
 
-func _input(event: InputEvent) -> void:
-	pass
+#func _input(event: InputEvent) -> void:
 	# Cheats
 	#if event.is_action_pressed("player_up"):
 		#boost(1)

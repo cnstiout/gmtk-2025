@@ -87,7 +87,7 @@ func _on_radar_triggered() -> void:
 		update_run_score(player_speed + run_score)
 	run_laps += 1
 
-func _on_boost_picked_up(boost_xform: Transform3D) -> void:
+func _on_boost_picked_up(_boost_xform: Transform3D) -> void:
 	hud.speed_line_animate()
 
 func _get_score_multipied(score: int) -> int:
