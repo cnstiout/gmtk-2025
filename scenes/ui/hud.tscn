@@ -190,7 +190,7 @@ texture = ExtResource("3_oj5la")
 [node name="RadarNoise" type="AudioStreamPlayer" parent="hud"]
 unique_name_in_owner = true
 stream = ExtResource("6_kicr4")
-volume_db = -20.0
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="Health" type="Control" parent="hud"]
