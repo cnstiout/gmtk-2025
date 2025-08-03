@@ -1,17 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://h2pheoljb6ha"]
+[gd_scene load_steps=9 format=4 uid="uid://h2pheoljb6ha"]
 
 [ext_resource type="Script" uid="uid://m7flon62st5k" path="res://scripts/boost_pickup.gd" id="1_lbsu8"]
-[ext_resource type="Texture2D" uid="uid://cqww6c5yh1lmv" path="res://assets/sprites/coin_blank.png" id="2_b6nll"]
 [ext_resource type="Shader" uid="uid://b2rvunmq3grso" path="res://shaders/environement/shdr_Ruban.gdshader" id="3_66fws"]
 [ext_resource type="Texture2D" uid="uid://cvrnjaxao5idw" path="res://assets/textures/smallgrille copy.png" id="4_fehox"]
 [ext_resource type="Texture2D" uid="uid://bx5dduk7s3v1l" path="res://assets/textures/spr_panneau_good.png" id="5_fp6aq"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lbsu8"]
-radius = 0.2
-height = 0.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbsu8"]
-albedo_color = Color(0, 1, 0.0196078, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khgbj"]
+radius = 0.4
+height = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_66fws"]
 _surfaces = [{
@@ -48,33 +44,25 @@ collision_mask = 2
 script = ExtResource("1_lbsu8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-shape = SubResource("CapsuleShape3D_lbsu8")
+transform = Transform3D(1, 0, 0, 0, 0.0330156, 0.999455, 0, -0.999455, 0.0330156, 0, 0.323491, 0)
+shape = SubResource("CapsuleShape3D_khgbj")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, 0.2, 0)
-visible = false
-modulate = Color(0, 1, 0, 1)
-texture = ExtResource("2_b6nll")
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 3.55271e-15, 1, -1.91068e-15, 0, -1.91068e-15, 1, 0, -2.98023e-08, 0)
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.975, 0, 0, 0, 1, 0, 0.2, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_lbsu8")
-radius = 0.2
-radial_segments = 15
-
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(2.095, 0, 0, 0, 2.095, 0, 0, 0, 2.095, 0, 0.509407, 0.0500987)
+[node name="Sprite3D2" type="Sprite3D" parent="Model"]
+transform = Transform3D(2.095, 0, 0, -7.44294e-15, 2.095, 4.00288e-15, -1.42211e-29, 4.00287e-15, 2.095, 0, 0.509407, 0.0500987)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("5_fp6aq")
 
-[node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.345191, 0, 0, 0, 1, 0, 0.101507, 0)
+[node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, -3.55271e-15, 0.345191, 1.91068e-15, -6.78809e-30, 6.59549e-16, 1, 0, 0.101507, 1.93947e-16)
 mesh = SubResource("ArrayMesh_66fws")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1.46674e-08, -4.37114e-08, 0.23059, 0.335552, -8.74228e-08, -1.00794e-08, 2.93349e-08, 1, 1.00794e-08, 0, 0.339126, -0.00546625)
 material_override = SubResource("ShaderMaterial_66fws")
 mesh = SubResource("PlaneMesh_fehox")
+skeleton = NodePath("../..")
