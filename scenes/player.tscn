@@ -226,3 +226,8 @@ bus = &"SFX"
 stream = ExtResource("16_qfm1y")
 volume_db = -5.0
 bus = &"SFX"
+
+[node name="FlamesLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0976557, 0.3614)
+light_color = Color(0.431373, 1, 1, 1)
+light_energy = 2.5
