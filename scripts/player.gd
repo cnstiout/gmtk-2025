@@ -3,7 +3,6 @@ extends CharacterBody3D
 
 @onready var model: Node3D = $Model
 
-@onready var engine_audio_player_3d: AudioStreamPlayer3D = %EngineAudioPlayer3D
 @onready var engine_audio_player: AudioStreamPlayer = $EngineAudioPlayer
 @onready var engine_start_sfx: AudioStreamPlayer = $EngineStartSFX
 @onready var hurt_audio_player: AudioStreamPlayer = $HurtAudioPlayer
@@ -12,7 +11,6 @@ extends CharacterBody3D
 @onready var trap_sfx: AudioStreamPlayer = $TrapSFX
 @onready var sonic_boom_sfx: AudioStreamPlayer = $SonicBoomSFX
 
-@onready var boost_audio_player_3d: AudioStreamPlayer3D = %BoostAudioPlayer3D
 @onready var boost_audio_player: AudioStreamPlayer = $BoostAudioPlayer
 
 @export var road: Road:
@@ -77,7 +75,6 @@ func reset() -> void:
 
 func _boost_effect(_boost_xform: Transform3D) -> void:
 	boost_audio_player.play()
-	#boost_audio_player_3d.play()
 
 func _bank(direction: int) -> void:
 	bank_sfx.play()
