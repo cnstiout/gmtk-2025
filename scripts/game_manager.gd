@@ -91,8 +91,10 @@ func restart_current_level() -> void:
 		resume_game()
 	gameover_screen.reset()
 	current_level.get_child(0).restart()
+	is_pause_menu_acc = true
 
 func show_game_over() -> void:
+	is_pause_menu_acc = false
 	gameover_screen.show()
 
 func back_to_main_menu() -> void:
