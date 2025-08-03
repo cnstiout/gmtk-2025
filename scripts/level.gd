@@ -85,6 +85,7 @@ func _on_radar_triggered() -> void:
 		var player_speed = _get_score_multipied(player_track.get_converted_speed())
 		print(_get_score_multipied(player_speed))
 		update_run_score(player_speed + run_score)
+		hud.change_loop(run_laps)
 	run_laps += 1
 
 func _on_boost_picked_up(_boost_xform: Transform3D) -> void:

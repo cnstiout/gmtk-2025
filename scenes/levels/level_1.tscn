@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://doxdsiq13avgj" path="res://scenes/environement/city_3000.tscn" id="7_oc4kc"]
 
 [sub_resource type="Curve" id="Curve_oc4kc"]
-_limits = [1.0, 3.0, 0.0, 600.0]
-_data = [Vector2(0, 1), 0.0, 0.00139373, 0, 1, Vector2(419.214, 1.58427), 0.00278745, 0.00278745, 0, 0, Vector2(600, 3), 0.0, 0.0, 0, 0]
+_limits = [1.0, 3.0, 0.0, 1000.0]
+_data = [Vector2(0, 1), 0.0, 0.00125, 0, 1, Vector2(400, 1.5), 0.00278745, 0.00278745, 0, 0, Vector2(650, 3), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6761a"]

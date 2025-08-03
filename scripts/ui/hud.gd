@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var radar_noise: AudioStreamPlayer = $RadarNoise
 @onready var speed_lines: ColorRect = %SpeedLines
 @onready var life_animation: AnimationPlayer = $Health/MarginContainer2/HBoxContainer/TextureLife/LifeAnimation
+@onready var lap_label: Label = %LapLabel
 
 @onready var lives: BoxContainer = %Lives
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	Events.player_health_changed.connect(change_health)
 
 func reset(starting_speed: int) -> void:
+	change_loop(0)
 	change_run_score(0)
 	change_speed(starting_speed)
 	set_health(max_health)
@@ -45,7 +47,9 @@ func change_speed(speed: int) -> void:
 func change_speed_animate(speed: int) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_method(change_speed, current_speed, speed, speed_anim_speed).set_trans(Tween.TRANS_EXPO)
-	
+
+func change_loop(loop: int) -> void:
+	lap_label.text = str(loop)
 
 func change_run_score(score: int) -> void:
 	score_label.text = str(round(score))
