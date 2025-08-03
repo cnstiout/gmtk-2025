@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://baaf88kcr6mb3" path="res://assets/sfx/engine_idle_v1.ogg" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://c0bs1vjgbomek" path="res://assets/sfx/engine_start_v1.ogg" id="9_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://dy51kdubxi5x0" path="res://assets/sfx/engine_boost_pickup_v1.ogg" id="11_a8ls1"]
-[ext_resource type="AudioStream" uid="uid://cqd7cdtdb15jl" path="res://assets/sfx/engine_explosion_v0.ogg" id="11_d2wvv"]
+[ext_resource type="AudioStream" uid="uid://foqschi7wc7f" path="res://assets/sfx/engine_explosion_v6.ogg" id="11_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://u53b4l4a7o5x" path="res://assets/sfx/engine_crash_v6.ogg" id="12_a8ls1"]
 [ext_resource type="AudioStream" uid="uid://m66npnxyn2w0" path="res://assets/sfx/lane_swap_v3.ogg" id="12_jej6c"]
 [ext_resource type="AudioStream" uid="uid://c420mdls8nn6t" path="res://assets/sfx/trap_trigger_v4.ogg" id="15_a8ls1"]
@@ -192,8 +192,8 @@ max_polyphony = 3
 bus = &"SFX"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_d2wvv")
-volume_db = -13.651
+stream = ExtResource("11_f1ej7")
+volume_db = -12.5
 bus = &"SFX"
 
 [node name="BankSFX" type="AudioStreamPlayer" parent="."]
