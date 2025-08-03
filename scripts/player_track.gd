@@ -62,7 +62,7 @@ func boost(amount:int = 1):
 	if amount != 0:
 		current_speed += boost_amount * amount
 		Events.player_speed_changed.emit(get_converted_speed())
-		player_camera.animate_boost_fov()
+		#player_camera.animate_boost_fov()
 	
 func _on_boost_picked_up(_xform: Transform3D):
 	boost(1)
