@@ -6,9 +6,11 @@ extends Control
 @onready var quit_button: TextureButton = %QuitButton
 @onready var score_value_label: Label = %ScoreValueLabel
 @onready var highscore_value_label: Label = %HighscoreValueLabel
+@onready var top_speed_value_label: Label = %TopSpeedValueLabel
 
 func _ready() -> void:
 	Events.new_run_score.connect(change_score)
+	Events.new_top_speed.connect(change_top_speed)
 	visibility_changed.connect(_on_visibility_changed)
 	
 	replay_button.pressed.connect(_on_button_replay_pressed)
@@ -16,6 +18,9 @@ func _ready() -> void:
 
 func change_score(score: int) -> void:
 	score_value_label.text = str(score)
+
+func change_top_speed(speed: int) -> void:
+	top_speed_value_label.text = str(speed)
 
 func change_highscore(score: int) -> void:
 	highscore_value_label.text = str(score)
@@ -25,6 +30,7 @@ func _on_visibility_changed() -> void:
 		replay_button.grab_focus()
 
 func reset() -> void:
+	change_top_speed(0)
 	change_score(0)
 	self.hide()
 

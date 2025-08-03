@@ -74,7 +74,7 @@ func update_run_score(new_score: int) -> void:
 	Events.new_run_score.emit(run_score)
 
 func _on_player_died() -> void:
-	pass
+	hud.visible = false
 
 func _on_countdown_timer_timeout() -> void:
 	decrease_countdown()
@@ -83,7 +83,7 @@ func _on_radar_triggered() -> void:
 	if run_laps > 0:
 		road.setup_items()
 		var player_speed = _get_score_multipied(player_track.get_converted_speed())
-		print(_get_score_multipied(player_speed))
+		Events.new_top_speed.emit(player_track.get_converted_speed())
 		update_run_score(player_speed + run_score)
 		hud.change_loop(run_laps)
 	run_laps += 1

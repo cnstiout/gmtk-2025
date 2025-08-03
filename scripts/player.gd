@@ -70,6 +70,7 @@ func change_lane(lane: int) -> void:
 		current_lane = lane
 
 func reset() -> void:
+	visible = true
 	current_lane = 0
 	position.x = 0
 
@@ -93,6 +94,7 @@ func hurt_fx() -> void:
 	hurt_audio_player.play()
 
 func die_fx() -> void:
+	visible = false
 	explosion_sfx.play()
 
 func trap_fx(_trap_xform: Transform3D) -> void:

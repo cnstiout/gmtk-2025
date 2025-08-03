@@ -78,7 +78,7 @@ func take_damage(amount: int) -> void:
 		player_camera.add_trauma(0.9)
 	else:
 		player.hurt_fx()
-		player_camera.add_trauma(0.5)
+		player_camera.add_trauma(0.8)
 
 func die() -> void:
 	stop()

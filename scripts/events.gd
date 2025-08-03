@@ -12,6 +12,7 @@ signal player_health_changed(amount: int)
 signal player_speed_changed(speed: int)
 signal player_died
 signal radar_triggered
+signal new_top_speed(speed: int)
 signal new_run_score(score: int)
 signal new_highscore_reached(highscore: int)
 signal trap_triggered(trap_xform: Transform3D)

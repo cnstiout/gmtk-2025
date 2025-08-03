@@ -44,6 +44,22 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Top speed : "
+
+[node name="TopSpeedValueLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 

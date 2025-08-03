@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx06s8bqhvda4"]
+[gd_scene load_steps=6 format=3 uid="uid://bx06s8bqhvda4"]
 
 [ext_resource type="PackedScene" uid="uid://h2pheoljb6ha" path="res://scenes/boost_pickup.tscn" id="1_a555g"]
 [ext_resource type="PackedScene" uid="uid://c64q8c8m5bhub" path="res://scenes/trap.tscn" id="2_lp4no"]
 [ext_resource type="PackedScene" uid="uid://xqn5l3daobv1" path="res://scenes/obstacle.tscn" id="3_j7cyi"]
+[ext_resource type="PackedScene" uid="uid://c4uug6pxxto8t" path="res://scenes/speed_radar.tscn" id="4_lp4no"]
 
 [sub_resource type="Environment" id="Environment_a555g"]
 background_mode = 1
@@ -24,6 +25,10 @@ visible = false
 
 [node name="Obstacle" parent="." instance=ExtResource("3_j7cyi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.32336)
+visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.882702, 0.469934, 0, -0.469934, 0.882702, 0, 0.876547, 0.310833)
+
+[node name="SpeedRadar" parent="." instance=ExtResource("4_lp4no")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.69149, -2.78643)

@@ -35,6 +35,7 @@ func _ready() -> void:
 	Events.player_health_changed.connect(change_health)
 
 func reset(starting_speed: int) -> void:
+	visible = true
 	change_loop(0)
 	change_run_score(0)
 	change_speed(starting_speed)
