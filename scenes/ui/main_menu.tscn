@@ -75,7 +75,6 @@ is_first_focus = true
 
 [node name="QuitButton" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("5_x2yvf")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../PlayButton")
 focus_neighbor_top = NodePath("../PlayButton")
